@@ -1,8 +1,21 @@
+CREATE SEQUENCE seq_roles;
+CREATE TABLE roles (
+    id int  DEFAULT nextval('seq_roles') PRIMARY KEY,
+    name VARCHAR(20) NOT NULL
+);
+
 CREATE TABLE users(
     id int PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE user_roles (
+    user_id int,
+    role_id int,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
 CREATE SEQUENCE seq_annonce;

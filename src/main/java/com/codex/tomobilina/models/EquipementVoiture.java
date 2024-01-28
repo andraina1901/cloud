@@ -15,6 +15,7 @@ import jakarta.persistence.*;
 @Table(name = "equipementvoiture")
 public class EquipementVoiture {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idequipementvoiture", length = 15)
     private String idequipementvoiture;
     

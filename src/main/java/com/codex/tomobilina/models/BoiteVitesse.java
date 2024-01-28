@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "boite_vitesse")
 public class BoiteVitesse  {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idboitevitesse", length = 15)
     private String idBoiteVitesse;
 

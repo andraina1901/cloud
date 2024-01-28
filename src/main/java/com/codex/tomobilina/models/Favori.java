@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Entity
 public class Favori {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idfavori")
     private String idFavori;
 

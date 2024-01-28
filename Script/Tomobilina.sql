@@ -28,15 +28,29 @@ CREATE TABLE marque (
     etat INT DEFAULT 1
 );
 
-CREATE OR REPLACE VIEW v_marque AS
-SELECT m.*, pm.nomPays FROM marque m
-JOIN paysmarque pm ON m.idpays=pm.idpays;
+-- Insert data into paysmarque table
+INSERT INTO paysmarque (idPays, nomPays, etat) VALUES
+('PAYS1', 'France', 1),
+('PAYS2', 'Germany', 1),
+('PAYS3', 'USA', 1);
+
+-- Insert data into marque table
+INSERT INTO marque (nomMarque, idpays, etat) VALUES
+('Renault', 'PAYS1', 1),
+('Volkswagen', 'PAYS2', 1),
+('Ford', 'PAYS3', 1);
 
 CREATE TABLE categorie (
     idCategorie VARCHAR(15) DEFAULT 'CAT'||nextval('seq_categorie') PRIMARY KEY,
     nomCategorie VARCHAR(100) NOT NULL,
     etat INT DEFAULT 1
 );
+INSERT INTO categorie (nomCategorie, etat) VALUES
+('Compact Cars', 1),
+('Sedans', 1),
+('SUVs', 1),
+('Trucks', 1),
+('Luxury Cars', 1);
 
 CREATE TABLE modele (
     idModele VARCHAR(15) DEFAULT 'MOD'||nextval('seq_modele') PRIMARY KEY,
@@ -63,24 +77,33 @@ CREATE TABLE energie (
     nomEnergie VARCHAR(100) NOT NULL,
     etat INT DEFAULT 1
 );
+insert into energie(nomenergie, etat) values('essence', 1);
+insert into energie(nomenergie, etat) values('diesel', 1);
 
 CREATE TABLE boite_vitesse (
     idBoitevitesse VARCHAR(15) DEFAULT 'BTV'||nextval('seq_boite_vitesse') PRIMARY KEY,
     nomBoite_vitesse VARCHAR(100) NOT NULL, 
     etat INT DEFAULT 1
 );
+insert into boite_vitesse(nomboite_vitesse, etat) values('automatique', 1);
+insert into boite_vitesse(nomboite_vitesse, etat) values('manuel', 1);
 
 CREATE TABLE couleurs (
     idCouleur VARCHAR(15) DEFAULT 'COL'||nextval('seq_couleur') PRIMARY KEY,
     nomCouleur VARCHAR(100) NOT NULL,
     etat INT DEFAULT 1
 );
+insert into couleurs(nomcouleur, etat) values('bleu', 1);
+insert into couleurs(nomcouleur, etat) values('noir', 1);
+insert into couleurs(nomcouleur, etat) values('blanc', 1);
+insert into couleurs(nomcouleur, etat) values('rouge', 1);
 
 CREATE TABLE equipement (
     idEquipement VARCHAR(15) DEFAULT 'EQP'||nextval('seq_equipement') PRIMARY KEY,  
     nomEquipement VARCHAR(100) NOT NULL,
     etat INT DEFAULT 1
 );
+insert into equipement(nomequipement, etat) values('Bluetooth', 1);
 
 CREATE TABLE voiture (
     idVoiture VARCHAR(15) DEFAULT 'VTR'||nextval('seq_voiture') PRIMARY KEY,  
@@ -96,6 +119,7 @@ CREATE TABLE voiture (
     FOREIGN KEY (idboitevitesse) REFERENCES boite_vitesse(idboitevitesse),
     FOREIGN KEY (idcouleur) REFERENCES couleurs(idcouleur)
 );
+INSERT INTO voiture(idmodele, kilometrage, idenergie, idboitevitesse, idcouleur, consommation, etat) VALUES('MOD1', 12000, 'ENE1', 'BTV2', 'COL2', 2.6, 1);
 
 CREATE TABLE equipementVoiture (
     idvoiture VARCHAR(15) REFERENCES voiture,
@@ -103,3 +127,5 @@ CREATE TABLE equipementVoiture (
     etat INT DEFAULT 1,
     FOREIGN KEY (idequipement) REFERENCES equipement(idequipement)
 );
+
+insert into equipementvoiture(idvoiture, idequipement) VALUES('VTR1', 'EQP1');

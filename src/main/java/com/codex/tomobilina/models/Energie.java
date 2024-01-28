@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "energie")
 public class Energie {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idenergie")
     private String idEnergie;
     @Column(name = "nomenergie")

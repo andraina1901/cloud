@@ -15,6 +15,7 @@ import jakarta.persistence.*;
 public class Categorie {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcategorie", length = 15)
     private String idCategorie;
 

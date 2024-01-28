@@ -89,6 +89,10 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
         .authorizeHttpRequests(auth -> 
           auth.requestMatchers("/tomobilina/auth/**").permitAll()
               .requestMatchers("/api/test/**").permitAll()
+                .requestMatchers("/tomobilina/categories/**").permitAll()
+                  .requestMatchers("/tomobilina/paysmarques/**").permitAll()
+                  .requestMatchers("/tomobilina/energie/**").permitAll()
+                  .requestMatchers("/tomobilina/couleurs/**").permitAll()
               .anyRequest().authenticated()
         );
     
