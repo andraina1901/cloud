@@ -25,6 +25,7 @@ CREATE TABLE marque (
     idMarque VARCHAR(15) DEFAULT 'MRQ'||nextval('seq_marque') PRIMARY KEY,
     nomMarque VARCHAR(100) NOT NULL,
     idpays VARCHAR(15) REFERENCES paysmarque,
+    photo VARCHAR(300),
     etat INT DEFAULT 1
 );
 
@@ -65,12 +66,6 @@ CREATE TABLE modele (
     FOREIGN KEY (idmarque) REFERENCES marque(idMarque),
     FOREIGN KEY (idcategorie) REFERENCES categorie(idCategorie)
 );
-
-CREATE OR REPLACE VIEW v_modele AS
-SELECT md.*, mq.nomMarque, mq.idpays, pm.nomPays, cat.nomCategorie FROM modele md
-JOIN marque mq ON md.idmarque = mq.idmarque
-JOIN paysmarque pm ON mq.idpays = pm.idpays
-JOIN categorie cat ON md.idcategorie = cat.idcategorie;
 
 CREATE TABLE energie (
     idEnergie VARCHAR(15) DEFAULT 'ENE'||nextval('seq_energie') PRIMARY KEY,

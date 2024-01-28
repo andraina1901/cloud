@@ -1,11 +1,15 @@
 CREATE SEQUENCE seq_roles;
 CREATE TABLE roles (
-    id int  DEFAULT nextval('seq_roles') PRIMARY KEY,
+    id int DEFAULT nextval('seq_roles') PRIMARY KEY,
     name VARCHAR(20) NOT NULL
 );
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 
+CREATE SEQUENCE seq_user;
 CREATE TABLE users(
-    id int PRIMARY KEY,
+    id int DEFAULT nextval('seq_user') PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL
