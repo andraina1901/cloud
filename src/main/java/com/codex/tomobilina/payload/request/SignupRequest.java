@@ -1,5 +1,6 @@
 package com.codex.tomobilina.payload.request;
 
+import java.sql.Timestamp;
 import java.util.Set;
 
 import jakarta.validation.constraints.*;
@@ -19,6 +20,8 @@ public class SignupRequest {
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
+
+  private Timestamp dateheure;
 
   public String getUsername() {
     return username;
@@ -42,6 +45,14 @@ public class SignupRequest {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public Timestamp getDateheure() {
+    return dateheure;
+  }
+
+  public void setDateheure(Timestamp dateheure) {
+    this.dateheure = dateheure;
   }
 
   public Set<String> getRole() {

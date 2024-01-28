@@ -19,6 +19,8 @@ public class Favori {
     private Annonce annonce;
 
     private Timestamp dateheure;
+    
+    private int etat;
 
     public Favori() {
     }
@@ -53,5 +55,13 @@ public class Favori {
 
     public void setDateheure(Timestamp dateheure) {
         this.dateheure = dateheure;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
     }
 }

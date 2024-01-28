@@ -1,10 +1,12 @@
 package com.codex.tomobilina.repository;
 
 import com.codex.tomobilina.models.Annonce;
+import com.codex.tomobilina.models.Vente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface AnnonceRepository extends JpaRepository<Annonce, String> {
@@ -17,4 +19,7 @@ public interface AnnonceRepository extends JpaRepository<Annonce, String> {
     List<Annonce> findByVoiture_IdVoitureInAndPrixBetween(
             List<String> idVoitures, double prixMin, double prixMax
     );
+
+    @Query("select a from Annonce a where month(a.dateheure) = month(:date) and year(a.dateheure) = year (:date)")
+    List<Vente> findByDateheure(@Param("date") Timestamp date);
 }

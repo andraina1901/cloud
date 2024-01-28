@@ -28,6 +28,11 @@ public class FavoriController {
     public List<Favori> getAllFavoriUser(@PathVariable int id) {
         return favoriService.getAllFavoriUser(id);
     }
+    
+    @GetMapping("userfav/{id}")
+    public List<Favori> getCurrentAllFavoriUser(@PathVariable int id) {
+        return favoriService.getAllFavoriUserEtat(id, 1);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Favori> getFavoriById(@PathVariable String id) {

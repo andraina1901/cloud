@@ -31,6 +31,8 @@ import com.codex.tomobilina.repository.RoleRepository;
 import com.codex.tomobilina.repository.UserRepository;
 import com.codex.tomobilina.security.jwt.JwtUtils;
 import com.codex.tomobilina.security.services.UserDetailsImpl;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -89,7 +91,7 @@ public class AuthController {
     // Create new user's account
     User user = new User(signUpRequest.getUsername(), 
                signUpRequest.getEmail(),
-               encoder.encode(signUpRequest.getPassword()));
+               encoder.encode(signUpRequest.getPassword()), signUpRequest.getDateheure());
 
     Set<String> strRoles = signUpRequest.getRole();
     Set<Role> roles = new HashSet<>();
@@ -125,5 +127,10 @@ public class AuthController {
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+  }
+  
+  @GetMapping("/getuser")
+  public String getUser(@RequestParam("token") String token) {
+      return jwtUtils.getUserNameFromJwtToken(token);
   }
 }

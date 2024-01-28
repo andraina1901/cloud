@@ -1,5 +1,6 @@
 package com.codex.tomobilina.models;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +33,8 @@ public class User {
   @Size(max = 120)
   private String password;
 
+  private Timestamp dateheure;
+
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
         joinColumns = @JoinColumn(name = "user_id"), 
@@ -41,10 +44,11 @@ public class User {
   public User() {
   }
 
-  public User(String username, String email, String password) {
+  public User(String username, String email, String password, Timestamp dateheure) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.dateheure = dateheure;
   }
 
   public Long getId() {
@@ -78,6 +82,10 @@ public class User {
   public void setPassword(String password) {
     this.password = password;
   }
+
+  public Timestamp getDateheure() { return dateheure; }
+
+  public void setDateheure(Timestamp dateheure) { this.dateheure = dateheure; }
 
   public Set<Role> getRoles() {
     return roles;

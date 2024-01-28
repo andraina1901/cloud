@@ -7,12 +7,18 @@ package com.codex.tomobilina.controllers;
 import com.codex.tomobilina.models.Annonce;
 import com.codex.tomobilina.models.Favori;
 import com.codex.tomobilina.models.Resultat;
+import com.codex.tomobilina.models.User;
+import com.codex.tomobilina.models.Vente;
+import com.codex.tomobilina.repository.UserRepository;
 import com.codex.tomobilina.services.AnnonceService;
 import com.codex.tomobilina.services.FavoriService;
+import com.codex.tomobilina.services.VenteService;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,6 +44,11 @@ public class AnnonceController {
     private AnnonceService annonceService;
     @Autowired
     private FavoriService favoriService;
+    @Autowired
+    private VenteService venteService;
+    
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<Resultat> getAllAnnonce() {
@@ -66,6 +77,17 @@ public class AnnonceController {
     public ResponseEntity<Resultat> getAllAnnonceInValid() {
         try {
             Resultat resultat = new Resultat("OK", null, annonceService.getAllAnnonceByEtat(3));
+            return new ResponseEntity<>(resultat, HttpStatus.OK);
+        } catch (Exception e) {
+            Resultat resultat = new Resultat("NOT FOUND", e.getMessage(), null);
+            return new ResponseEntity<>(resultat, HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @GetMapping("vendu")
+    public ResponseEntity<Resultat> getAllAnnonceVendu() {
+        try {
+            Resultat resultat = new Resultat("OK", null, annonceService.getAllAnnonceByEtat(10));
             return new ResponseEntity<>(resultat, HttpStatus.OK);
         } catch (Exception e) {
             Resultat resultat = new Resultat("NOT FOUND", e.getMessage(), null);
@@ -105,6 +127,35 @@ public class AnnonceController {
         }
     }
 
+    @PutMapping("vente/{id}")
+    public ResponseEntity<Resultat> VendrerAnnonce(@PathVariable String id, @RequestParam("iduser") int iduser, @RequestParam("montant") double montant, @RequestParam("montant") double commission, @Param("dateheure") Timestamp dateheure) {
+        try {
+            Optional<Annonce> an = annonceService.getAnnonceById(id);
+            if (an.isEmpty()) {
+                Resultat resultat = new Resultat("NOT FOUND", "Id Annonce Not Found", null);
+                return new ResponseEntity<>(resultat, HttpStatus.NOT_FOUND);
+            }
+            Annonce ano = an.get();
+            ano.setEtat(10);
+            Annonce annonc = annonceService.saveAnnonce(ano);
+            
+            Optional<User> user = userRepository.findById(iduser);
+            if (user.isEmpty()) {
+                Resultat resultat = new Resultat("NOT FOUND", "Id User Not Found", null);
+                return new ResponseEntity<>(resultat, HttpStatus.NOT_FOUND);
+            }
+            
+            Vente vente = new Vente(annonc, user.get(), montant, commission, dateheure);
+            venteService.saveVente(vente);
+            
+            Resultat resultat = new Resultat("Annonce VENDU", null, vente);
+            return new ResponseEntity<>(resultat, HttpStatus.OK);
+        } catch (Exception e) {
+            Resultat resultat = new Resultat("NOT FOUND", e.getMessage(), null);
+            return new ResponseEntity<>(resultat, HttpStatus.NOT_FOUND);
+        }
+    }
+    
     @PutMapping("validate/{id}")
     public ResponseEntity<Resultat> ValiderAnnonce(@PathVariable String id) {
         try {

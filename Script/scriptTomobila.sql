@@ -12,7 +12,8 @@ CREATE TABLE users(
     id int DEFAULT nextval('seq_user') PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(100) NOT NULL
+    password VARCHAR(100) NOT NULL,
+    dateheure TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE user_roles (
@@ -47,6 +48,17 @@ CREATE TABLE favori(
     FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
 );
 
+CREATE SEQUENCE seq_vente;
+CREATE TABLE vente(
+    idVente VARCHAR(17) DEFAULT 'VNT'||nextval('seq_vente') PRIMARY KEY,
+    idAnnonce VARCHAR(17),
+    idUser INT,
+    montant FLOAT,
+    percentCommission FLOAT,
+    dateheure TIMESTAMP,
+    FOREIGN KEY (idAnnonce) REFERENCES annonce(idAnnonce),
+    FOREIGN KEY (idUser) REFERENCES users(id)
+);
 
 
 

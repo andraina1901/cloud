@@ -25,6 +25,10 @@ public class FavoriService {
         return favoriRepository.findByUser_Id(idUser);
     }
     
+    public List<Favori> getAllFavoriUserEtat(int idUser, int etat) {
+        return favoriRepository.findByUser_IdAndEtat(idUser, etat);
+    }
+    
     public Optional<Favori> getFavoriById(String id) { return favoriRepository.findById(id); }
     
     public Favori saveFavori(Favori fav) { return favoriRepository.save(fav); }
