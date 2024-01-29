@@ -67,13 +67,19 @@ CREATE TABLE modele (
     FOREIGN KEY (idcategorie) REFERENCES categorie(idCategorie)
 );
 
+insert into modele(idmarque, idcategorie, nomModele, annee, nbrPlaces, nbrPortes, photo, etat) VALUES('MRQ1', 'CAT1', 'Test Modele', 2010, 5, 4, null, 1);
+
 CREATE TABLE energie (
     idEnergie VARCHAR(15) DEFAULT 'ENE'||nextval('seq_energie') PRIMARY KEY,
     nomEnergie VARCHAR(100) NOT NULL,
     etat INT DEFAULT 1
 );
-insert into energie(nomenergie, etat) values('essence', 1);
-insert into energie(nomenergie, etat) values('diesel', 1);
+INSERT INTO energie (nomEnergie) VALUES 
+    ('Essence'),
+    ('Diesel'),
+    ('Hybride'),
+    ('Electrique'),
+    ('GPL');
 
 CREATE TABLE boite_vitesse (
     idBoitevitesse VARCHAR(15) DEFAULT 'BTV'||nextval('seq_boite_vitesse') PRIMARY KEY,

@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/boite_vitesse")
-@CrossOrigin
 public class BoiteVitesseController {
     @Autowired
     private BoiteVitesseService boite_vitesseService;
@@ -83,17 +83,9 @@ public class BoiteVitesseController {
         }
     }
     
-    @Transactional
     @DeleteMapping("/{id}")
-    public ResponseEntity<Resultat> deleteBoite_vitesse(@PathVariable String id) {
-        try {
-            BoiteVitesse bt = boite_vitesseService.getBoiteVitesseById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Entité Boite_vitesse non trouvée"));
-            Resultat resultat = new Resultat("Boite Vitesse DELETED", null, boite_vitesseService.saveBoite_vitesse(bt));
-            return new ResponseEntity<>(resultat, HttpStatus.OK);
-        } catch (Exception e) {
-            Resultat resultat = new Resultat("NOT DELETED", e.getMessage(), null);
-            return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Void> deleteBoite_vitesse(@PathVariable String id) {
+        boite_vitesseService.deleteBoite_vitesse(id);
+        return ResponseEntity.noContent().build();
     }
 }

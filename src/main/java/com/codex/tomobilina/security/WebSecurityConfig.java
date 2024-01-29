@@ -20,6 +20,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.codex.tomobilina.security.jwt.AuthEntryPointJwt;
 import com.codex.tomobilina.security.jwt.AuthTokenFilter;
 import com.codex.tomobilina.security.services.UserDetailsServiceImpl;
+import java.util.Arrays;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableMethodSecurity
@@ -81,25 +87,26 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 //    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 //  }
   
-  @Bean
-  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.csrf(csrf -> csrf.disable())
-        .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> 
-          auth.requestMatchers("/tomobilina/auth/**").permitAll()
-              .requestMatchers("/api/test/**").permitAll()
-                .requestMatchers("/tomobilina/categories/**").permitAll()
-                  .requestMatchers("/tomobilina/paysmarques/**").permitAll()
-                  .requestMatchers("/tomobilina/energie/**").permitAll()
-                  .requestMatchers("/tomobilina/couleurs/**").permitAll()
-              .anyRequest().authenticated()
-        );
-    
-    http.authenticationProvider(authenticationProvider());
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors().and()
+            .csrf(csrf -> csrf.disable())
+            .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> 
+              auth.requestMatchers("/tomobilina/auth/**").permitAll()
+                  .requestMatchers("/api/test/**").permitAll()
+                    .requestMatchers("/tomobilina/categories/**").permitAll()
+                      .requestMatchers("/tomobilina/paysmarques/**").permitAll()
+                      .requestMatchers("/tomobilina/energie/**").permitAll()
+                      .requestMatchers("/tomobilina/stat/**").permitAll()
+                  .anyRequest().authenticated()
+            );
 
-    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    
-    return http.build();
-  }
+        http.authenticationProvider(authenticationProvider());
+
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
 }

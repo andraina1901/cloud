@@ -40,13 +40,13 @@ public class CategorieService {
     }
     
     @Transactional
-    public void updateCategorie(String id, Categorie cat) { 
+    public Categorie updateCategorie(String id, Categorie cat) { 
         Categorie c = categorieRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entité Categorie non trouvée"));
         c.setEtat(cat.getEtat());
         c.setNomCategorie(cat.getNomCategorie());
         
-        categorieRepository.save(c);
+        return categorieRepository.save(c);
     }
 }
 

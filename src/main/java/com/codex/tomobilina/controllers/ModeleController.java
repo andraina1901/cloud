@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/modeles")
 public class ModeleController {
@@ -128,15 +129,9 @@ public class ModeleController {
         return ResponseEntity.ok("Modele Update");
     }
     
-    @Transactional
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteModele(@PathVariable String id) {
-        Modele modele = modeleService.getModeleById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Entité Modele non trouvée"));
-        
-        modele.setEtat(0);
-        
-        modeleService.saveModele(modele);
-        return ResponseEntity.ok("Modele Deleted");
+    public ResponseEntity<Void> deleteModele(@PathVariable String id) {
+        modeleService.deleteModele(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import java.sql.Date;
 
 @Entity
 @Table(name = "users", 
@@ -28,6 +29,9 @@ public class User {
   @Size(max = 50)
   @Email
   private String email;
+  
+  private Date dtn;
+  int sexe;
 
   @NotBlank
   @Size(max = 120)
@@ -41,12 +45,18 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
+    public User(Long id) {
+        this.id = id;
+    }
+
   public User() {
   }
 
-  public User(String username, String email, String password, Timestamp dateheure) {
+  public User(String username, String email, Date dtn, int sexe, String password, Timestamp dateheure) {
     this.username = username;
     this.email = email;
+    this.dtn = dtn;
+    this.sexe = sexe;
     this.password = password;
     this.dateheure = dateheure;
   }
@@ -74,6 +84,22 @@ public class User {
   public void setEmail(String email) {
     this.email = email;
   }
+
+    public Date getDtn() {
+        return dtn;
+    }
+
+    public void setDtn(Date dtn) {
+        this.dtn = dtn;
+    }
+
+    public int getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(int sexe) {
+        this.sexe = sexe;
+    }
 
   public String getPassword() {
     return password;

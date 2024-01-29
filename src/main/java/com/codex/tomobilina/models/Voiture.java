@@ -41,6 +41,13 @@ public class Voiture {
     
     private int etat;
 
+    public Voiture(String idVoiture) {
+        this.idVoiture = idVoiture;
+    }
+
+    public Voiture() {
+    }
+
     public String getIdVoiture() {
         return idVoiture;
     }

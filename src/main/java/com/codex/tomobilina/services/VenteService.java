@@ -4,6 +4,8 @@
  */
 package com.codex.tomobilina.services;
 
+import com.codex.tomobilina.models.BESTVENTE;
+import com.codex.tomobilina.models.V_vente_Commission;
 import com.codex.tomobilina.models.Vente;
 import com.codex.tomobilina.repository.VenteRepository;
 import java.sql.Timestamp;
@@ -11,7 +13,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Pageable;
 
 /**
  *
@@ -27,27 +28,16 @@ public class VenteService {
         return venteRepository.findAll();
     }
     
-    public List<Vente> getAllVenteUser(String id) {
-        return venteRepository.findByUser_Id(id);
+    public List<V_vente_Commission> getAllV_vente_Commission() {
+        return venteRepository.findV_vente_Commission();
     }
     
-    public List<Vente> getAllVenteMonth(Timestamp date) {
-        return venteRepository.findByDateheure(date);
+    public V_vente_Commission getAllV_vente_CommissionByIdVente(String id) {
+        return venteRepository.findV_vente_CommissionByIdVente(id);
     }
     
-    public double getCommissionMonth(Timestamp date) {
-        double ans = 0;
-        List<Vente> venteMonth = venteRepository.findByDateheure(date);
-        for (Vente vente : venteMonth) {
-            ans+=((vente.getMontant()*vente.getPercentCommission())/100);
-        }
-        
-        return ans;
-    }
-    
-    public List<Vente> getTopSalesOfMonth(Timestamp date, int nbr) {
-        PageRequest pageable = PageRequest.of(0, nbr);
-        return venteRepository.findTopSalesByMonthOrderByCommissionAndPrice(date, pageable);
+    public List<BESTVENTE> getBESTVENTE() {
+        return venteRepository.findBESTVENTE();
     }
     
     public Vente saveVente(Vente vente) { return venteRepository.save(vente); }

@@ -9,16 +9,17 @@ import com.codex.tomobilina.models.Favori;
 import com.codex.tomobilina.models.Resultat;
 import com.codex.tomobilina.models.User;
 import com.codex.tomobilina.models.Vente;
+import com.codex.tomobilina.models.Voiture;
 import com.codex.tomobilina.repository.UserRepository;
 import com.codex.tomobilina.services.AnnonceService;
 import com.codex.tomobilina.services.FavoriService;
 import com.codex.tomobilina.services.VenteService;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,15 +31,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author Tohy
  */
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/annonce")
-@CrossOrigin
 public class AnnonceController {
     @Autowired
     private AnnonceService annonceService;
@@ -62,7 +63,7 @@ public class AnnonceController {
         }
     }
 
-    @GetMapping("valid")
+    @GetMapping("/valid")
     public ResponseEntity<Resultat> getAllAnnonceValid() {
         try {
             Resultat resultat = new Resultat("OK", null, annonceService.getAllAnnonceByEtat(5));
@@ -73,7 +74,7 @@ public class AnnonceController {
         }
     }
 
-    @GetMapping("invalid")
+    @GetMapping("/invalid")
     public ResponseEntity<Resultat> getAllAnnonceInValid() {
         try {
             Resultat resultat = new Resultat("OK", null, annonceService.getAllAnnonceByEtat(3));
@@ -84,7 +85,7 @@ public class AnnonceController {
         }
     }
     
-    @GetMapping("vendu")
+    @GetMapping("/vendu")
     public ResponseEntity<Resultat> getAllAnnonceVendu() {
         try {
             Resultat resultat = new Resultat("OK", null, annonceService.getAllAnnonceByEtat(10));
@@ -127,8 +128,8 @@ public class AnnonceController {
         }
     }
 
-    @PutMapping("vente/{id}")
-    public ResponseEntity<Resultat> VendrerAnnonce(@PathVariable String id, @RequestParam("iduser") int iduser, @RequestParam("montant") double montant, @RequestParam("montant") double commission, @Param("dateheure") Timestamp dateheure) {
+    @PutMapping("/vente/{id}")
+    public ResponseEntity<Resultat> VendrerAnnonce(@PathVariable String id) {
         try {
             Optional<Annonce> an = annonceService.getAnnonceById(id);
             if (an.isEmpty()) {
@@ -139,13 +140,11 @@ public class AnnonceController {
             ano.setEtat(10);
             Annonce annonc = annonceService.saveAnnonce(ano);
             
-            Optional<User> user = userRepository.findById(iduser);
-            if (user.isEmpty()) {
-                Resultat resultat = new Resultat("NOT FOUND", "Id User Not Found", null);
-                return new ResponseEntity<>(resultat, HttpStatus.NOT_FOUND);
-            }
+            Date currentDate = new Date();
+            // Convertir la date en timestamp
+            Timestamp dateheure = new Timestamp(currentDate.getTime());
             
-            Vente vente = new Vente(annonc, user.get(), montant, commission, dateheure);
+            Vente vente = new Vente(annonc, dateheure);
             venteService.saveVente(vente);
             
             Resultat resultat = new Resultat("Annonce VENDU", null, vente);
@@ -156,7 +155,7 @@ public class AnnonceController {
         }
     }
     
-    @PutMapping("validate/{id}")
+    @PutMapping("/validate/{id}")
     public ResponseEntity<Resultat> ValiderAnnonce(@PathVariable String id) {
         try {
             Optional<Annonce> an = annonceService.getAnnonceById(id);
@@ -219,8 +218,19 @@ public class AnnonceController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Resultat> add(@RequestBody Annonce anon) {
+    public ResponseEntity<Resultat> add(
+            @RequestParam("titre") String titre,
+            @RequestParam("descriptions") String descriptions,
+            @RequestParam("idUser") Long idUser,
+            @RequestParam("idVoiture") String idVoiture,
+            @RequestParam("prix") double prix,
+            @RequestParam("photo") MultipartFile photo) {
         try {
+            int etat = 1;
+            Date currentDate = new Date();
+            // Convertir la date en timestamp
+            Timestamp dateheure = new Timestamp(currentDate.getTime());
+            Annonce anon = new Annonce(titre, descriptions, new User(idUser), new Voiture(idVoiture), prix, titre, dateheure, etat);
             Resultat resultat = new Resultat("CREATED", null, annonceService.saveAnnonce(anon));
             return new ResponseEntity<>(resultat, HttpStatus.CREATED);
         } catch (Exception e) {

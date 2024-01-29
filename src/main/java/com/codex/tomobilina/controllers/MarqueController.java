@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/marques")
 public class MarqueController {
@@ -91,6 +92,7 @@ public class MarqueController {
             @RequestParam("paysMarque") String paysMarque,
             @RequestParam(required = false) int etat) {
         try {
+            etat = 1;
             Optional<PaysMarque> pays = paysMarqueService.getPaysMarqueById(paysMarque);
             if (pays.isEmpty()) {
                 Resultat resultat = new Resultat("NOT FOUND", "Id Pays Not Found", null);
@@ -120,22 +122,9 @@ public class MarqueController {
         }
     }
 
-    @Transactional
     @DeleteMapping("/{id}")
-    public ResponseEntity<Resultat> deleteMarque(@PathVariable String id) {
-        try {
-            Marque m = marqueService.getMarqueById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Entité Marque non trouvée"));
-
-            m.setEtat(0);
-
-            marqueService.saveMarque(m);
-
-            Resultat resultat = new Resultat("DELETED", null, m);
-            return new ResponseEntity<>(resultat, HttpStatus.OK);
-        } catch (Exception e) {
-            Resultat resultat = new Resultat("NOT DELETED", e.getMessage(), null);
-            return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Void> deleteMarque(@PathVariable String id) {
+        marqueService.deleteMarque(id);
+        return ResponseEntity.noContent().build();
     }
 }

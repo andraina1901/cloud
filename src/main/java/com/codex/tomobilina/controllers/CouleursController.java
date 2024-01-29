@@ -28,9 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/couleurs")
-@CrossOrigin
 public class CouleursController {
     @Autowired
     private CouleursService couleursService;
@@ -85,22 +85,9 @@ public class CouleursController {
         }
     }
 
-    @Transactional
     @DeleteMapping("/{id}")
-    public ResponseEntity<Resultat> deleteCouleur(@PathVariable String id) {
-        try {
-            Couleurs col = couleursService.getCouleursById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Entité Couleur non trouvée"));
-
-            col.setEtat(0);
-
-            couleursService.saveCouleurs(col);
-
-            Resultat resultat = new Resultat("DELETED", null, col);
-            return new ResponseEntity<>(resultat, HttpStatus.OK);
-        } catch (Exception e) {
-            Resultat resultat = new Resultat("NOT DELETED", e.getMessage(), null);
-            return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Void> deleteCouleurs(@PathVariable String id) {
+        couleursService.deleteCouleur(id);
+        return ResponseEntity.noContent().build();
     }
 }

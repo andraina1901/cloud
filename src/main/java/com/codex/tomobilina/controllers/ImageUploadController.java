@@ -22,10 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author Tohy
  */
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/upload")
-@CrossOrigin
 public class ImageUploadController {
     private static String imageDirectory = System.getProperty("user.dir") + "/images/";
     private static String ext = "jpeg";

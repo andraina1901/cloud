@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/favori")
-@CrossOrigin
 public class FavoriController {
     @Autowired
     private FavoriService favoriService;

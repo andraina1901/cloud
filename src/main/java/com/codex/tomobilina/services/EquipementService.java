@@ -31,7 +31,6 @@ public class EquipementService {
     
     public Equipement saveEquipement(Equipement equi) { return equipementRepository.save(equi); }
     
-    @Transactional
     public Equipement updateEquipement(String id, Equipement newEqui) { 
         Equipement eq = equipementRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entité Equipement non trouvée"));
@@ -39,5 +38,9 @@ public class EquipementService {
         eq.setNomEquipement(newEqui.getNomEquipement());
         
         return equipementRepository.save(eq);
+    }
+    
+    public void deleteEquipement(String id) {
+        equipementRepository.deleteById(id);
     }
 }

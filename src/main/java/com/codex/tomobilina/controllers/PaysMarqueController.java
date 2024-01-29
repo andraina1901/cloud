@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/paysmarques")
 public class PaysMarqueController {
@@ -78,21 +79,9 @@ public class PaysMarqueController {
         }
     }
 
-    @Transactional
     @DeleteMapping("/{id}")
-    public ResponseEntity<Resultat> deletePaysMarque(@PathVariable String id) {
-        try {
-            PaysMarque paysM = paysMarqueService.getPaysMarqueById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Entité non trouvée"));
-
-            paysM.setEtat(0);
-
-            paysMarqueService.savePaysMarque(paysM);
-            Resultat resultat = new Resultat("DELETED", null, paysM);
-            return new ResponseEntity<>(resultat, HttpStatus.OK);
-        } catch (Exception e) {
-            Resultat resultat = new Resultat("NOT DELETED", e.getMessage(), null);
-            return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Void> deletePaysMarque(@PathVariable String id) {
+        paysMarqueService.deletePaysMarque(id);
+        return ResponseEntity.noContent().build();
     }
 }

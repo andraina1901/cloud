@@ -9,10 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
 import java.sql.Timestamp;
 
 /**
@@ -21,26 +18,16 @@ import java.sql.Timestamp;
  */
 
 @Entity
-@Table(name = "vente")
-public class Vente {
+@Table(name = "v_vente_commission")
+public class V_vente_Commission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idvente")
     private String idVente;
-    
-    @ManyToOne
-    @JoinColumn(name = "idannonce", referencedColumnName = "idAnnonce")
-    private Annonce annonce;
-    
+    private double prix;
+    private double commission;
     private Timestamp dateheure;
-
-    public Vente(Annonce annonce, Timestamp dateheure) {
-        this.annonce = annonce;
-        this.dateheure = dateheure;
-    }
-    
-    public Vente() {
-    }
+    private double benefice;
 
     public String getIdVente() {
         return idVente;
@@ -50,19 +37,35 @@ public class Vente {
         this.idVente = idVente;
     }
 
-    public Annonce getAnnonce() {
-        return annonce;
+    public double getPrix() {
+        return prix;
     }
 
-    public void setAnnonce(Annonce annonce) {
-        this.annonce = annonce;
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
-    
+
+    public double getCommission() {
+        return commission;
+    }
+
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
+
     public Timestamp getDateheure() {
         return dateheure;
     }
 
     public void setDateheure(Timestamp dateheure) {
         this.dateheure = dateheure;
+    }
+
+    public double getBenefice() {
+        return benefice;
+    }
+
+    public void setBenefice(double benefice) {
+        this.benefice = benefice;
     }
 }

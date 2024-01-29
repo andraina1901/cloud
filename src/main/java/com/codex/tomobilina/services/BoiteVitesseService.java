@@ -31,7 +31,6 @@ public class BoiteVitesseService {
     
     public BoiteVitesse saveBoite_vitesse(BoiteVitesse bv) { return boiteVitesseRepository.save(bv); }
     
-    @Transactional
     public BoiteVitesse updateBoiteVitesse(String id, BoiteVitesse newBt) { 
         BoiteVitesse bt = boiteVitesseRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entité Boite Vitesse non trouvée"));
@@ -39,5 +38,9 @@ public class BoiteVitesseService {
         bt.setNomBoiteVitesse(newBt.getNomBoiteVitesse());
         
         return boiteVitesseRepository.save(bt);
+    }
+    
+    public void deleteBoite_vitesse(String id) {
+        boiteVitesseRepository.deleteById(id);
     }
 }

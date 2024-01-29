@@ -28,9 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/energie")
-@CrossOrigin
 public class EnergieController {
     @Autowired
     private EnergieService energieService;
@@ -85,21 +85,9 @@ public class EnergieController {
         }
     }
     
-    @Transactional
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<Resultat> deleteEnergie(@PathVariable String id) {
-        try {
-            Energie ene = energieService.getEnergieById(id)
-                    .orElseThrow(() -> new EntityNotFoundException("Entité Energie non trouvée"));
-
-            ene.setEtat(0);
-
-            energieService.saveEnergie(ene);
-            Resultat resultat = new Resultat("DELETED", null, ene);
-            return new ResponseEntity<>(resultat, HttpStatus.OK);
-        } catch (Exception e) {
-            Resultat resultat = new Resultat("NOT DELETED", e.getMessage(), null);
-            return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
-        }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEnergie(@PathVariable String id) {
+        energieService.deleteEnergie(id);
+        return ResponseEntity.noContent().build();
     }
 }

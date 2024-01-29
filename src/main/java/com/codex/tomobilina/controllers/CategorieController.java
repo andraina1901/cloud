@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import com.codex.tomobilina.models.Categorie;
+import com.codex.tomobilina.models.Couleurs;
 import com.codex.tomobilina.models.Resultat;
 import com.codex.tomobilina.services.CategorieService;
 /**
  *
  * @author Tohy
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/categories")
 public class CategorieController {
@@ -56,10 +58,22 @@ public class CategorieController {
     @PostMapping("/add")
     public ResponseEntity<Resultat> createCategorie(@RequestBody Categorie categorie) {
         try {
+            categorie.setEtat(1);
             Resultat resultat = new Resultat("CREATED", null, categorieService.saveCategorie(categorie));
             return new ResponseEntity<>(resultat, HttpStatus.CREATED);
         } catch (Exception e) {
             Resultat resultat = new Resultat("NOT CREATED", e.getMessage(), null);
+            return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Resultat> updateCategorie(@PathVariable String id, @RequestBody Categorie cat) {
+        try {
+            Resultat resultat = new Resultat("Categorie UPDATED", null, categorieService.updateCategorie(id, cat));
+            return new ResponseEntity<>(resultat, HttpStatus.OK);
+        } catch (Exception e) {
+            Resultat resultat = new Resultat("Categorie NOT UPDATED", e.getMessage(), null);
             return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
         }
     }

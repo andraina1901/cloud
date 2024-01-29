@@ -21,9 +21,10 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author Tohy
  */
+
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/voiture")
-@CrossOrigin
 public class VoitureController {
     @Autowired
     private VoitureService voitureService;

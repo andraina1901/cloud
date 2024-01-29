@@ -31,7 +31,6 @@ public class CouleursService {
     
     public Couleurs saveCouleurs(Couleurs col) { return couleursRepository.save(col); }
     
-    @Transactional
     public Couleurs updateCouleurs(String id, Couleurs newCol) { 
         Couleurs c = couleursRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entité Couleurs non trouvée"));
@@ -39,5 +38,9 @@ public class CouleursService {
         c.setNomCouleur(newCol.getNomCouleur());
         
         return couleursRepository.save(c);
+    }
+    
+    public void deleteCouleur(String id) {
+        couleursRepository.deleteById(id);
     }
 }

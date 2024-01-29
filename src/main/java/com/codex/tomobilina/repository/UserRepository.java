@@ -1,5 +1,7 @@
 package com.codex.tomobilina.repository;
 
+import com.codex.tomobilina.models.NbUsersWeek;
+import com.codex.tomobilina.models.Stat_AnnonceUser;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -23,4 +25,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Query("select u from User u where month(u.dateheure) = month(:date) and year(u.dateheure) = year (:date)")
   List<User> findByDateheure(@Param("date") Timestamp date);
+
+  @Query("select n.nombre_inscrits from NbUsersLastWeek n")
+  int findNbrUserLastWeek();
+
+  @Query("select n from NbUsersWeek n")
+  NbUsersWeek findNbrUserWeek();
+  
+    @Query("select sa from Stat_AnnonceUser sa")
+    List<Stat_AnnonceUser> findStat_AnnonceUser();
 }

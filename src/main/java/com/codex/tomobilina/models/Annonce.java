@@ -24,8 +24,23 @@ public class Annonce {
     private Voiture voiture;
 
     private Double prix;
+    
+    @Column(name = "photo")
+    private String photo;
+    
     private Timestamp dateheure;
     private int etat;
+
+    public Annonce(String titre, String descriptions, User user, Voiture voiture, Double prix, String photo, Timestamp dateheure, int etat) {
+        this.titre = titre;
+        this.descriptions = descriptions;
+        this.user = user;
+        this.voiture = voiture;
+        this.prix = prix;
+        this.photo = photo;
+        this.dateheure = dateheure;
+        this.etat = etat;
+    }
 
     public Annonce() {
     }
@@ -76,6 +91,14 @@ public class Annonce {
 
     public void setPrix(Double prix) {
         this.prix = prix;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Timestamp getDateheure() {

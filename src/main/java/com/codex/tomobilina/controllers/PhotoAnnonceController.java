@@ -21,9 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
  * @author Tohy
  */
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("tomobilina/photo_annonce")
-@CrossOrigin
 public class PhotoAnnonceController {
     @Autowired
     private PhotoAnnonceService photoService;

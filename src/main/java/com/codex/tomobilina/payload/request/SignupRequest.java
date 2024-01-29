@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 import jakarta.validation.constraints.*;
+import java.sql.Date;
 
 public class SignupRequest {
   @NotBlank
@@ -15,8 +16,10 @@ public class SignupRequest {
   @Email
   private String email;
 
+  private Date dtn;
+  private int sexe;
   private Set<String> role;
-
+  
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
@@ -38,6 +41,22 @@ public class SignupRequest {
   public void setEmail(String email) {
     this.email = email;
   }
+
+    public Date getDtn() {
+        return dtn;
+    }
+
+    public void setDtn(Date dtn) {
+        this.dtn = dtn;
+    }
+
+    public int getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(int sexe) {
+        this.sexe = sexe;
+    }
 
   public String getPassword() {
     return password;

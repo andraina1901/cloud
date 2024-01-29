@@ -31,7 +31,6 @@ public class EnergieService {
     
     public Energie saveEnergie(Energie energie) { return energieRepository.save(energie); }
     
-    @Transactional
     public Energie updateEnergie(String id, Energie newEne) { 
         Energie ene = energieRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Entité Energie non trouvée"));
@@ -39,5 +38,9 @@ public class EnergieService {
         ene.setNomEnergie(newEne.getNomEnergie());
         
         return energieRepository.save(ene);
+    }
+    
+    public void deleteEnergie(String id) {
+        energieRepository.deleteById(id);
     }
 }
