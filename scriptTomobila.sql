@@ -270,4 +270,76 @@ select su.libelle,su.mois,su.nombre as user,sa.nombre as annonce from stat_user 
 join stat_annonce sa on sa.mois = su.mois
 );
 
+-- LEs plus vendu par category, marques, modele
+
+create or replace view total_vendu as (
+  select count(*) as total,sum(prix) as totalPrix from V_vente_Commission
+);
+
+create or replace view vendu_tous as (
+select m.idmodele,c.idcategorie,ma.idmarque,v.prix from V_vente_Commission v
+join vente ve on ve.idvente = v.idvente
+join annonce a on a.idannonce = ve.idAnnonce
+join voiture vo on vo.idvoiture = a.idvoiture
+join modele m on m.idmodele = vo.idmodele
+join marque ma on ma.idmarque = m.idmarque
+join categorie c on c.idcategorie = m.idcategorie
+);
+
+
+create view v_StatModele as (
+select vu.*,(100*vu.nombre/vu.total) as taux_nombre,(100*vu.prix/vu.totalPrix) as taux_prix from (
+select c.idmodele,c.nomModele,
+case when vu.idmodele is null then 0 else vu.nombre end as nombre,
+case when vu.idmodele is null then 0 else vu.prix end as prix,
+t.total,
+t.totalPrix
+from modele c
+left join 
+(select idmodele,count(idmodele) as nombre,sum(prix) as prix from vendu_tous v
+group by idmodele) vu on vu.idmodele = c.idmodele
+cross join total_vendu t
+) vu
+);
+
+create view v_Statcategorie as (
+select vu.*,(100*vu.nombre/vu.total) as taux_nombre,(100*vu.prix/vu.totalPrix) as taux_prix from (
+select c.idcategorie,c.nomcategorie,
+case when vu.idcategorie is null then 0 else vu.nombre end as nombre,
+case when vu.idcategorie is null then 0 else vu.prix end as prix,
+t.total,
+t.totalPrix
+from categorie c
+left join 
+(select idcategorie,count(idcategorie) as nombre,sum(prix) as prix from vendu_tous v
+group by idcategorie) vu on vu.idcategorie = c.idcategorie
+cross join total_vendu t
+) vu
+);
+
+create view v_Statmarque as (
+select vu.*,(100*vu.nombre/vu.total) as taux_nombre,(100*vu.prix/vu.totalPrix) as taux_prix from (
+select c.idmarque,c.nommarque,
+case when vu.idmarque is null then 0 else vu.nombre end as nombre,
+case when vu.idmarque is null then 0 else vu.prix end as prix,
+t.total,
+t.totalPrix
+from marque c
+left join 
+(select idmarque,count(idmarque) as nombre,sum(prix) as prix from vendu_tous v
+group by idmarque) vu on vu.idmarque = c.idmarque
+cross join total_vendu t
+) vu
+);
+
+-- View des favories
+
+create view v_favori as (
+select vu.* from 
+(
+select iduser,idAnnonce,sum(etat) as etat from favori
+group by iduser,idAnnonce
+) vu
+where etat = 1
+);
 
