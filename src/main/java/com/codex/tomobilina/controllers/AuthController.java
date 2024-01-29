@@ -31,6 +31,7 @@ import com.codex.tomobilina.repository.RoleRepository;
 import com.codex.tomobilina.repository.UserRepository;
 import com.codex.tomobilina.security.jwt.JwtUtils;
 import com.codex.tomobilina.security.services.UserDetailsImpl;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -130,7 +131,11 @@ public class AuthController {
   }
   
   @GetMapping("/getuser")
-  public String getUser(@RequestParam("token") String token) {
-      return jwtUtils.getUserNameFromJwtToken(token);
+  public UserDetailsImpl getUser(@RequestParam("token") String token) {
+      String username = jwtUtils.getUserNameFromJwtToken(token);
+      
+        User user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+        return UserDetailsImpl.build(user);
   }
 }

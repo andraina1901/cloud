@@ -13,10 +13,13 @@ import java.util.List;
 import java.util.Optional;
 import jakarta.persistence.EntityNotFoundException;
 import com.codex.tomobilina.models.Modele;
+import com.codex.tomobilina.models.Marque;
+import com.codex.tomobilina.models.Categorie;
 import com.codex.tomobilina.models.Resultat;
 import com.codex.tomobilina.services.ImageUploadingService;
 import com.codex.tomobilina.services.ModeleService;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -86,7 +89,7 @@ public class ModeleController {
         }
     }
     
-    @PostMapping("/add")
+    /*@PostMapping("/add")
     public ResponseEntity<Resultat> createModele(@RequestBody Modele modele) {
         try {
             Resultat resultat = new Resultat("CREATED", null, modeleService.saveModele(modele));
@@ -95,9 +98,9 @@ public class ModeleController {
             Resultat resultat = new Resultat("NOT CREATED", e.getMessage(), null);
             return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
     
-    /*@PostMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<Resultat> createModele(
             @RequestParam("idmarque") String idmarque,
             @RequestParam("idcategorie") String idcategorie,
@@ -105,7 +108,7 @@ public class ModeleController {
             @RequestParam("annee") int annee,
             @RequestParam("nbrplaces") int nbrplaces,
             @RequestParam("nbrportes") int nbrportes,
-            @RequestParam("file") MultipartFile photo,
+            @RequestParam("photo") MultipartFile photo,
             @RequestParam(required = false) int etat) {
         try {
             String image = imageService.upload(photo);
@@ -117,7 +120,7 @@ public class ModeleController {
             Resultat resultat = new Resultat("NOT CREATED", e.getMessage(), null);
             return new ResponseEntity<>(resultat, HttpStatus.BAD_REQUEST);
         }
-    }*/
+    }
     
     @PutMapping("/{id}")
     public ResponseEntity<String> updateModele(@PathVariable String id, @RequestBody Modele mod) {

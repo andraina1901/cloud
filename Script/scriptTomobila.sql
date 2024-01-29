@@ -23,6 +23,16 @@ CREATE TABLE user_roles (
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
+CREATE SEQUENCE seq_contact_user;
+CREATE TABLE Contact_user (
+    idContact_user VARCHAR(17) DEFAULT 'CCT_USER'||nextval('seq_contact_user') PRIMARY KEY,
+    idUser int,
+    contact VARCHAR(20),
+    type VARCHAR(10),
+    dateheure TIMESTAMP,
+    FOREIGN KEY (idUser) REFERENCES users(id)
+);
+
 CREATE SEQUENCE seq_annonce;
 CREATE TABLE annonce(
     idAnnonce VARCHAR(17) DEFAULT 'ANONC'||nextval('seq_annonce') PRIMARY KEY,
