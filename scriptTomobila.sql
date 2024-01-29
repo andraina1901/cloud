@@ -75,7 +75,10 @@ CREATE SEQUENCE seq_vente;
 CREATE TABLE vente (
     idVente VARCHAR(17) DEFAULT 'VENTE'||nextval('seq_vente') PRIMARY KEY,
     idAnnonce VARCHAR(17) UNIQUE,
+    idUser VARCHAR(17),
+    prix double precision,
     dateheure TIMESTAMP,
+    FOREIGN KEY (idUser) REFERENCES users(id),
     FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
 );
 
