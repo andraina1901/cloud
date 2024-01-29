@@ -12,9 +12,9 @@ export const setAuthHeader = (token) => {
       window.localStorage.removeItem("auth_token");
     }
 };
-// https://testupload-production-7212.up.railway.app
+// https://testupload-production-2380.up.railway.app
 // http://172.10.0.33:8080
-axios.defaults.baseURL = 'http://172.20.0.31:8080';
+axios.defaults.baseURL = 'https://testupload-production-2380.up.railway.app';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export  function request (method, url, data){

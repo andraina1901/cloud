@@ -10,29 +10,31 @@ import SoftButton from "components/SoftButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import energie from "./data/energie";
+import boite from "./data/boite";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import { v4 as uuidv4 } from 'uuid';
-import Ajout_energie from "./ajout";
-import Update_energie from "./update";
+import Ajout_Boite from "./ajout";
+import Update_Boite from "./update";
 import borders from "assets/theme/base/borders";
 
 import masterCardLogo from "assets/images/logos/mastercard.png";
+import Ajout_boite from "./ajout";
+import Update_boite from "./update";
 
-function Energie() {
+function Boite() {
   
   const { borderWidth, borderColor } = borders;
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
-  const [cards, setCards] = useState(energie.rows);
-  const [newEnergie, setNewEnergie] = useState([]);
+  const [cards, setCards] = useState(boite.rows);
+  const [newBoite, setNewBoite] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
   const handleDelete = (itemToDelete) => {
-    const updatedCards = cards.filter((item) => item.idEnergie !== itemToDelete.idEnergie);
+    const updatedCards = cards.filter((item) => item.idBoitevitesse !== itemToDelete.idBoitevitesse);
     setCards(updatedCards);
-    setNewEnergie(newEnergie.filter((item) => item.idEnergie !== itemToDelete.idEnergie));
+    setNewBoite(newBoite.filter((item) => item.idBoitevitesse !== itemToDelete.idBoitevitesse));
 
     const totalPages = Math.ceil(updatedCards.length / itemsPerPage);
     if (currentPage > totalPages) {
@@ -40,7 +42,7 @@ function Energie() {
     } 
   };
   
-  const handleNewEnergieClick = () => {
+  const handleNewBoiteClick = () => {
     setIsModalOpen(true);
   };
 
@@ -48,37 +50,38 @@ function Energie() {
     setIsModalOpen(false);
   };
 
-  const handleAddEnergie = (formData) => {
-    const newEnergieItem = { id: uuidv4(), ...formData };
-    setNewEnergie([...newEnergie, newEnergieItem]);
+  const handleAddBoite = (formData) => {
+    const newBoiteItem = { idBoitevitesse: uuidv4(), ...formData };
+    setNewBoite([...newBoite, newBoiteItem]);
     setIsModalOpen(false);
   };
+  
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
   
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-  const [editingEnergie, setEditingEnergie] = useState(null);
+  const [editingBoite, setEditingBoite] = useState(null);
 
-  const handleEdit = (EnergieToEdit) => {
-    setEditingEnergie(EnergieToEdit);
+  const handleEdit = (BoiteToEdit) => {
+    setEditingBoite(BoiteToEdit);
     setIsUpdateModalOpen(true);
   };
 
-  const handleUpdateEnergie = (formData) => {
+  const handleUpdateBoite = (formData) => {
     const updatedCards = cards.map((item) =>
-      item.idEnergie === editingEnergie.id ? { ...item, ...formData } : item
+      item.idBoitevitesse === editingBoite.idBoitevitesse ? { ...item, ...formData } : item
     );
     setCards(updatedCards);
-    setEditingEnergie(null);
+    setEditingBoite(null);
     setIsUpdateModalOpen(false);
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   
-  const allCards = [...cards, ...newEnergie];
+  const allCards = [...cards, ...newBoite];
   const displayedCards = allCards.slice(startIndex, endIndex);
   
 
@@ -94,17 +97,17 @@ function Energie() {
                   <Card id="delete-account" style={{width: '1200px'}}>
                     <SoftBox pt={2} px={2} display="flex" justifyContent="space-between" alignItems="center">
                       <SoftTypography variant="h6" fontWeight="medium">
-                        Liste des Energie
+                        Liste des Boite
                       </SoftTypography>
-                      <SoftButton variant="gradient" color="dark" onClick={handleNewEnergieClick}>
+                      <SoftButton variant="gradient" color="dark" onClick={handleNewBoiteClick}>
                         <Icon sx={{ fontWeight: "bold" }} >add</Icon>
-                        &nbsp;Nouvelle Energie
+                        &nbsp;Nouvelle Boite
                       </SoftButton>
                     </SoftBox>
                     <SoftBox p={2}>
                       <Grid container spacing={3} >
                         {displayedCards.map((item) => (
-                          <Grid key={item.idEnergie} item xs={12} md={4}>
+                          <Grid key={item.idBoitevitesse} item xs={12} md={4}>
                           <SoftBox
                             border={`${borderWidth[1]} solid ${borderColor}`}
                             borderRadius="lg"
@@ -115,7 +118,7 @@ function Energie() {
                           >
                             <SoftBox component="img" src={masterCardLogo} alt="master card" width="10%" mr={2} />
                             <SoftTypography variant="h6" fontWeight="medium">
-                              {item.nomEnergie}
+                              {item.nomBoite_vitesse}
                             </SoftTypography>
                             <SoftBox ml="auto" lineHeight={0}>
                               <Tooltip title="Edit Card" placement="top"  onClick={() => handleEdit(item)} >
@@ -155,18 +158,18 @@ function Energie() {
           </Grid>
         </SoftBox>
       </SoftBox>
-      <MyModal op={isModalOpen} close={handleCloseModal} element={<Ajout_energie addEnergie={handleAddEnergie}/>} />
+      <MyModal op={isModalOpen} close={handleCloseModal} element={<Ajout_boite addBoite={handleAddBoite}/>} />
       <MyModal
         op={isUpdateModalOpen}
         close={() => {
           setIsUpdateModalOpen(false);
-          setEditingEnergie(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
+          setEditingBoite(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
         }}
-        element={<Update_energie />}
+        element={<Update_boite />}
       />
       <Footer />
     </DashboardLayout>
   )
 }
 
-export default Energie;
+export default Boite;

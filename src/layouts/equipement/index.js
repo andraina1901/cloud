@@ -10,29 +10,31 @@ import SoftButton from "components/SoftButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import energie from "./data/energie";
+import equipement from "./data/equipement";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import { v4 as uuidv4 } from 'uuid';
-import Ajout_energie from "./ajout";
-import Update_energie from "./update";
+import Ajout_Equipement from "./ajout";
+import Update_Equipement from "./update";
 import borders from "assets/theme/base/borders";
 
 import masterCardLogo from "assets/images/logos/mastercard.png";
+import Ajout_equipement from "./ajout";
+import Update_equipement from "./update";
 
-function Energie() {
+function Equipement() {
   
   const { borderWidth, borderColor } = borders;
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
-  const [cards, setCards] = useState(energie.rows);
-  const [newEnergie, setNewEnergie] = useState([]);
+  const [cards, setCards] = useState(equipement.rows);
+  const [newEquipement, setNewEquipement] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
   const handleDelete = (itemToDelete) => {
-    const updatedCards = cards.filter((item) => item.idEnergie !== itemToDelete.idEnergie);
+    const updatedCards = cards.filter((item) => item.idEquipement !== itemToDelete.idEquipement);
     setCards(updatedCards);
-    setNewEnergie(newEnergie.filter((item) => item.idEnergie !== itemToDelete.idEnergie));
+    setNewEquipement(newEquipement.filter((item) => item.idEquipement !== itemToDelete.idEquipement));
 
     const totalPages = Math.ceil(updatedCards.length / itemsPerPage);
     if (currentPage > totalPages) {
@@ -40,7 +42,7 @@ function Energie() {
     } 
   };
   
-  const handleNewEnergieClick = () => {
+  const handleNewEquipementClick = () => {
     setIsModalOpen(true);
   };
 
@@ -48,9 +50,9 @@ function Energie() {
     setIsModalOpen(false);
   };
 
-  const handleAddEnergie = (formData) => {
-    const newEnergieItem = { id: uuidv4(), ...formData };
-    setNewEnergie([...newEnergie, newEnergieItem]);
+  const handleAddEquipement = (formData) => {
+    const newEquipementItem = { id: uuidv4(), ...formData };
+    setNewEquipement([...newEquipement, newEquipementItem]);
     setIsModalOpen(false);
   };
 
@@ -59,26 +61,26 @@ function Energie() {
   };
   
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-  const [editingEnergie, setEditingEnergie] = useState(null);
+  const [editingEquipement, setEditingEquipement] = useState(null);
 
-  const handleEdit = (EnergieToEdit) => {
-    setEditingEnergie(EnergieToEdit);
+  const handleEdit = (EquipementToEdit) => {
+    setEditingEquipement(EquipementToEdit);
     setIsUpdateModalOpen(true);
   };
 
-  const handleUpdateEnergie = (formData) => {
+  const handleUpdateEquipement = (formData) => {
     const updatedCards = cards.map((item) =>
-      item.idEnergie === editingEnergie.id ? { ...item, ...formData } : item
+      item.idEquipement === editingEquipement.id ? { ...item, ...formData } : item
     );
     setCards(updatedCards);
-    setEditingEnergie(null);
+    setEditingEquipement(null);
     setIsUpdateModalOpen(false);
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   
-  const allCards = [...cards, ...newEnergie];
+  const allCards = [...cards, ...newEquipement];
   const displayedCards = allCards.slice(startIndex, endIndex);
   
 
@@ -94,17 +96,17 @@ function Energie() {
                   <Card id="delete-account" style={{width: '1200px'}}>
                     <SoftBox pt={2} px={2} display="flex" justifyContent="space-between" alignItems="center">
                       <SoftTypography variant="h6" fontWeight="medium">
-                        Liste des Energie
+                        Liste des equipements
                       </SoftTypography>
-                      <SoftButton variant="gradient" color="dark" onClick={handleNewEnergieClick}>
+                      <SoftButton variant="gradient" color="dark" onClick={handleNewEquipementClick}>
                         <Icon sx={{ fontWeight: "bold" }} >add</Icon>
-                        &nbsp;Nouvelle Energie
+                        &nbsp;Nouvel equipement
                       </SoftButton>
                     </SoftBox>
                     <SoftBox p={2}>
                       <Grid container spacing={3} >
                         {displayedCards.map((item) => (
-                          <Grid key={item.idEnergie} item xs={12} md={4}>
+                          <Grid key={item.idEquipement} item xs={12} md={4}>
                           <SoftBox
                             border={`${borderWidth[1]} solid ${borderColor}`}
                             borderRadius="lg"
@@ -115,7 +117,7 @@ function Energie() {
                           >
                             <SoftBox component="img" src={masterCardLogo} alt="master card" width="10%" mr={2} />
                             <SoftTypography variant="h6" fontWeight="medium">
-                              {item.nomEnergie}
+                              {item.nomEquipement}
                             </SoftTypography>
                             <SoftBox ml="auto" lineHeight={0}>
                               <Tooltip title="Edit Card" placement="top"  onClick={() => handleEdit(item)} >
@@ -155,18 +157,18 @@ function Energie() {
           </Grid>
         </SoftBox>
       </SoftBox>
-      <MyModal op={isModalOpen} close={handleCloseModal} element={<Ajout_energie addEnergie={handleAddEnergie}/>} />
+      <MyModal op={isModalOpen} close={handleCloseModal} element={<Ajout_equipement addEquipement={handleAddEquipement}/>} />
       <MyModal
         op={isUpdateModalOpen}
         close={() => {
           setIsUpdateModalOpen(false);
-          setEditingEnergie(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
+          setEditingEquipement(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
         }}
-        element={<Update_energie />}
+        element={<Update_equipement />}
       />
       <Footer />
     </DashboardLayout>
   )
 }
 
-export default Energie;
+export default Equipement;

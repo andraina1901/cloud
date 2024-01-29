@@ -3,7 +3,7 @@ import { request } from "helpers/axios_helper";
 
 export async function getCategorie () {
     try {
-      const result = await request("GET", "/categorys", {});
+      const result = await request("GET", "/tomobilina/categories", {});
       const valiny = {
         columns: [{ name: "idCategorie"}, {name: "nomCategorie"}],
         rows: result.data

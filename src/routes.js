@@ -22,6 +22,10 @@ import Modele from "layouts/modele";
 import Energie from "layouts/energie";
 import Annonce from "layouts/annonce";
 import fetchData from "layouts/categorie/data/categorie";
+import Equipement from "layouts/equipement";
+import Boite from "layouts/boite";
+import Commission from "layouts/commission";
+import Utilisateur from "layouts/utilisateur";
 
 
 const routes = [
@@ -82,20 +86,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Billing",
-    key: "billing",
-    route: "/billing",
-    icon: <Office size="12px" />,
-    component: <Billing/>,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
     name: "Equipement",
     key: "equipement",
     route: "/equipement",
     icon: <Office size="12px" />,
-    component: <Modele />,
+    component: <Equipement/>,
     noCollapse: true,
   },
   {
@@ -104,7 +99,7 @@ const routes = [
     key: "boite",
     route: "/boite",
     icon: <Office size="12px" />,
-    component: <Modele />,
+    component: <Boite />,
     noCollapse: true,
   },
   { type: "title", title: "Annonce", key: "annonce-pages" },
@@ -117,23 +112,23 @@ const routes = [
     component: <Annonce />,
     noCollapse: true,
   },
-  { type: "title", title: "Account Pages", key: "client-pages" },
+  { type: "title", title: "Parametre", key: "" },
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
-    route: "/profile",
+    name: "Commission",
+    key: "commission",
+    route: "/commission",
     icon: <CustomerSupport size="12px" />,
-    component: <Profile />,
+    component: <Commission/>,
     noCollapse: true,
   },
   {
     type: "collapse",
-    name: "Sign In",
-    key: "sign-in",
-    route: "/authentication/sign-in",
-    icon: <Document size="12px" />,
-    component: <SignIn />,
+    name: "Utilisateur",
+    key: "utilisateur",
+    route: "/utilisateur",
+    icon: <CustomerSupport size="12px" />,
+    component: <Utilisateur/>,
     noCollapse: true,
   },
 ];

@@ -32,8 +32,8 @@ function SignIn() {
     e.preventDefault();
     setLoading(true);
 
-    request("POST", "/login", {
-      login: email,
+    request("POST", "/tomobilina/auth/signin", {
+      username: email,
       password: password,
     })
       .then((response) => {
