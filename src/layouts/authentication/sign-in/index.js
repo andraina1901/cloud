@@ -10,8 +10,13 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import curved9 from "assets/images/curved-images/curved-6.jpg";
 import { request,setAuthHeader } from "helpers/axios_helper";
 import { useNavigate } from 'react-router-dom';
+import MyLoader from "components/MyLoader/MyLoader";
+
 
 function SignIn() {
+
+  const [loading, setLoading] = useState(false);
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,6 +30,7 @@ function SignIn() {
 
   const onSubmitLogin = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     request("POST", "/login", {
       login: email,
@@ -38,8 +44,11 @@ function SignIn() {
         console.log("Erreur de connexion");
         setErrorBorderColor("red"); 
         setAuthHeader(null);
+      }).finally(() => {
+        setLoading(false);
       });
   };
+
 
   return (
     <CoverLayout
@@ -79,9 +88,17 @@ function SignIn() {
 
           </SoftBox>
           <SoftBox mt={4} mb={1}>
-            <SoftButton type="submit" variant="gradient" color="info" fullWidth onClick={onSubmitLogin} >
-              Login
+            <SoftButton type="submit" variant="gradient" color="info" fullWidth onClick={onSubmitLogin} style={{display: 'flex',height: '55px'}}>
+             
+                <SoftBox color="white">
+                  Login
+                </SoftBox>
+                <SoftBox>
+                  {loading && <MyLoader style={{ opacity: loading ? 1 : 0 }} />}
+                </SoftBox>
+
             </SoftButton>
+            
           </SoftBox>
         </form>
       </SoftBox>
