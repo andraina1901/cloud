@@ -6,13 +6,14 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
 function Update_categorie({ category, updateCategorie }) {
-  const [formData, setFormData] = useState({ categorie: category ? category.categorie : "" });
+  
+  const [formData, setFormData] = useState({ nomCategorie: category ? category.nomCategorie : "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateCategorie(formData);
   };
-
+  
   return (
     <div>
       <h3 style={{ marginBottom: "5%" }}>Update_categorie</h3>
@@ -26,9 +27,10 @@ function Update_categorie({ category, updateCategorie }) {
               fullWidth
               type={"text"}
               name="categorie"
-              value={formData.categorie}
-              onChange={(e) => setFormData({ ...formData, categorie: e.target.value })}
+              value={formData.nomCategorie}
+              onChange={(e) => setFormData({ ...formData, nomCategorie: e.target.value })}
             />
+            
           </SoftBox>
           <SoftBox>
             <Button
@@ -49,7 +51,8 @@ function Update_categorie({ category, updateCategorie }) {
 // Ajoutez la validation des props
 Update_categorie.propTypes = {
   category: PropTypes.shape({
-    categorie: PropTypes.string,
+    nomCategorie: PropTypes.string,
+    idCategorie: PropTypes.string,
     // ... autres propriétés de la catégorie si nécessaire
   }),
   updateCategorie: PropTypes.func.isRequired,

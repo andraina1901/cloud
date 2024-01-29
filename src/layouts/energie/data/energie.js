@@ -1,25 +1,46 @@
+import { request } from "helpers/axios_helper";
 
 
-const energie = {
-  columns: [
-    { name: "id", align: "left" },
-    { name: "energie", align: "left" },
-  ],
-
-  rows: [
-    {
-      id: '1',
-      energie: "diesel",
-    },
-    {
-      id: '2',
-      energie: "hyundai",
-    },
-    {
-      id: '3',
-      energie: "toyota",
-    },
-  ],
+export async function getEnergie () {
+    try {
+      const result = await request("GET", "/energie", {});
+      const valiny = {
+        columns: [{ name: "idEnergie"}, {name: "nomEnergie"}],
+        rows: result.data
+      };
+      console.log("Formatted Data:", valiny);
+      return valiny;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error; 
+    }
 };
 
-export default energie;
+export async function dropEnergie (id) {
+  try {
+    await request("DELETE", `/energie/delete/${id}`, {});
+
+  } catch (error) {
+    throw error; 
+  }
+};
+
+export async function updateEnergie (id,nom) {
+  try {
+    await request("PUT", `/energie/${id}`,nom );
+  } catch (error) {
+    throw error; 
+  }
+};
+
+export async function addEnergie (nom) {
+
+  try {
+    const vaovao = await request("POST", `/energie/add`, nom);
+    return vaovao.data;
+  } catch (error) {
+    throw error; 
+  }
+};
+
+

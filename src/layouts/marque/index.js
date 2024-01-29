@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import SoftBox from "components/SoftBox";
@@ -6,7 +6,7 @@ import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import marque from "./data/marque";
+import { dropMarque, getMarque } from "./data/marque";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import Ajout_marque from "./ajout";
@@ -16,16 +16,25 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function Marque() {
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getMarque().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
-  const [cards, setCards] = useState(marque.rows);
+  // const [cards, setCards] = useState(marque.rows);
   const [newMarque, setNewMarque] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
-  const handleDelete = (itemToDelete) => {
-    const updatedCards = cards.filter((item) => item.id !== itemToDelete.id);
+  const handleDelete = async (itemToDelete) => {
+    await dropMarque(itemToDelete.idMarque);
+    const updatedCards = cards.filter((item) => item.idMarque !== itemToDelete.idMarque);
     setCards(updatedCards);
-    setNewMarque(newMarque.filter((item) => item.id !== itemToDelete.id));
+    setNewMarque(newMarque.filter((item) => item.idMarque !== itemToDelete.idMarque));
 
     const totalPages = Math.ceil(updatedCards.length / itemsPerPage);
     if (currentPage > totalPages) {
@@ -62,7 +71,7 @@ function Marque() {
 
   const handleUpdateMarque = (formData) => {
     const updatedCards = cards.map((item) =>
-      item.id === editingMarque.id ? { ...item, ...formData } : item
+      item.idMarque === editingMarque.id ? { ...item, ...formData } : item
     );
     setCards(updatedCards);
     setEditingMarque(null);
@@ -94,9 +103,9 @@ function Marque() {
                 {displayedCards.map((item) => (
                   <Grid key={item.id} item xs={12} md={6} xl={4}>
                     <DefaultInfoCard
-                      image={item.image}
-                      title={item.marque}
-                      description={item.pays}
+                      image={item.photo}
+                      title={item.nomMarque}
+                      description={item.paysMarque.nomPays}
                       onDelete={() => handleDelete(item)}
                       onEdit={() => handleEdit(item)} 
                     />

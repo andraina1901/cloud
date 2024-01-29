@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import SoftBox from "components/SoftBox";
@@ -10,7 +10,7 @@ import SoftButton from "components/SoftButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import energie from "./data/energie";
+import { addEnergie, dropEnergie, getEnergie, updateEnergie } from "./data/energie";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import { v4 as uuidv4 } from 'uuid';
@@ -21,15 +21,24 @@ import borders from "assets/theme/base/borders";
 import masterCardLogo from "assets/images/logos/mastercard.png";
 
 function Energie() {
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getEnergie().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
   
   const { borderWidth, borderColor } = borders;
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
-  const [cards, setCards] = useState(energie.rows);
   const [newEnergie, setNewEnergie] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
-  const handleDelete = (itemToDelete) => {
+  const handleDelete = async (itemToDelete) => {
+    await dropEnergie(itemToDelete.idEnergie);
     const updatedCards = cards.filter((item) => item.idEnergie !== itemToDelete.idEnergie);
     setCards(updatedCards);
     setNewEnergie(newEnergie.filter((item) => item.idEnergie !== itemToDelete.idEnergie));
@@ -48,7 +57,10 @@ function Energie() {
     setIsModalOpen(false);
   };
 
-  const handleAddEnergie = (formData) => {
+  const handleAddEnergie = async (formData) => {
+    const rep = await addEnergie(formData);
+    // console.log(rep.idEnergie+" ty ee")
+    // setCards((anciennesCartes) => [...anciennesCartes, rep]);
     const newEnergieItem = { id: uuidv4(), ...formData };
     setNewEnergie([...newEnergie, newEnergieItem]);
     setIsModalOpen(false);
@@ -67,13 +79,21 @@ function Energie() {
   };
 
   const handleUpdateEnergie = (formData) => {
-    const updatedCards = cards.map((item) =>
-      item.idEnergie === editingEnergie.id ? { ...item, ...formData } : item
-    );
+    const updatedCards = cards.map((item) => {
+      console.log(item+" eto ndrai zao");
+      if (item.idEnergie === editingEnergie.idEnergie) {
+         const updatedItem = updateEnergie(item.idEnergie, formData);
+        return { ...updatedItem, ...formData };
+      } else {  
+        return item;
+      }
+    });
     setCards(updatedCards);
     setEditingEnergie(null);
     setIsUpdateModalOpen(false);
   };
+
+
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -162,7 +182,7 @@ function Energie() {
           setIsUpdateModalOpen(false);
           setEditingEnergie(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
         }}
-        element={<Update_energie />}
+        element={<Update_energie energie={editingEnergie} updateEnergie={handleUpdateEnergie}/>}
       />
       <Footer />
     </DashboardLayout>

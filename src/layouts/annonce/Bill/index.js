@@ -7,11 +7,8 @@ import SoftAvatar from "components/SoftAvatar";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
-import burceMars from "assets/images/bruce-mars.jpg";
-import { Button } from "@mui/material";
-import details from "../details";
 
-function Bill({ name, company, email, vat, noGutter }) {
+function Bill({ principal,user,voiture,date,prix}) {
   const navigate = useNavigate();
   const id = 0;
 
@@ -28,12 +25,12 @@ function Bill({ name, company, email, vat, noGutter }) {
       bgColor="grey-100"
       borderRadius="lg"
       p={3}
-      mb={noGutter ? 0 : 1}
+      // mb={noGutter ? 0 : 1}
       mt={2}
     >
       <SoftBox width="100%" display="flex" flexDirection="row">
             <SoftBox mr={10}>
-              <SoftAvatar  style={{width: '150px',height: '100px'}} src={burceMars} alt="profile-image" variant="rounded" size="xl" shadow="sm"/>
+              <SoftAvatar  style={{width: '150px',height: '100px'}} src={principal} alt="profile-image" variant="rounded" size="xl" shadow="sm"/>
             </SoftBox>
 
             <SoftBox mb={1} mr={50} lineHeight={0}>
@@ -41,7 +38,7 @@ function Bill({ name, company, email, vat, noGutter }) {
                 <SoftTypography variant="caption" color="text">
                   {/* Utilisateur:&nbsp;&nbsp;&nbsp; */}
                   <SoftTypography  style={{ fontSize: '16px' }} variant="caption" fontWeight="medium" textTransform="capitalize">
-                    {/* {company} */}Jeremia
+                    {user}
                   </SoftTypography>
                 </SoftTypography>
               </SoftBox>
@@ -49,7 +46,7 @@ function Bill({ name, company, email, vat, noGutter }) {
                 <SoftTypography variant="caption" color="text">
                   Voiture:&nbsp;&nbsp;&nbsp;
                   <SoftTypography variant="caption" fontWeight="medium" textTransform="capitalize">
-                    {company}
+                    {voiture}
                   </SoftTypography>
                 </SoftTypography>
               </SoftBox>
@@ -57,7 +54,7 @@ function Bill({ name, company, email, vat, noGutter }) {
                 <SoftTypography variant="caption" color="text">
                   Date:&nbsp;&nbsp;&nbsp;
                   <SoftTypography variant="caption" fontWeight="medium" textTransform="capitalize">
-                    {company}
+                    {date}
                   </SoftTypography>
                 </SoftTypography>
               </SoftBox>
@@ -65,7 +62,7 @@ function Bill({ name, company, email, vat, noGutter }) {
                 <SoftTypography variant="caption" color="text">
                   Prix:&nbsp;&nbsp;&nbsp;
                   <SoftTypography variant="caption" fontWeight="medium" textTransform="capitalize">
-                    {company}
+                    {prix} ar
                   </SoftTypography>
                 </SoftTypography>
               </SoftBox>
@@ -82,18 +79,15 @@ function Bill({ name, company, email, vat, noGutter }) {
   );
 }
 
-// Setting default values for the props of Bill
-Bill.defaultProps = {
-  noGutter: false,
-};
 
 // Typechecking props for the Bill
 Bill.propTypes = {
-  name: PropTypes.string.isRequired,
-  company: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  vat: PropTypes.string.isRequired,
-  noGutter: PropTypes.bool,
+  principal: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  voiture: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  prix: PropTypes.string.isRequired,
+  // noGutter: PropTypes.bool,
 };
 
 export default Bill;

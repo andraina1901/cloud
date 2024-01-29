@@ -1,25 +1,46 @@
+import { request } from "helpers/axios_helper";
 
 
-const boite = {
-  columns: [
-    { name: "idBoitevitesse", align: "left" },
-    { name: "nomBoite_vitesse", align: "left" },
-  ],
-
-  rows: [
-    {
-      idBoitevitesse: '1',
-      nomBoite_vitesse: "diesel",
-    },
-    {
-      idBoitevitesse: '2',
-      nomBoite_vitesse: "hyundai",
-    },
-    {
-      idBoitevitesse: '3',
-      nomBoite_vitesse: "toyota",
-    },
-  ],
+export async function getBoite () {
+    try {
+      const result = await request("GET", "/boite_vitesse", {});
+      const valiny = {
+        columns: [{ name: "idBoiteVitesse"}, {name: "nomBoiteVitesse"}],
+        rows: result.data
+      };
+      console.log("Formatted Data:", valiny);
+      return valiny;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error; 
+    }
 };
 
-export default boite;
+export async function dropBoite (id) {
+  try {
+    await request("DELETE", `/boite_vitesse/${id}`, {});
+
+  } catch (error) {
+    throw error; 
+  }
+};
+
+export async function updateBoite (id,nom) {
+  try {
+    await request("PUT", `/boite_vitesse/${id}`,nom );
+  } catch (error) {
+    throw error; 
+  }
+};
+
+export async function addBoite (nom) {
+
+  try {
+    const vaovao = await request("POST", `/boite_vitesse/add`, nom);
+    return vaovao.data;
+  } catch (error) {
+    throw error; 
+  }
+};
+
+

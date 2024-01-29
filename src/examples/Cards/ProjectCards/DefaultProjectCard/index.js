@@ -19,10 +19,6 @@ import modele from "layouts/modele/data/modele";
 import Button from "@mui/material/Button";
 
 function DefaultProjectCard({ image, categorie, marque, modele, annee, place, porte,onDelete,onEdit}) {
-  
-  // const handleEdit = () => {
-  //   console.log("Edit:", title);
-  // };
 
   return (
     <Card

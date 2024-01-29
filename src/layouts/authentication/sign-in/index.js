@@ -32,12 +32,12 @@ function SignIn() {
     e.preventDefault();
     setLoading(true);
 
-    request("POST", "/tomobilina/auth/signin", {
+    request("POST", "/auth/signin", {
       username: email,
       password: password,
     })
       .then((response) => {
-        setAuthHeader(response.data.token);
+        setAuthHeader(response.data.accessToken);
         navigate('/dashboard');
       })
       .catch((error) => {

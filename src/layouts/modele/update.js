@@ -8,15 +8,35 @@ import MenuItem from "@mui/material/MenuItem";
 import Input from "@mui/material/Input";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import { getCategorie } from "layouts/categorie/data/categorie";
+import { getMarque } from "layouts/marque/data/marque";
 
 function Update_modele({ modele, updatemodele }) {
+  const [categorie, setCategorie] = useState([]);
+  useEffect (() => {
+    getCategorie().then((response)=>{
+      setCategorie(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getMarque().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
   const [formData, setFormData] = useState({
     categorie: modele ? modele.categorie : "", // Ajout de la propriété categorie
-    modele: modele ? modele.modele : "",
+    nomModele: modele ? modele.nomModele : "",
     marque: modele ? modele.marque : "",
     annee: modele ? modele.annee : "",
-    porte: modele ? modele.porte : "",
-    place: modele ? modele.place : "",
+    nbrPortes: modele ? modele.nbrPortes : "",
+    nbrPlaces: modele ? modele.nbrPlaces : "",
     photo: modele ? modele.photo : "",
   });
 
@@ -27,7 +47,7 @@ function Update_modele({ modele, updatemodele }) {
 
   return (
     <div>
-      <h3 style={{ marginBottom: "5%" }}>Ajout de modele</h3>
+      <h3 style={{ marginBottom: "5%" }}>Modification de model</h3>
       <SoftBox>
         <form onSubmit={handleSubmit}>
           <SoftBox mb={2}>
@@ -38,7 +58,7 @@ function Update_modele({ modele, updatemodele }) {
               fullWidth
               type={"text"}
               name="model"
-              value={formData.modele}
+              value={formData.nomModele}
               onChange={(e) => setFormData({ ...formData, modele: e.target.value })}
             />
           </SoftBox>
@@ -56,8 +76,9 @@ function Update_modele({ modele, updatemodele }) {
                 onChange={(e) => setFormData({ ...formData, categorie: e.target.value })}
                 IconComponent={() => <span>&#x25BC;</span>}
               >
-                <MenuItem value="citadine">citadine</MenuItem>
-                <MenuItem value="crossower">crossower</MenuItem>
+                {categorie.map((item) => (
+                <MenuItem key={item.idCategorie} value={item.idCategorie}>{item.nomCategorie}</MenuItem>
+              ))}
               </Select>
             </FormControl>
 
@@ -73,9 +94,9 @@ function Update_modele({ modele, updatemodele }) {
                 onChange={(e) => setFormData({ ...formData, marque: e.target.value })}
                 IconComponent={() => <span>&#x25BC;</span>}
               >
-                <MenuItem value="toyota">toyota</MenuItem>
-                <MenuItem value="audi">audi</MenuItem>
-                <MenuItem value="mercedes">mercedes</MenuItem>
+                   {cards.map((item) => (
+                <MenuItem key={item.idMarque} value={item.idMarque}>{item.nomMarque}</MenuItem>
+              ))}
               </Select>
             </FormControl>
           </SoftBox>
@@ -96,27 +117,27 @@ function Update_modele({ modele, updatemodele }) {
           <SoftBox mb={2} style={{ display: 'flex' }}>
             <SoftBox mb={2} style={{ marginRight: '10px'}}>
               <SoftTypography variant="subtitle1" mb={1} style={{ fontSize: "12px" }}>
-                Place
+                nbrPlaces
               </SoftTypography>
               <TextField
                 style={{width:'165px'}}
                 type={"number"}
-                name="place"
-                value={formData.place}
-                onChange={(e) => setFormData({ ...formData, place: e.target.value })}
+                name="nbrPlaces"
+                value={formData.nbrPlaces}
+                onChange={(e) => setFormData({ ...formData, nbrPlaces: e.target.value })}
               />
             </SoftBox>
 
             <SoftBox mb={2}>
               <SoftTypography variant="subtitle1" mb={1} style={{ fontSize: "12px" }}>
-                Porte
+                nbPortes
               </SoftTypography>
               <TextField
                 style={{width:'165px'}}
                 type={"number"}
-                name="porte"
-                value={formData.porte}
-                onChange={(e) => setFormData({ ...formData, porte: e.target.value })}
+                name="nbPortes"
+                value={formData.nbrPortes}
+                onChange={(e) => setFormData({ ...formData, nbPortes: e.target.value })}
               />
             </SoftBox>
           </SoftBox>

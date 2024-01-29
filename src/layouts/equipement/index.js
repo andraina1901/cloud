@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import SoftBox from "components/SoftBox";
@@ -10,7 +10,7 @@ import SoftButton from "components/SoftButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import equipement from "./data/equipement";
+import equipement, { addEquipement, dropEquipement, getEquipement, updateEquipement } from "./data/equipement";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import { v4 as uuidv4 } from 'uuid';
@@ -24,14 +24,24 @@ import Update_equipement from "./update";
 
 function Equipement() {
   
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getEquipement().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+
   const { borderWidth, borderColor } = borders;
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
-  const [cards, setCards] = useState(equipement.rows);
   const [newEquipement, setNewEquipement] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
-  const handleDelete = (itemToDelete) => {
+  const handleDelete = async (itemToDelete) => {
+    await dropEquipement(itemToDelete.idEquipement);
     const updatedCards = cards.filter((item) => item.idEquipement !== itemToDelete.idEquipement);
     setCards(updatedCards);
     setNewEquipement(newEquipement.filter((item) => item.idEquipement !== itemToDelete.idEquipement));
@@ -50,7 +60,8 @@ function Equipement() {
     setIsModalOpen(false);
   };
 
-  const handleAddEquipement = (formData) => {
+  const handleAddEquipement = async (formData) => {
+    const rep = await addEquipement(formData);
     const newEquipementItem = { id: uuidv4(), ...formData };
     setNewEquipement([...newEquipement, newEquipementItem]);
     setIsModalOpen(false);
@@ -68,10 +79,17 @@ function Equipement() {
     setIsUpdateModalOpen(true);
   };
 
+
   const handleUpdateEquipement = (formData) => {
-    const updatedCards = cards.map((item) =>
-      item.idEquipement === editingEquipement.id ? { ...item, ...formData } : item
-    );
+    const updatedCards = cards.map((item) => {
+      // console.log(item+" eto ndrai zao");
+      if (item.idEquipement === editingEquipement.idEquipement) {
+         const updatedItem = updateEquipement(item.idEquipement, formData);
+        return { ...updatedItem, ...formData };
+      } else {  
+        return item;
+      }
+    });
     setCards(updatedCards);
     setEditingEquipement(null);
     setIsUpdateModalOpen(false);
@@ -164,7 +182,7 @@ function Equipement() {
           setIsUpdateModalOpen(false);
           setEditingEquipement(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
         }}
-        element={<Update_equipement />}
+        element={<Update_equipement equipement={editingEquipement} updateEquipement={handleUpdateEquipement}/>}
       />
       <Footer />
     </DashboardLayout>

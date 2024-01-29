@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -7,7 +7,7 @@ import SoftBox from "components/SoftBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import modele from "./data/modele";
+import modele, { addModel, dropModel, getModel } from "./data/modele";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import Ajout_modele from "./ajout";
@@ -21,17 +21,27 @@ import SoftTypography from "components/SoftTypography";
 import Update_modele from "./update";
 
 function Modele() {
+
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getModel().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+
   const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
-  
-  const [cards, setCards] = useState(modele.rows);
   const [newModel, setNewModel] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
   const handleDelete = (itemToDelete) => {
-    const updatedCards = cards.filter((item) => item.id !== itemToDelete.id);
+    dropModel(itemToDelete.idModele);
+    const updatedCards = cards.filter((item) => item.idModele !== itemToDelete.idModele);
     setCards(updatedCards);
-    setNewModel(newModel.filter((item) => item.id !== itemToDelete.id));
+    setNewModel(newModel.filter((item) => item.idModele !== itemToDelete.idModele));
     const totalPages = Math.ceil(updatedCards.length / itemsPerPage);
     if (currentPage > totalPages) {
       setCurrentPage(totalPages);
@@ -47,10 +57,11 @@ function Modele() {
     setIsModalOpen(false);
   };
 
-  const handleAddModel = (formData) => {
-    setNewModel([...newModel, { id: newModel.length + 1, ...formData }]);
+  const handleAddModel = async (formData) => {
+    const rep = await addModel(formData);
+    const newModeleItem = { id: uuidv4(), ...formData };
+    setNewModele([...newModel, newModeleItem]);
     setIsModalOpen(false);
-    console.log("New Model Added:", formData);
   };
 
   const handlePageChange = (newPage) => {
@@ -68,7 +79,7 @@ function Modele() {
 
   const handleUpdateModele = (formData) => {
     const updatedCards = cards.map((item) =>
-      item.id === editingModele.id ? { ...item, ...formData } : item
+      item.idModele === editingModele.idModele ? { ...item, ...formData } : item
     );
     setCards(updatedCards);
     setEditingModele(null);
@@ -108,15 +119,15 @@ function Modele() {
           <SoftBox p={2}>
             <Grid container spacing={5}>
               {displayedCards.map((item) => (
-                <Grid key={item.id} item xs={12} md={6} xl={3}>
+                <Grid key={item.idModele} item xs={12} md={6} xl={3}>
                   <DefaultProjectCard
                     image={team1}
-                    modele={item.modele}
-                    marque={item.marque}
-                    categorie={item.categorie}
+                    modele={item.nomModele}
+                    marque={item.marque.nomMarque}
+                    categorie={item.categorie.nomCategorie}
                     annee={item.annee}
-                    place={item.place}
-                    porte={item.porte}
+                    place={item.nbrPlaces}
+                    porte={item.nbrPortes}
                     onDelete={() => handleDelete(item)}
                     onEdit={() => handleEdit(item)}
                   />

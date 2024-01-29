@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import SoftBox from "components/SoftBox";
@@ -10,7 +10,6 @@ import SoftButton from "components/SoftButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import boite from "./data/boite";
 import Box from "@mui/material/Box";
 import MyModal from "components/MyModal/MyModal";
 import { v4 as uuidv4 } from 'uuid';
@@ -21,20 +20,30 @@ import borders from "assets/theme/base/borders";
 import masterCardLogo from "assets/images/logos/mastercard.png";
 import Ajout_boite from "./ajout";
 import Update_boite from "./update";
+import { addBoite, dropBoite, getBoite, updateBoite } from "./data/boite";
 
 function Boite() {
-  
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getBoite().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
   const { borderWidth, borderColor } = borders;
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
-  const [cards, setCards] = useState(boite.rows);
   const [newBoite, setNewBoite] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
  
   const handleDelete = (itemToDelete) => {
-    const updatedCards = cards.filter((item) => item.idBoitevitesse !== itemToDelete.idBoitevitesse);
+    
+    dropBoite(itemToDelete.idBoiteVitesse);
+    const updatedCards = cards.filter((item) => item.idBoiteVitesse !== itemToDelete.idBoiteVitesse);
     setCards(updatedCards);
-    setNewBoite(newBoite.filter((item) => item.idBoitevitesse !== itemToDelete.idBoitevitesse));
+    setNewBoite(newBoite.filter((item) => item.idBoiteVitesse !== itemToDelete.idBoiteVitesse));
 
     const totalPages = Math.ceil(updatedCards.length / itemsPerPage);
     if (currentPage > totalPages) {
@@ -50,8 +59,9 @@ function Boite() {
     setIsModalOpen(false);
   };
 
-  const handleAddBoite = (formData) => {
-    const newBoiteItem = { idBoitevitesse: uuidv4(), ...formData };
+  const handleAddBoite = async (formData) => {
+    const rep = await addBoite(formData);
+    const newBoiteItem = { idBoiteVitesse: uuidv4(), ...formData };
     setNewBoite([...newBoite, newBoiteItem]);
     setIsModalOpen(false);
   };
@@ -70,9 +80,15 @@ function Boite() {
   };
 
   const handleUpdateBoite = (formData) => {
-    const updatedCards = cards.map((item) =>
-      item.idBoitevitesse === editingBoite.idBoitevitesse ? { ...item, ...formData } : item
-    );
+    const updatedCards = cards.map((item) => {
+      console.log(item+" eto ndrai zao");
+      if (item.idBoiteVitesse === editingBoite.idBoiteVitesse) {
+         const updatedItem = updateBoite(item.idBoiteVitesse, formData);
+        return { ...updatedItem, ...formData };
+      } else {  
+        return item;
+      }
+    });
     setCards(updatedCards);
     setEditingBoite(null);
     setIsUpdateModalOpen(false);
@@ -107,7 +123,7 @@ function Boite() {
                     <SoftBox p={2}>
                       <Grid container spacing={3} >
                         {displayedCards.map((item) => (
-                          <Grid key={item.idBoitevitesse} item xs={12} md={4}>
+                          <Grid key={item.idBoiteVitesse} item xs={12} md={4}>
                           <SoftBox
                             border={`${borderWidth[1]} solid ${borderColor}`}
                             borderRadius="lg"
@@ -118,7 +134,7 @@ function Boite() {
                           >
                             <SoftBox component="img" src={masterCardLogo} alt="master card" width="10%" mr={2} />
                             <SoftTypography variant="h6" fontWeight="medium">
-                              {item.nomBoite_vitesse}
+                              {item.nomBoiteVitesse}
                             </SoftTypography>
                             <SoftBox ml="auto" lineHeight={0}>
                               <Tooltip title="Edit Card" placement="top"  onClick={() => handleEdit(item)} >
@@ -165,7 +181,7 @@ function Boite() {
           setIsUpdateModalOpen(false);
           setEditingBoite(null); // Réinitialisez la catégorie en cours d'édition après la fermeture du modal
         }}
-        element={<Update_boite />}
+        element={<Update_boite boite={editingBoite} updateBoite={handleUpdateBoite} />}
       />
       <Footer />
     </DashboardLayout>

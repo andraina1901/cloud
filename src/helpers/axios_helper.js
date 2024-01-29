@@ -14,7 +14,7 @@ export const setAuthHeader = (token) => {
 };
 // https://testupload-production-2380.up.railway.app
 // http://172.10.0.33:8080
-axios.defaults.baseURL = 'https://testupload-production-2380.up.railway.app';
+axios.defaults.baseURL = 'https://testupload-production-2380.up.railway.app/tomobilina';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export  function request (method, url, data){
@@ -28,4 +28,15 @@ export  function request (method, url, data){
       url: url,
       headers: headers,
       data: data});
+};
+
+export async function upload (url, data){
+  axios.post('https://testupload-production-2380.up.railway.app/tomobilina'+url, data)
+      .then(response => {
+        console.log(response.data);
+        console.log(formData.values);
+      })
+      .catch(error => {
+        console.error('Erreur lors de l\'envoi de la photo:', error);
+      });
 };

@@ -13,7 +13,7 @@ function Ajout_energie({addEnergie}) {
     
     // Récupérez les valeurs du formulaire
     const formData = {
-      energie: e.target.elements.energie.value,
+      nomEnergie: e.target.elements.energie.value,
     };
 
     // Appeler la fonction du parent pour ajouter la nouvelle catégorie

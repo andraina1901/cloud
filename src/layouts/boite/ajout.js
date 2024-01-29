@@ -13,7 +13,7 @@ function Ajout_boite({addBoite}) {
     
     // Récupérez les valeurs du formulaire
     const formData = {
-      nomBoite_vitesse: e.target.elements.boite.value,
+      nomBoiteVitesse: e.target.elements.boite.value,
     };
 
     // Appeler la fonction du parent pour ajouter la nouvelle catégorie

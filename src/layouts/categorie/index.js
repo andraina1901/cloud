@@ -11,7 +11,7 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
 import borders from "assets/theme/base/borders";
-import masterCardLogo from "assets/images/logos/mastercard.png";
+import masterCardLogo from "assets/images/logo-ct.png";
 import MyModal from "components/MyModal/MyModal";
 import Ajout_categorie from "./ajout";
 import Update_categorie from "./update";
@@ -20,25 +20,28 @@ import Box from "@mui/material/Box";
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect} from "react";
 import PropTypes from "prop-types";
-import { getCategorie } from "./data/categorie";
+import { addCategorie, dropCategorie, getCategorie, updateCategorie } from "./data/categorie";
 
 function Categorie() {
   const [cards, setCards] = useState([]);
   useEffect (() => {
     getCategorie().then((response)=>{
-      setCards(response.rows);
+      setCards(response.rows.data);
     }).catch(error =>{
       console.log(error);
     })
   },[]);
+
+  var i = [];
   const { borderWidth, borderColor } = borders;
   const itemsPerPage = 15;
   const [currentPage, setCurrentPage] = useState(1);
 
   const [newCategorie, setNewCategorie] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
- 
+  
   const handleDelete = (itemToDelete) => {
+    dropCategorie(itemToDelete.idCategorie);
     const updatedCards = cards.filter((item) => item.idCategorie !== itemToDelete.idCategorie);
     setCards(updatedCards);
     setNewCategorie(newCategorie.filter((item) => item.idCategorie !== itemToDelete.idCategorie));
@@ -57,7 +60,8 @@ function Categorie() {
     setIsModalOpen(false);
   };
 
-  const handleAddCategorie = (formData) => {
+  const handleAddCategorie = async (formData) => {
+    const rep = await addCategorie(formData);
     const newCategorieItem = { id: uuidv4(), ...formData };
     setNewCategorie([...newCategorie, newCategorieItem]);
     setIsModalOpen(false);
@@ -76,9 +80,15 @@ function Categorie() {
   };
 
   const handleUpdateCategorie = (formData) => {
-    const updatedCards = cards.map((item) =>
-      item.idCategorie === editingCategorie.id ? { ...item, ...formData } : item
-    );
+    const updatedCards = cards.map((item) => {
+      console.log(item+" eto ndrai zao");
+      if (item.idCategorie === editingCategorie.idCategorie) {
+         const updatedItem = updateCategorie(item.idCategorie, formData);
+        return { ...updatedItem, ...formData };
+      } else {  
+        return item;
+      }
+    });
     setCards(updatedCards);
     setEditingCategorie(null);
     setIsUpdateModalOpen(false);
@@ -170,7 +180,7 @@ function Categorie() {
         op={isUpdateModalOpen}
         close={() => {
           setIsUpdateModalOpen(false);
-          setEditingCategorie(null); 
+          setEditing(null); 
          }}
         element={<Update_categorie category={editingCategorie} updateCategorie={handleUpdateCategorie} />}
       />

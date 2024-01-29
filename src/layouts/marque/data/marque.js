@@ -1,81 +1,60 @@
-/* eslint-disable react/prop-types */
-// Soft UI Dashboard React components
-import SoftBox from "components/SoftBox";
-import SoftTypography from "components/SoftTypography";
-import SoftAvatar from "components/SoftAvatar";
-import SoftBadge from "components/SoftBadge";
-
-// Images
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import { request } from "helpers/axios_helper";
 
 
-
-const marque = {
-  columns: [
-    { name: "id", align: "left" },
-    { name: "image", align: "left" },
-    { name: "marque", align: "left" },
-    { name: "pays", align: "left" },
-  ],
-
-  rows: [
-    {
-      id: '1',
-      image: team2,
-      marque: "mercedes",
-      pays: "Madagascar",
-    },
-    {
-      id: '2',
-      image: team3,
-      marque: "hyundai",
-      pays: "Madagascar",
-    },
-    {
-      id: '3',
-      image: team4,
-      marque: "toyota",
-      pays: "Madagascar",
-    },
-    {
-      id: '4',
-      image: team2,
-      marque: "mercedes",
-      pays: "Madagascar",
-    },
-    {
-      id: '5',
-      image: team3,
-      marque: "hyundai",
-      pays: "Madagascar",
-    },
-    {
-      id: '6',
-      image: team4,
-      marque: "toyota",
-      pays: "Madagascar",
-    },
-    {
-      id: '7',
-      image: team2,
-      marque: "mercedes",
-      pays: "Madagascar",
-    },
-    {
-      id: '8',
-      image: team3,
-      marque: "hyundai",
-      pays: "Madagascar",
-    },
-    {
-      id: '9',
-      image: team4,
-      marque: "toyota",
-      pays: "Madagascar",
-    },
-  ],
+export async function getMarque() {
+    try {
+      const result = await request("GET", "/marques", {});
+      const valiny = {
+        columns: [{ name: "idMarque"}, {name: "nomMarque"},{name: "pays"},{name: "photo"}],
+        rows: result.data
+      };
+      console.log("Formatted Data:", valiny);
+      return valiny;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error; 
+    }
 };
 
-export default marque;
+export async function getPays() {
+  try {
+    const result = await request("GET", "/paysmarques", {});
+    const valiny = {
+      columns: [{ name: "idPays"}, {name: "nomPays"},{name: "pays"},{name: "etat"}],
+      rows: result.data
+    };
+    console.log("Formatted Data:", valiny);
+    return valiny;
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error; 
+  }
+};
+
+
+export async function dropMarque (id) {
+  try {
+    await request("DELETE", `/marques/${id}`, {});
+
+  } catch (error) {
+    throw error; 
+  }
+};
+
+export async function updateMarque (id,nom) {
+  try {
+    await request("PUT", `/marques/${id}`,nom );
+  } catch (error) {
+    throw error; 
+  }
+};
+
+export async function addMarque (nom) {
+
+  try {
+    const vaovao = await request("POST", `/marques/add`, nom);
+    return vaovao.data;
+  } catch (error) {
+    throw error; 
+  }
+};

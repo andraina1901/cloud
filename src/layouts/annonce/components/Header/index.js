@@ -6,20 +6,13 @@ import Grid from "@mui/material/Grid";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-
-// Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
-// Soft UI Dashboard React icons
-import Document from "examples/Icons/Document";
-import Settings from "examples/Icons/Settings";
-
-// Soft UI Dashboard React base styles
 import breakpoints from "assets/theme/base/breakpoints";
+import PropTypes from "prop-types";
 
 
-function Header() {
-
+function Header({ onTabChange }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
 
@@ -35,7 +28,11 @@ function Header() {
     return () => window.removeEventListener("resize", handleTabsOrientation);
   }, [tabsOrientation]);
 
-  const handleSetTabValue = (event, newValue) => setTabValue(newValue);
+  const handleSetTabValue = (event, newValue) => {
+    console.log(newValue+"  NEW VALUE");
+    setTabValue(newValue);
+    
+  };
 
   return (
     <SoftBox position="relative">
@@ -77,6 +74,10 @@ function Header() {
       </Card>
     </SoftBox>
   );
+}
+
+Header.propTypes={
+  onTabChange: PropTypes.object.isRequired,
 }
 
 export default Header;

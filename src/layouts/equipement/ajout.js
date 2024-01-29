@@ -13,7 +13,7 @@ function Ajout_equipement({addEquipement}) {
     
     // Récupérez les valeurs du formulaire
     const formData = {
-      equipement: e.target.elements.Equipement.value,
+      nomEquipement: e.target.elements.equipement.value,
     };
 
     // Appeler la fonction du parent pour ajouter la nouvelle catégorie

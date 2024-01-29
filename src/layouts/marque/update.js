@@ -8,9 +8,22 @@ import MenuItem from "@mui/material/MenuItem";
 import Input from "@mui/material/Input";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import { getPays } from "./data/marque";
 
 
 function Update_marque({ marque, updateMarque  }) {
+
+  
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getPays().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+
   const [formData, setFormData] = useState({
     marque: marque ? marque.marque : "",
     pays: marque ? marque.pays : "",
@@ -61,9 +74,9 @@ function Update_marque({ marque, updateMarque  }) {
                 onChange={(e) => setFormData({ ...formData, pays: e.target.value })}
                 IconComponent={() => <span>&#x25BC;</span>} 
               >
-                <MenuItem value="usa">USA</MenuItem>
-                <MenuItem value="canada">Canada</MenuItem>
-                <MenuItem value="france">France</MenuItem>
+                     {cards.map((item) => (
+                <MenuItem key={item.idPays} value={item.idPays}>{item.nomPays}</MenuItem>
+              ))}
               </Select>
             </FormControl>
           </SoftBox>
