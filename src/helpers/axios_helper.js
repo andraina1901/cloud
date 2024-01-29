@@ -31,7 +31,7 @@ export  function request (method, url, data){
 };
 
 export async function upload (url, data){
-  axios.post('https://testupload-production-2380.up.railway.app/tomobilina'+url, data)
+  axios.post('https://cloud-production-2831.up.railway.app/tomobilina'+url, data)
       .then(response => {
         console.log(response.data);
         console.log(formData.values);
