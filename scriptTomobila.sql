@@ -95,7 +95,7 @@ CREATE SEQUENCE seq_negociation;
 CREATE TABLE negociation (
     idNegociation VARCHAR(17) DEFAULT 'NEGOC'||nextval('seq_negociation') PRIMARY KEY,
     idAnnonce VARCHAR(17) ,
-    acheteur VARCHAR(17),
+    acheteur int,
     etat int default 0,
     dateheure TIMESTAMP,
     FOREIGN KEY (acheteur) REFERENCES users(id),
@@ -188,9 +188,8 @@ WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 
 -- Commision et  VENTE
 CREATE OR REPLACE VIEW V_vente_Commission as ( 
 SELECT
-  v.idVente,a.prix,c.commission, v.dateheure,(a.prix*c.commission/100) as benefice
+  v.idVente,v.prix,c.commission, v.dateheure,(v.prix*c.commission/100) as benefice
 FROM vente v
-JOIN annonce a on a.idAnnonce = v.idAnnonce
 JOIN commission c on v.dateheure>c.dateheure
 JOIN
     (SELECT
@@ -220,7 +219,7 @@ WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 
 -- lisTE DES MEILLEURS VENTE
 
 CREATE OR REPLACE VIEW BESTVENTE AS (
-SELECT v.idvente,a.idAnnonce,u.username,m.nomModele,a.prix,RANK() OVER (ORDER BY a.prix desc) AS rank_num FROM V_vente_Commission v
+SELECT v.idvente,a.idAnnonce,u.username,m.nomModele,v.prix,RANK() OVER (ORDER BY a.prix desc) AS rank_num FROM V_vente_Commission v
 JOIN vente ve on ve.idvente = v.idvente
 JOIN Annonce a on a.idAnnonce = ve.idAnnonce
 JOIN users u on a.iduser = u.id
