@@ -79,11 +79,24 @@ CREATE TABLE vente (
     FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
 );
 
+
+
 CREATE SEQUENCE seq_commission;
 CREATE TABLE COMMISSION (
     idCommission VARCHAR(17) DEFAULT 'COMI'||nextval('seq_commission') PRIMARY KEY,
     commission double precision,
     dateheure TIMESTAMP
+);
+
+CREATE SEQUENCE seq_negociation;
+CREATE TABLE negociation (
+    idNegociation VARCHAR(17) DEFAULT 'NEGOC'||nextval('seq_negociation') PRIMARY KEY,
+    idAnnonce VARCHAR(17) ,
+    acheteur VARCHAR(17),
+    etat int default 0,
+    dateheure TIMESTAMP,
+    FOREIGN KEY (acheteur) REFERENCES users(id),
+    FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
 );
 
 INSERT INTO commission (dateheure,commission) VALUES 
