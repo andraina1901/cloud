@@ -33,8 +33,8 @@ function SignIn() {
     setLoading(true);
 
     request("POST", "/auth/signin", {
-      username: email,
-      password: password,
+      username: "admin",
+      password: "password",
     })
       .then((response) => {
         setAuthHeader(response.data.accessToken);
@@ -61,13 +61,13 @@ function SignIn() {
           <SoftBox mb={2}>
             <SoftBox mb={1} ml={0.5}>
               <SoftTypography component="label" variant="caption" fontWeight="bold">
-                Email
+                Utilisateur
               </SoftTypography>
             </SoftBox>
             <SoftInput
               type="email"
               placeholder="Email"
-              value={email}
+              value="admin"
               onChange={(e) => setEmail(e.target.value)}
               style={{ borderColor: getBorderColor() }} 
             />
@@ -81,7 +81,7 @@ function SignIn() {
             <SoftInput
               type="password"
               placeholder="Password"
-              value={password}
+              value="password"
               onChange={(e) => setPassword(e.target.value)}
               style={{ borderColor: getBorderColor() }} 
             />
