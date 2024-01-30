@@ -18,21 +18,58 @@ import GradientLineChart from "examples/Charts/LineCharts/GradientLineChart";
 // Soft UI Dashboard React base styles
 import typography from "assets/theme/base/typography";
 
-// Dashboard layout components
-import BuildByDevelopers from "layouts/dashboard/components/BuildByDevelopers";
-import WorkWithTheRockets from "layouts/dashboard/components/WorkWithTheRockets";
 import Projects from "layouts/dashboard/components/Projects";
-import OrderOverview from "layouts/dashboard/components/OrderOverview";
 
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import gradientLineChartData from "layouts/dashboard/data/gradientLineChartData";
+import { getStatAnnonce, getStatBestVente, getStatCommission, getStatUser, getStatVente } from "./data/ministat";
+import { useEffect, useState } from "react";
 
 function Dashboard() {
-  const { size } = typography;
-  const { chart, items } = reportsBarChartData;
+  // const { size } = typography;
+  // const { chart, items } = reportsBarChartData;
+
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getStatVente().then((response)=>{
+      setCards(response.totalvente);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+  const [users, setUsers] = useState([]);
+  useEffect (() => {
+    getStatUser().then((response)=>{
+      setUsers(response.nombre_inscrits);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+  const [annonce, setAnnonce] = useState([]);
+  useEffect (() => {
+    getStatAnnonce().then((response)=>{
+      setAnnonce(response.nombre);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+  const [commi, setCommi] = useState([]);
+  useEffect (() => {
+    getStatCommission().then((response)=>{
+      setCommi(response.benefice);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
+
 
   return (
+    
     <DashboardLayout>
       <DashboardNavbar />
       <SoftBox py={3}>
@@ -40,33 +77,33 @@ function Dashboard() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "vente aujourd'hui" }}
-                count="$53,000"
-                percentage={{ color: "success", text: "+55%" }}
+                title={{ text: "Prix de vente cette semaine" }}
+                count={cards+" MGA"}
+                percentage={{ color: "success", text: "" }}
                 icon={{ color: "info", component: "paid" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "utilisateurs ce mois" }}
-                count="2,300"
-                percentage={{ color: "success", text: "+3%" }}
+                title={{ text: "utilisateurs cette semaine" }}
+                count={users+" inscrits"}
+                percentage={{ color: "success", text: "" }}
                 icon={{ color: "info", component: "public" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "clients ce mois" }}
-                count="+3,462"
-                percentage={{ color: "error", text: "-2%" }}
+                title={{ text: "Annonces cette semaine" }}
+                count={annonce+ " ajoutes"}
+                percentage={{ color: "error", text: "" }}
                 icon={{ color: "info", component: "emoji_events" }}
               />
             </Grid>
             <Grid item xs={12} sm={6} xl={3}>
               <MiniStatisticsCard
-                title={{ text: "revenu ce mois" }}
-                count="$103,430"
-                percentage={{ color: "success", text: "+5%" }}
+                title={{ text: "Commission du semaine" }}
+                count={commi+" MGA"}
+                percentage={{ color: "success", text: "" }}
                 icon={{
                   color: "info",
                   component: "shopping_cart",
@@ -75,49 +112,13 @@ function Dashboard() {
             </Grid>
           </Grid>
         </SoftBox>
-        {/* <SoftBox mb={3}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} lg={5}>
-              <ReportsBarChart
-                title="active users"
-                description={
-                  <>
-                    (<strong>+23%</strong>) than last week
-                  </>
-                }
-                chart={chart}
-                items={items}
-              />
-            </Grid>
-            <Grid item xs={12} lg={7}>
-              <GradientLineChart
-                title="Sales Overview"
-                description={
-                  <SoftBox display="flex" alignItems="center">
-                    <SoftBox fontSize={size.lg} color="success" mb={0.3} mr={0.5} lineHeight={0}>
-                      <Icon className="font-bold">arrow_upward</Icon>
-                    </SoftBox>
-                    <SoftTypography variant="button" color="text" fontWeight="medium">
-                      4% more{" "}
-                      <SoftTypography variant="button" color="text" fontWeight="regular">
-                        in 2021
-                      </SoftTypography>
-                    </SoftTypography>
-                  </SoftBox>
-                }
-                height="20.25rem"
-                chart={gradientLineChartData}
-              />
-            </Grid>
-          </Grid>
-        </SoftBox> */}
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
             <Projects />
           </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          {/* <Grid item xs={12} md={6} lg={4}>
             <OrderOverview />
-          </Grid>
+          </Grid> */}
         </Grid>
       </SoftBox>
       <Footer />

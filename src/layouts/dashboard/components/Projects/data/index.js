@@ -8,7 +8,8 @@ import SoftAvatar from "components/SoftAvatar";
 import SoftProgress from "components/SoftProgress";
 
 // Images
-import logoXD from "assets/images/small-logos/logo-xd.svg";
+// import logo from "assets/images/small-logos/logo-xd.svg";
+import logo from "assets/images/logo-ct.png";
 import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
 import logoSlack from "assets/images/small-logos/logo-slack.svg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
@@ -18,98 +19,34 @@ import team1 from "assets/images/team-1.jpg";
 import team2 from "assets/images/team-2.jpg";
 import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
+import { getStatBestVente } from "layouts/dashboard/data/ministat";
+import { useEffect, useState } from "react";
 
 export default function data() {
-  const avatars = (prix) =>
-    prix.map(([image, name]) => (
-      <Tooltip key={name} title={name} placeholder="bottom">
-        <SoftAvatar
-          src={image}
-          alt="name"
-          size="xs"
-          sx={{
-            border: ({ borders: { borderWidth }, palette: { white } }) =>
-              `${borderWidth[2]} solid ${white.main}`,
-            cursor: "pointer",
-            position: "relative",
 
-            "&:not(:first-of-type)": {
-              ml: -1.25,
-            },
+  const [best, setBest] = useState([]);
+  useEffect (() => {
+    getStatBestVente().then((response)=>{
+      response.map((item)=>{
+        item.nommodele = [logo,item.nommodele]
+      })
+      setBest(response);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
 
-            "&:hover, &:focus": {
-              zIndex: "10",
-            },
-          }}
-        />
-      </Tooltip>
-    ));
 
+// const [rows, columns] = best;
+  const boucle =0;
   return {
     columns: [
-      { name: "voiture", align: "left" },
-      { name: "prix", align: "left" },
-      { name: "commission", align: "center" },
-      { name: "date", align: "center" },
+      { name: "nommodele", align: "left" },
+      { name: "username", align: "left" },
+      { name: "prix", align: "center" },
+      { name: "rank_num", align: "center" },
     ],
 
-    rows: [
-      {
-        voiture: [logoXD, "Soft UI XD Version"],
-        prix: "2000",
-        commission: (
-          <SoftTypography variant="caption" color="text" fontWeight="medium">
-            $14,000
-          </SoftTypography>
-        ),
-        date: (
-          <SoftBox width="8rem" textAlign="left">
-            <SoftProgress value={60} color="info" variant="gradient" label={false} />
-          </SoftBox>
-        ),
-      },
-      {
-        voiture: [logoAtlassian, "Add Progress Track"],
-        prix: "4000",
-        commission: (
-          <SoftTypography variant="caption" color="text" fontWeight="medium">
-            $3,000
-          </SoftTypography>
-        ),
-        date: (
-          <SoftBox width="8rem" textAlign="left">
-            <SoftProgress value={10} color="info" variant="gradient" label={false} />
-          </SoftBox>
-        ),
-      },
-      {
-        voiture: [logoSlack, "Fix Platform Errors"],
-        prix: "3000",
-        commission: (
-          <SoftTypography variant="caption" color="text" fontWeight="medium">
-            Not set
-          </SoftTypography>
-        ),
-        date: (
-          <SoftBox width="8rem" textAlign="left">
-            <SoftProgress value={100} color="success" variant="gradient" label={false} />
-          </SoftBox>
-        ),
-      },
-      {
-        voiture: [logoSpotify, "Launch our Mobile App"],
-        prix: "4000",
-        commission: (
-          <SoftTypography variant="caption" color="text" fontWeight="medium">
-            $20,500
-          </SoftTypography>
-        ),
-        date: (
-          <SoftBox width="8rem" textAlign="left">
-            <SoftProgress value={100} color="success" variant="gradient" label={false} />
-          </SoftBox>
-        ),
-      },
-    ],
+    rows: best
   };
 }

@@ -18,7 +18,7 @@ export async function getEnergie () {
 
 export async function dropEnergie (id) {
   try {
-    await request("DELETE", `/energie/delete/${id}`, {});
+    await request("DELETE", `/energie/${id}`, {});
 
   } catch (error) {
     throw error; 

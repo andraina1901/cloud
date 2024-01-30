@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Table from "examples/Tables/Table";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -25,17 +25,16 @@ import typography from "assets/theme/base/typography";
 
 // Data
 import reportsBarChartData from "layouts/statistiques/data/reportsBarChartData";
-import gradientLineChartData from "layouts/statistiques/data/gradientLineChartData";
 import VerticalBarChart from "examples/Charts/BarCharts/VerticalBarChart";
 
 // Data
 import voituresTableData from "./data/voituresTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
+import gradientLineChartData, { anotherLineChartData } from "./data/gradientLineChartData";
 
 
 function Statistiques() {
   const { columns, rows } = voituresTableData;
-
   const [selectedValue, setSelectedValue] = useState("option1");
 
   const handleSelectChange = (event) => {
@@ -53,21 +52,22 @@ function Statistiques() {
               <VerticalBarChart
                 title="Prix de vente et commission"
                 height="300px"
-                chart={gradientLineChartData}
+                chart={gradientLineChartData()}
+                style={{height:'400px'}}
               />
             </Grid>
             <Grid item xs={12} lg={7}>
               <GradientLineChart
                 title="Utilisateurs et annnonces"
                 height="20.25rem"
-                chart={gradientLineChartData}
+                chart={anotherLineChartData()}
               />
             </Grid>
           </Grid>
         </SoftBox>
 
         <SoftBox mb={3}>
-  <Card>
+    <Card>
     <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
       <SoftTypography variant="h6" style={{width: '800px'}}>Les plus vendus selon</SoftTypography>
 
@@ -91,38 +91,12 @@ function Statistiques() {
               `${borderWidth[1]} solid ${borderColor}`,
           },
         },
-      }}
+      }}    
     >
       <Table columns={columns} rows={rows} />
     </SoftBox>
   </Card>
-  <SoftTypography variant="h6">.</SoftTypography>
-  <Card>
-    <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-      <SoftTypography variant="h6">Les plus recherches</SoftTypography>
-        <Select
-          value={selectedValue}
-          onChange={handleSelectChange}
-          style={{ width: "10px", marginRight: "10px" }} // Ajoutez des styles ici
-        >
-          <MenuItem value="option1">Categorie</MenuItem>
-          <MenuItem value="option2">Marque</MenuItem>
-          <MenuItem value="option3">Model</MenuItem>
-        </Select>
-    </SoftBox>
-    <SoftBox
-      sx={{
-        "& .MuiTableRow-root:not(:last-child)": {
-          "& td": {
-            borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-              `${borderWidth[1]} solid ${borderColor}`,
-          },
-        },
-      }}
-    >
-      <Table columns={columns} rows={rows} />
-    </SoftBox>
-  </Card>
+
 </SoftBox>
 
 
