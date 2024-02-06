@@ -3,7 +3,12 @@ import React from "react";
 import Slider from "react-slick";
 import TestimoinalSlider from "../src/components/Slider/TestimonialSlider";
 import Layout from "../src/layouts/Layout";
-import { ListingSlider2 } from "../src/sliderProps";
+import {
+  PlaceSliderOne,
+  ClientSliderOne,
+  ListingSliderOne
+} from "../src/sliderProps";
+
 
 const Index2 = () => {
   return (
@@ -92,624 +97,98 @@ const Index2 = () => {
         </div>
       </section>
       {/*====== End Hero Section ======*/}
-      {/*====== Start category Section ======*/}
-      <section className="category-area pt-110 pb-90">
+      {/* <!--====== Start Category Section ======--> */}
+      <section className="category-area">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="section-title section-title-two text-center mb-60 wow fadeInUp">
-                <h2>
-                  <span className="line">Destination</span> Category
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".2s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-1.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
+          <div className="category-wrapper-one wow fadeInDown">
+            <div className="row no-gutters">
+              <div className="col-lg-2 col-md-4 category-column">
+                <div className="category-item category-item-one">
+                  <div className="info text-center">
+                    <div className="icon">
+                      <i className="flaticon-government"></i>
                     </div>
+                    <h6>Museums</h6>
                   </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-government" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Museums</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
+                  <Link href="/">
+                    <a className="category-btn">
+                      <i className="ti-arrow-right"></i>
+                    </a>
+                  </Link>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".25s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-2.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
+              <div className="col-lg-2 col-md-4 category-column">
+                <div className="category-item category-item-one">
+                  <div className="info text-center">
+                    <div className="icon">
+                      <i className="flaticon-serving-dish"></i>
                     </div>
+                    <h6>Restaurant</h6>
                   </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-serving-dish" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Restaurant</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
+                  <Link href="/">
+                    <a className="category-btn">
+                      <i className="ti-arrow-right"></i>
+                    </a>
+                  </Link>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".30s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-3.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
+              <div className="col-lg-2 col-md-4 category-column">
+                <div className="category-item category-item-one">
+                  <div className="info text-center">
+                    <div className="icon">
+                      <i className="flaticon-game-controller"></i>
                     </div>
+                    <h6>Game Field</h6>
                   </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-gift-box" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Party Center</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
+                  <Link href="/">
+                    <a className="category-btn">
+                      <i className="ti-arrow-right"></i>
+                    </a>
+                  </Link>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".35s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-4.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
+              <div className="col-lg-2 col-md-4 category-column">
+                <div className="category-item category-item-one">
+                  <div className="info text-center">
+                    <div className="icon">
+                      <i className="flaticon-suitcase"></i>
                     </div>
+                    <h6>Job & Feed</h6>
                   </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-dumbbell" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Fitness Zone</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
+                  <Link href="/">
+                    <a className="category-btn">
+                      <i className="ti-arrow-right"></i>
+                    </a>
+                  </Link>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".40s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-5.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
+              <div className="col-lg-2 col-md-4 category-column">
+                <div className="category-item category-item-one">
+                  <div className="info text-center">
+                    <div className="icon">
+                      <i className="flaticon-gift-box"></i>
                     </div>
+                    <h6>Party Center</h6>
                   </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-game-controller" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Game Field</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
+                  <Link href="/">
+                    <a className="category-btn">
+                      <i className="ti-arrow-right"></i>
+                    </a>
+                  </Link>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".45s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-6.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
+              <div className="col-lg-2 col-md-4 category-column">
+                <div className="category-item category-item-one">
+                  <div className="info text-center">
+                    <div className="icon">
+                      <i className="flaticon-dumbbell"></i>
                     </div>
+                    <h6>Fitness Zone</h6>
                   </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-suitcase" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Job &amp; Feeds</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".50s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-7.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-shopping" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Shooping</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-12">
-              <div
-                className="category-item category-item-two mb-25 wow fadeInUp"
-                data-wow-delay=".55s"
-              >
-                <div className="category-img">
-                  <img
-                    src="assets/images/category/cat-8.jpg"
-                    alt="Category Image"
-                  />
-                  <div className="category-overlay">
-                    <div className="category-content">
-                      <Link href="/index-2">
-                        <a>
-                          <i className="ti-link" />
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <div className="info">
-                  <div className="icon">
-                    <i className="flaticon-color-palette" />
-                  </div>
-                  <h3 className="title">
-                    <a href="#">Art Gallery</a>
-                  </h3>
-                  <span className="listing">15 Listing</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*====== End category Section ======*/}
-      {/*====== Start Newsletter Section ======*/}
-      <section className="newsletter-area">
-        <div
-          className="newsletter-wrapper newsletter-wrapper-two bg_cover pt-75"
-          style={{
-            backgroundImage: "url(assets/images/bg/newsletter-bg-1.jpg)",
-          }}
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-5">
-                <div className="newsletter-content-box-one wow fadeInLeft">
-                  <div className="icon">
-                    <i className="flaticon-email" />
-                  </div>
-                  <div className="content">
-                    <h2>Get Special Rewards</h2>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-7">
-                <div className="newsletter-form wow fadeInRight">
-                  <div className="form_group">
-                    <input
-                      type="email"
-                      className="form_control"
-                      placeholder="Enter Address"
-                      name="email"
-                      required=""
-                    />
-                    <i className="ti-location-pin" />
-                    <button className="main-btn icon-btn">Subscribe</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*====== End Newsletter Section ======*/}
-      {/*====== Start Listing-list Section ======*/}
-      <section className="listing-list-area pt-110 pb-90">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="section-title section-title-two text-center mb-60 wow fadeInUp">
-                <h2>
-                  <span className="line">Popular</span> Listings
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <div
-                className="listing-item listing-list-item-one mb-30 wow fadeInUp"
-                data-wow-delay=".2s"
-              >
-                <div className="listing-thumbnail">
-                  <img
-                    src="assets/images/listing/listing-list-1.jpg"
-                    alt="listing image"
-                  />
-                  <a href="#" className="cat-btn">
-                    <i className="flaticon-chef" />
-                  </a>
-                  <span className="status st-open">open</span>
-                </div>
-                <div className="listing-content">
-                  <h3 className="title">
-                    <Link href="/listing-details-1">
-                      <a>Food House</a>
-                    </Link>
-                  </h3>
-                  <ul className="ratings ratings-three">
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li>
-                      <span>
-                        <a href="#">(02 Reviews)</a>
-                      </span>
-                    </li>
-                  </ul>
-                  <span className="price">$05.00 - $80.00</span>
-                  <span className="phone-meta">
-                    <i className="ti-tablet" />
-                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                  </span>
-                  <div className="listing-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <i className="ti-location-pin" />
-                          California, USA
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="ti-heart" />
-                          <a href="#" tabIndex={0}>
-                            Save
-                          </a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="listing-item listing-list-item-one mb-30 wow fadeInUp"
-                data-wow-delay=".3s"
-              >
-                <div className="listing-thumbnail">
-                  <img
-                    src="assets/images/listing/listing-list-2.jpg"
-                    alt="listing image"
-                  />
-                  <a href="#" className="cat-btn">
-                    <i className="flaticon-museum" />
-                  </a>
-                  <span className="status st-close">Close</span>
-                </div>
-                <div className="listing-content">
-                  <h3 className="title">
-                    <Link href="/listing-details-1">
-                      <a>State Museum</a>
-                    </Link>
-                  </h3>
-                  <ul className="ratings ratings-three">
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li>
-                      <span>
-                        <a href="#">(02 Reviews)</a>
-                      </span>
-                    </li>
-                  </ul>
-                  <span className="price">$05.00 - $80.00</span>
-                  <span className="phone-meta">
-                    <i className="ti-tablet" />
-                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                  </span>
-                  <div className="listing-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <i className="ti-location-pin" />
-                          California, USA
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="ti-heart" />
-                          <a href="#" tabIndex={0}>
-                            Save
-                          </a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="listing-item listing-list-item-one mb-30 wow fadeInUp"
-                data-wow-delay=".4s"
-              >
-                <div className="listing-thumbnail">
-                  <img
-                    src="assets/images/listing/listing-list-3.jpg"
-                    alt="listing image"
-                  />
-                  <a href="#" className="cat-btn">
-                    <i className="flaticon-balloons" />
-                  </a>
-                  <span className="status st-open">open</span>
-                </div>
-                <div className="listing-content">
-                  <h3 className="title">
-                    <Link href="/listing-details-1">
-                      <a>Party Center</a>
-                    </Link>
-                  </h3>
-                  <ul className="ratings ratings-three">
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li>
-                      <span>
-                        <a href="#">(02 Reviews)</a>
-                      </span>
-                    </li>
-                  </ul>
-                  <span className="price">$05.00 - $80.00</span>
-                  <span className="phone-meta">
-                    <i className="ti-tablet" />
-                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                  </span>
-                  <div className="listing-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <i className="ti-location-pin" />
-                          California, USA
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="ti-heart" />
-                          <a href="#" tabIndex={0}>
-                            Save
-                          </a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="listing-item listing-list-item-one mb-30 wow fadeInUp"
-                data-wow-delay=".5s"
-              >
-                <div className="listing-thumbnail">
-                  <img
-                    src="assets/images/listing/listing-list-4.jpg"
-                    alt="listing image"
-                  />
-                  <a href="#" className="cat-btn">
-                    <i className="flaticon-game-controller" />
-                  </a>
-                  <span className="status st-open">open</span>
-                </div>
-                <div className="listing-content">
-                  <h3 className="title">
-                    <Link href="/listing-details-1">
-                      <a>Gaming Place</a>
-                    </Link>
-                  </h3>
-                  <ul className="ratings ratings-three">
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li className="star">
-                      <i className="flaticon-star-1" />
-                    </li>
-                    <li>
-                      <span>
-                        <a href="#">(02 Reviews)</a>
-                      </span>
-                    </li>
-                  </ul>
-                  <span className="price">$05.00 - $80.00</span>
-                  <span className="phone-meta">
-                    <i className="ti-tablet" />
-                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                  </span>
-                  <div className="listing-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <i className="ti-location-pin" />
-                          California, USA
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <i className="ti-heart" />
-                          <a href="#" tabIndex={0}>
-                            Save
-                          </a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*====== End Listing-list Section ======*/}
-      {/*====== Start offer Section ======*/}
-      <section className="cta-area">
-        <div
-          className="cta-wrapper-two bg_cover"
-          style={{ backgroundImage: "url(assets/images/bg/cta-bg-2.jpg)" }}
-        >
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-7">
-                <div className="company-name wow fadeInLeft">Fioxen</div>
-              </div>
-              <div className="col-lg-5">
-                <div className="cta-content-box fadeInRight">
-                  <h2>Visit the Best Places</h2>
-                  <p>
-                    Pharetra venenatis ante pulvinar fermentum dignissim one
-                    malesuada laoreet ridiculus fringilla quam
-                  </p>
-                  <Link href="/listing-grid">
-                    <a className="main-btn icon-btn">Explore Now</a>
+                  <Link href="/">
+                    <a className="category-btn">
+                      <i className="ti-arrow-right"></i>
+                    </a>
                   </Link>
                 </div>
               </div>
@@ -717,160 +196,468 @@ const Index2 = () => {
           </div>
         </div>
       </section>
-      {/*====== End offer Section ======*/}
-      {/*====== Start Place Section ======*/}
-      <section className="place-area pt-110 pb-90">
+      {/* <!--====== Start Listing Section ======--> */}
+      <section className="listing-grid-area pt-115 pb-75">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="section-title section-title-two text-center mb-55 wow fadeInUp">
-                <h2>
-                  <span className="line">Featured</span> Places
-                </h2>
+            <div className="col-lg-8">
+              <div className="section-title text-center mb-75 wow fadeInUp">
+                <span className="sub-title">Featured List</span>
+                <h2>Explore Destination</h2>
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div
-                className="place-item place-item-two mb-30 wow fadeInUp"
-                data-wow-delay=".2s"
+                className="listing-item listing-grid-one mb-45 wow fadeInUp"
+                dta-wow-delay="10ms"
               >
-                <div className="place-thumbnail">
+                <div className="listing-thumbnail">
                   <img
-                    src="assets/images/place/place-5.jpg"
-                    alt="place Image"
+                    src="assets/images/listing/listing-grid-1.jpg"
+                    alt="Listing Image"
                   />
-                  <div className="place-overlay">
-                    <div className="place-content d-flex align-items-center">
-                      <div className="info">
-                        <span className="span">Spain</span>
-                        <h4>Barcelona</h4>
-                      </div>
+                  <span className="featured-btn">Featured</span>
+                  <div className="thumbnail-meta d-flex justify-content-between align-items-center">
+                    <div className="meta-icon-title d-flex align-items-center">
                       <div className="icon">
-                        <span className="number">15</span>
+                        <i className="flaticon-chef"></i>
+                      </div>
+                      <div className="title">
+                        <h6>Restaurant</h6>
                       </div>
                     </div>
+                    <span className="status st-open">Open</span>
+                  </div>
+                </div>
+                <div className="listing-content">
+                  <h3 className="title">
+                    <Link href="/listing-details-1">
+                      <a>Food Corner</a>
+                    </Link>
+                  </h3>
+                  <div className="ratings">
+                    <ul className="ratings ratings-three">
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li>
+                        <span>
+                          <a href="#">(02 Reviews)</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span className="price">$05.00 - $80.00</span>
+                  <span className="phone-meta">
+                    <i className="ti-tablet"></i>
+                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  </span>
+                  <div className="listing-meta">
+                    <ul>
+                      <li>
+                        <span>
+                          <i className="ti-location-pin"></i>California, USA
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="ti-heart"></i>
+                          <a href="#">Save</a>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div
-                className="place-item place-item-two mb-30 wow fadeInUp"
-                data-wow-delay=".25s"
+                className="listing-item listing-grid-one mb-45 wow fadeInUp"
+                dta-wow-delay="20ms"
               >
-                <div className="place-thumbnail">
+                <div className="listing-thumbnail">
                   <img
-                    src="assets/images/place/place-6.jpg"
-                    alt="place Image"
+                    src="assets/images/listing/listing-grid-2.jpg"
+                    alt="Listing Image"
                   />
-                  <div className="place-overlay">
-                    <div className="place-content d-flex align-items-center">
-                      <div className="info">
-                        <span className="span">Spain</span>
-                        <h4>Barcelona</h4>
-                      </div>
+                  <span className="featured-btn">Featured</span>
+                  <div className="thumbnail-meta d-flex justify-content-between align-items-center">
+                    <div className="meta-icon-title d-flex align-items-center">
                       <div className="icon">
-                        <span className="number">15</span>
+                        <i className="flaticon-government"></i>
+                      </div>
+                      <div className="title">
+                        <h6>Museums</h6>
                       </div>
                     </div>
+                    <span className="status st-open">Open</span>
+                  </div>
+                </div>
+                <div className="listing-content">
+                  <h3 className="title">
+                    <Link href="/listing-details-1">
+                      <a>Central History</a>
+                    </Link>
+                  </h3>
+                  <div className="ratings">
+                    <ul className="ratings ratings-three">
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li>
+                        <span>
+                          <a href="#">(02 Reviews)</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span className="price">$05.00 - $80.00</span>
+                  <span className="phone-meta">
+                    <i className="ti-tablet"></i>
+                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  </span>
+                  <div className="listing-meta">
+                    <ul>
+                      <li>
+                        <span>
+                          <i className="ti-location-pin"></i>California, USA
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="ti-heart"></i>
+                          <a href="#">Save</a>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div
-                className="place-item place-item-two mb-30 wow fadeInUp"
-                data-wow-delay=".30s"
+                className="listing-item listing-grid-one mb-45 wow fadeInUp"
+                dta-wow-delay="30ms"
               >
-                <div className="place-thumbnail">
+                <div className="listing-thumbnail">
                   <img
-                    src="assets/images/place/place-7.jpg"
-                    alt="place Image"
+                    src="assets/images/listing/listing-grid-3.jpg"
+                    alt="Listing Image"
                   />
-                  <div className="place-overlay">
-                    <div className="place-content d-flex align-items-center">
-                      <div className="info">
-                        <span className="span">Spain</span>
-                        <h4>Barcelona</h4>
-                      </div>
+                  <span className="featured-btn">Fitness</span>
+                  <div className="thumbnail-meta d-flex justify-content-between align-items-center">
+                    <div className="meta-icon-title d-flex align-items-center">
                       <div className="icon">
-                        <span className="number">15</span>
+                        <i className="flaticon-dumbbell"></i>
+                      </div>
+                      <div className="title">
+                        <h6>Fitness</h6>
                       </div>
                     </div>
+                    <span className="status st-close">Close</span>
+                  </div>
+                </div>
+                <div className="listing-content">
+                  <h3 className="title">
+                    <Link href="/listing-details-1">
+                      <a>Xtream Gym</a>
+                    </Link>
+                  </h3>
+                  <div className="ratings">
+                    <ul className="ratings ratings-three">
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li>
+                        <span>
+                          <a href="#">(02 Reviews)</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span className="price">$05.00 - $80.00</span>
+                  <span className="phone-meta">
+                    <i className="ti-tablet"></i>
+                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  </span>
+                  <div className="listing-meta">
+                    <ul>
+                      <li>
+                        <span>
+                          <i className="ti-location-pin"></i>California, USA
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="ti-heart"></i>
+                          <a href="#">Save</a>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div
-                className="place-item place-item-two mb-30 wow fadeInUp"
-                data-wow-delay=".35s"
+                className="listing-item listing-grid-one mb-45 wow fadeInUp"
+                dta-wow-delay="40ms"
               >
-                <div className="place-thumbnail">
+                <div className="listing-thumbnail">
                   <img
-                    src="assets/images/place/place-8.jpg"
-                    alt="place Image"
+                    src="assets/images/listing/listing-grid-4.jpg"
+                    alt="Listing Image"
                   />
-                  <div className="place-overlay">
-                    <div className="place-content d-flex align-items-center">
-                      <div className="info">
-                        <span className="span">Spain</span>
-                        <h4>Barcelona</h4>
-                      </div>
+                  <span className="featured-btn">Featured</span>
+                  <div className="thumbnail-meta d-flex justify-content-between align-items-center">
+                    <div className="meta-icon-title d-flex align-items-center">
                       <div className="icon">
-                        <span className="number">15</span>
+                        <i className="flaticon-suitcase"></i>
+                      </div>
+                      <div className="title">
+                        <h6>Job & Feed</h6>
                       </div>
                     </div>
+                    <span className="status st-open">Open</span>
+                  </div>
+                </div>
+                <div className="listing-content">
+                  <h3 className="title">
+                    <Link href="/listing-details-1">
+                      <a>Mega Agency</a>
+                    </Link>
+                  </h3>
+                  <div className="ratings">
+                    <ul className="ratings ratings-three">
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li>
+                        <span>
+                          <a href="#">(02 Reviews)</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span className="price">$05.00 - $80.00</span>
+                  <span className="phone-meta">
+                    <i className="ti-tablet"></i>
+                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  </span>
+                  <div className="listing-meta">
+                    <ul>
+                      <li>
+                        <span>
+                          <i className="ti-location-pin"></i>California, USA
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="ti-heart"></i>
+                          <a href="#">Save</a>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div
-                className="place-item place-item-two mb-30 wow fadeInUp"
-                data-wow-delay=".40s"
+                className="listing-item listing-grid-one mb-45 wow fadeInUp"
+                dta-wow-delay="50ms"
               >
-                <div className="place-thumbnail">
+                <div className="listing-thumbnail">
                   <img
-                    src="assets/images/place/place-9.jpg"
-                    alt="place Image"
+                    src="assets/images/listing/listing-grid-5.jpg"
+                    alt="Listing Image"
                   />
-                  <div className="place-overlay">
-                    <div className="place-content d-flex align-items-center">
-                      <div className="info">
-                        <span className="span">Spain</span>
-                        <h4>Barcelona</h4>
-                      </div>
+                  <span className="featured-btn">Featured</span>
+                  <div className="thumbnail-meta d-flex justify-content-between align-items-center">
+                    <div className="meta-icon-title d-flex align-items-center">
                       <div className="icon">
-                        <span className="number">15</span>
+                        <i className="flaticon-shopping"></i>
+                      </div>
+                      <div className="title">
+                        <h6>Central Plaza</h6>
                       </div>
                     </div>
+                    <span className="status st-close">Close</span>
+                  </div>
+                </div>
+                <div className="listing-content">
+                  <h3 className="title">
+                    <Link href="/listing-details-1">
+                      <a>Central Plaza</a>
+                    </Link>
+                  </h3>
+                  <div className="ratings">
+                    <ul className="ratings ratings-three">
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li>
+                        <span>
+                          <a href="#">(02 Reviews)</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span className="price">$05.00 - $80.00</span>
+                  <span className="phone-meta">
+                    <i className="ti-tablet"></i>
+                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  </span>
+                  <div className="listing-meta">
+                    <ul>
+                      <li>
+                        <span>
+                          <i className="ti-location-pin"></i>California, USA
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="ti-heart"></i>
+                          <a href="#">Save</a>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
               <div
-                className="place-item place-item-two mb-30 wow fadeInUp"
-                data-wow-delay=".45s"
+                className="listing-item listing-grid-one mb-45 wow fadeInUp"
+                dta-wow-delay="60ms"
               >
-                <div className="place-thumbnail">
+                <div className="listing-thumbnail">
                   <img
-                    src="assets/images/place/place-10.jpg"
-                    alt="place Image"
+                    src="assets/images/listing/listing-grid-6.jpg"
+                    alt="Listing Image"
                   />
-                  <div className="place-overlay">
-                    <div className="place-content d-flex align-items-center">
-                      <div className="info">
-                        <span className="span">Spain</span>
-                        <h4>Barcelona</h4>
-                      </div>
+                  <span className="featured-btn">Featured</span>
+                  <div className="thumbnail-meta d-flex justify-content-between align-items-center">
+                    <div className="meta-icon-title d-flex align-items-center">
                       <div className="icon">
-                        <span className="number">15</span>
+                        <i className="flaticon-color-palette"></i>
+                      </div>
+                      <div className="title">
+                        <h6>Art Gallery</h6>
                       </div>
                     </div>
+                    <span className="status st-open">Open</span>
+                  </div>
+                </div>
+                <div className="listing-content">
+                  <h3 className="title">
+                    <Link href="/listing-details-1">National Art</Link>
+                  </h3>
+                  <div className="ratings">
+                    <ul className="ratings ratings-three">
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li className="star">
+                        <i className="flaticon-star-1"></i>
+                      </li>
+                      <li>
+                        <span>
+                          <a href="#">(02 Reviews)</a>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span className="price">$05.00 - $80.00</span>
+                  <span className="phone-meta">
+                    <i className="ti-tablet"></i>
+                    <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  </span>
+                  <div className="listing-meta">
+                    <ul>
+                      <li>
+                        <span>
+                          <i className="ti-location-pin"></i>California, USA
+                        </span>
+                      </li>
+                      <li>
+                        <span>
+                          <i className="ti-heart"></i>
+                          <a href="#">Save</a>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -878,7 +665,8 @@ const Index2 = () => {
           </div>
         </div>
       </section>
-      {/*====== End Place Section ======*/}
+      {/* <!--====== End Listing Section ======--> */}
+      
       {/*====== Start Testimonial Section ======*/}
       <section
         className="testimonial-area bg_cover pt-110 pb-140"
@@ -908,676 +696,424 @@ const Index2 = () => {
         </div>
       </section>
       {/*====== End Testimonial Section ======*/}
-      {/*====== Start Listing Section ======*/}
-      <section className="listing-grid-area pt-110">
+      {/* <!--====== Start Popular Listing Section ======--> */}
+      <section className="listing-grid-area pt-75 pb-110">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="section-title section-title-two text-center mb-55 wow fadeInUp">
-                <h2>
-                  <span className="line">Latest</span> Destination
-                </h2>
+            <div className="col-lg-8">
+              <div className="section-title text-center mb-60 wow fadeInUp">
+                <span className="sub-title">Featured List</span>
+                <h2>Explore Destination</h2>
               </div>
             </div>
           </div>
+          <Slider
+            {...ListingSliderOne}
+            className="listing-slider-one wow fadeInDown"
+          >
+            <div className="listing-item listing-grid-item-two">
+              <div className="listing-thumbnail">
+                <img
+                  src="assets/images/listing/listing-grid-7.jpg"
+                  alt="Listing Image"
+                />
+                <a href="#" className="cat-btn">
+                  <i className="flaticon-chef"></i>
+                </a>
+                <span className="featured-btn">Featured</span>
+                <ul className="ratings ratings-four">
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#">(02 Reviews)</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="listing-content">
+                <h3 className="title">
+                  <Link href="/listing-details-1">
+                    <a>Pizza Recipe</a>
+                  </Link>
+                </h3>
+                <p>Popular restaurant in california</p>
+                <span className="phone-meta">
+                  <i className="ti-tablet"></i>
+                  <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  <span className="status st-open">Open</span>
+                </span>
+                <div className="listing-meta">
+                  <ul>
+                    <li>
+                      <span>
+                        <i className="ti-location-pin"></i>California, USA
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i className="ti-heart"></i>
+                        <a href="#">Save</a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="listing-item listing-grid-item-two">
+              <div className="listing-thumbnail">
+                <img
+                  src="assets/images/listing/listing-grid-8.jpg"
+                  alt="Listing Image"
+                />
+                <a href="#" className="cat-btn">
+                  <i className="flaticon-dumbbell"></i>
+                </a>
+                <ul className="ratings ratings-three">
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#">(02 Reviews)</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="listing-content">
+                <h3 className="title">
+                  <Link href="/listing-details-1">Gym Ground</Link>
+                </h3>
+                <p>Popular restaurant in california</p>
+                <span className="phone-meta">
+                  <i className="ti-tablet"></i>
+                  <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  <span className="status st-close">close</span>
+                </span>
+                <div className="listing-meta">
+                  <ul>
+                    <li>
+                      <span>
+                        <i className="ti-location-pin"></i>California, USA
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i className="ti-heart"></i>
+                        <a href="#">Save</a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="listing-item listing-grid-item-two">
+              <div className="listing-thumbnail">
+                <img
+                  src="assets/images/listing/listing-grid-9.jpg"
+                  alt="Listing Image"
+                />
+                <a href="#" className="cat-btn">
+                  <i className="flaticon-government"></i>
+                </a>
+                <span className="featured-btn">Featured</span>
+                <ul className="ratings ratings-five">
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#">(02 Reviews)</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="listing-content">
+                <h3 className="title">
+                  <Link href="/listing-details-1">City Palace</Link>
+                </h3>
+                <p>Popular restaurant in california</p>
+                <span className="phone-meta">
+                  <i className="ti-tablet"></i>
+                  <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  <span className="status st-open">Open</span>
+                </span>
+                <div className="listing-meta">
+                  <ul>
+                    <li>
+                      <span>
+                        <i className="ti-location-pin"></i>California, USA
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i className="ti-heart"></i>
+                        <a href="#">Save</a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="listing-item listing-grid-item-two">
+              <div className="listing-thumbnail">
+                <img
+                  src="assets/images/listing/listing-grid-1.jpg"
+                  alt="Listing Image"
+                />
+                <a href="#" className="cat-btn">
+                  <i className="flaticon-chef"></i>
+                </a>
+                <span className="featured-btn">Featured</span>
+                <ul className="ratings ratings-two">
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li className="star">
+                    <i className="flaticon-star-1"></i>
+                  </li>
+                  <li>
+                    <span>
+                      <a href="#">(02 Reviews)</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="listing-content">
+                <h3 className="title">
+                  <Link href="/listing-details-1">
+                    <a>Pizza Recipe</a>
+                  </Link>
+                </h3>
+                <p>Popular restaurant in california</p>
+                <span className="phone-meta">
+                  <i className="ti-tablet"></i>
+                  <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                  <span className="status st-open">Open</span>
+                </span>
+                <div className="listing-meta">
+                  <ul>
+                    <li>
+                      <span>
+                        <i className="ti-location-pin"></i>California, USA
+                      </span>
+                    </li>
+                    <li>
+                      <span>
+                        <i className="ti-heart"></i>
+                        <a href="#">Save</a>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </Slider>
         </div>
-        <Slider
-          {...ListingSlider2}
-          className="listing-slider-two wow fadeInDown"
-        >
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-4.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-1">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-5.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-6">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-7.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-1">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-8.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-1">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-9.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-1">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-7.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-1">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="listing-item listing-grid-item-two">
-            <div className="listing-thumbnail">
-              <img
-                src="assets/images/listing/listing-grid-8.jpg"
-                alt="Listing Image"
-              />
-              <a href="#" className="cat-btn">
-                <i className="flaticon-chef" />
-              </a>
-              <span className="featured-btn">Featured</span>
-              <ul className="ratings ratings-three">
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li className="star">
-                  <i className="flaticon-star-1" />
-                </li>
-                <li>
-                  <span>
-                    <a href="#">(02 Reviews)</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="listing-content">
-              <h3 className="title">
-                <Link href="/listing-details-1">
-                  <a>Pizza Recipe</a>
-                </Link>
-              </h3>
-              <p>Popular restaurant in california</p>
-              <span className="phone-meta">
-                <i className="ti-tablet" />
-                <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                <span className="status open">Open</span>
-              </span>
-              <div className="listing-meta">
-                <ul>
-                  <li>
-                    <span>
-                      <i className="ti-location-pin" />
-                      California, USA
-                    </span>
-                  </li>
-                  <li>
-                    <span>
-                      <i className="ti-heart" />
-                      <a href="#">Save</a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Slider>
       </section>
-      {/*====== End Listing Section ======*/}
-      {/*====== Start Pricing Section ======*/}
-      <section className="pricing-area pt-70 pb-80">
-        <div className="container">
+      {/* <!--====== End Popular Listing Section ======--> */}
+      {/* <!--====== Start Client Section ======--> */}
+      <section className="client-area ">
+        <div className="client-wrapper-one pb-120">
           <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="section-title section-title-two text-center mb-60 wow fadeInUp">
-                <h2>
-                  <span className="line">Affordable</span> Package
-                </h2>
+            <div className="col-lg-8">
+              <div className="section-title text-center mb-60 wow fadeInUp">
+                <span className="sub-title">Featured List</span>
+                <h2>Explore Destination</h2>
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="pricing-item pricing-item-one text-center mb-40 wow fadeInUp">
-                <div className="pricing-inner-time">
-                  <div className="pricing-head">
-                    <span className="title">General</span>
-                    <h2 className="price">25.00</h2>
-                  </div>
-                  <div className="pricing-body">
-                    <ul className="list">
-                      <li>Construction Drawing</li>
-                      <li>Floor &amp; celling plan</li>
-                      <li>Selection of Material</li>
-                      <li>Structure of a project</li>
-                      <li>Always plan support</li>
-                      <li>Visualization premise</li>
-                    </ul>
-                    <Link href="/pricing">
-                      <a className="main-btn icon-btn">Get Started</a>
-                    </Link>
-                  </div>
+          <div className="container">
+            <Slider
+              {...ClientSliderOne}
+              className="client-slider-one wow fadeInDown"
+            >
+              <div className="client-item">
+                <div className="client-img">
+                  <a href="#">
+                    <img src="assets/images/client/01.png" alt="Client Image" />
+                  </a>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="pricing-item pricing-item-one text-center mb-40 wow fadeInDown">
-                <div className="pricing-inner-time">
-                  <div className="pricing-head">
-                    <span className="title">General</span>
-                    <h2 className="price">35.00</h2>
-                  </div>
-                  <div className="pricing-body">
-                    <ul className="list">
-                      <li>Construction Drawing</li>
-                      <li>Floor &amp; celling plan</li>
-                      <li>Selection of Material</li>
-                      <li>Structure of a project</li>
-                      <li>Always plan support</li>
-                      <li>Visualization premise</li>
-                    </ul>
-                    <Link href="/pricing">
-                      <a className="main-btn icon-btn">Get Started</a>
-                    </Link>
-                  </div>
+              <div className="client-item">
+                <div className="client-img">
+                  <a href="#">
+                    <img src="assets/images/client/02.png" alt="Client Image" />
+                  </a>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="pricing-item pricing-item-one text-center mb-40 wow fadeInUp">
-                <div className="pricing-inner-time">
-                  <div className="pricing-head">
-                    <span className="title">General</span>
-                    <h2 className="price">45.00</h2>
-                  </div>
-                  <div className="pricing-body">
-                    <ul className="list">
-                      <li>Construction Drawing</li>
-                      <li>Floor &amp; celling plan</li>
-                      <li>Selection of Material</li>
-                      <li>Structure of a project</li>
-                      <li>Always plan support</li>
-                      <li>Visualization premise</li>
-                    </ul>
-                    <Link href="/pricing">
-                      <a className="main-btn icon-btn">Get Started</a>
-                    </Link>
-                  </div>
+              <div className="client-item">
+                <div className="client-img">
+                  <a href="#">
+                    <img src="assets/images/client/03.png" alt="Client Image" />
+                  </a>
                 </div>
               </div>
-            </div>
+              <div className="client-item">
+                <div className="client-img">
+                  <a href="#">
+                    <img src="assets/images/client/04.png" alt="Client Image" />
+                  </a>
+                </div>
+              </div>
+              <div className="client-item">
+                <div className="client-img">
+                  <a href="#">
+                    <img src="assets/images/client/02.png" alt="Client Image" />
+                  </a>
+                </div>
+              </div>
+            </Slider>
           </div>
         </div>
       </section>
-      {/*====== End Pricing Section ======*/}
-      {/*====== Start Blog Section ======*/}
-      <section
-        className="blog-area pt-110 pb-80 bg_cover"
-        style={{ backgroundImage: "url(assets/images/bg/blog-bg-1.jpg)" }}
-      >
-        <div className="container">
+      {/* <!--====== End Client Section ======--> */}
+      {/* <!--====== Start Place Section ======--> */}
+      <section className="place-area pt-115 pb-110">
+        <div className="container-fluid place-container">
           <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="section-title section-title-two text-center mb-60 wow fadeInUp">
-                <h2>
-                  <span className="line">Journal</span> Insights
-                </h2>
+            <div className="col-lg-8">
+              <div className="section-title text-center mb-60 wow fadeInUp">
+                <span className="sub-title">Feature Places</span>
+                <h2>Explore By Destination</h2>
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="blog-post-item blog-post-item-two mb-40 wow fadeInDown">
-                <div className="post-thumbnail">
-                  <img src="assets/images/blog/blog-4.jpg" alt="Post Image" />
-                </div>
-                <div className="entry-content text-center">
-                  <a href="#" className="cat-btn">
-                    Tour &amp; Travel
-                  </a>
-                  <div className="post-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <a href="#">22 Aug, 21</a>
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <a href="#">03 Comment</a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                  <h3 className="title">
-                    <Link href="/blog-details">
-                      <a>Sociis sapie justo feugiat purus adipiscing</a>
+          <Slider
+            {...PlaceSliderOne}
+            className="place-slider-one wow fadeInDown"
+          >
+            <div className="place-item place-item-one">
+              <div className="place-thumbnail">
+                <img src="assets/images/place/place-1.jpg" alt="Place Image" />
+                <div className="place-overlay">
+                  <div className="place-content text-center">
+                    <span className="listing">10 Listing</span>
+                    <h3 className="title">Australia</h3>
+                    <Link href="/listing-grid">
+                      <a className="arrow-btn">
+                        <i className="ti-arrow-right"></i>
+                      </a>
                     </Link>
-                  </h3>
-                  <a href="#" className="btn-link">
-                    Read More
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12 mb-40">
-              <div className="blog-post-item blog-post-item-two wow fadeInUp">
-                <div className="post-thumbnail">
-                  <img src="assets/images/blog/blog-5.jpg" alt="Post Image" />
-                </div>
-                <div className="entry-content text-center">
-                  <a href="#" className="cat-btn">
-                    Gym &amp; Fitness
-                  </a>
-                  <div className="post-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <a href="#">22 Aug, 21</a>
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <a href="#">03 Comment</a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                  <h3 className="title">
-                    <Link href="/blog-details">
-                      <a>Sociis sapie justo feugiat purus adipiscing</a>
+            <div className="place-item place-item-one">
+              <div className="place-thumbnail">
+                <img src="assets/images/place/place-2.jpg" alt="Place Image" />
+                <div className="place-overlay">
+                  <div className="place-content text-center">
+                    <span className="listing">10 Listing</span>
+                    <h3 className="title">Australia</h3>
+                    <Link href="/listing-grid">
+                      <a className="arrow-btn">
+                        <i className="ti-arrow-right"></i>
+                      </a>
                     </Link>
-                  </h3>
-                  <a href="#" className="btn-link">
-                    Read More
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="blog-post-item blog-post-item-two mb-40 wow fadeInDown">
-                <div className="post-thumbnail">
-                  <img src="assets/images/blog/blog-6.jpg" alt="Post Image" />
-                </div>
-                <div className="entry-content text-center">
-                  <a href="#" className="cat-btn">
-                    Art &amp; Museum
-                  </a>
-                  <div className="post-meta">
-                    <ul>
-                      <li>
-                        <span>
-                          <a href="#">22 Aug, 21</a>
-                        </span>
-                      </li>
-                      <li>
-                        <span>
-                          <a href="#">03 Comment</a>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                  <h3 className="title">
-                    <Link href="/blog-details">
-                      <a>Sociis sapie justo feugiat purus adipiscing</a>
+            <div className="place-item place-item-one">
+              <div className="place-thumbnail">
+                <img src="assets/images/place/place-3.jpg" alt="Place Image" />
+                <div className="place-overlay">
+                  <div className="place-content text-center">
+                    <span className="listing">10 Listing</span>
+                    <h3 className="title">Australia</h3>
+                    <Link href="/listing-grid">
+                      <a className="arrow-btn">
+                        <i className="ti-arrow-right"></i>
+                      </a>
                     </Link>
-                  </h3>
-                  <a href="#" className="btn-link">
-                    Read More
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <div className="place-item place-item-one">
+              <div className="place-thumbnail">
+                <img src="assets/images/place/place-4.jpg" alt="Place Image" />
+                <div className="place-overlay">
+                  <div className="place-content text-center">
+                    <span className="listing">10 Listing</span>
+                    <h3 className="title">Australia</h3>
+                    <Link href="/listing-grid">
+                      <a className="arrow-btn">
+                        <i className="ti-arrow-right"></i>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="place-item place-item-one">
+              <div className="place-thumbnail">
+                <img src="assets/images/place/place-2.jpg" alt="Place Image" />
+                <div className="place-overlay">
+                  <div className="place-content text-center">
+                    <span className="listing">10 Listing</span>
+                    <h3 className="title">Australia</h3>
+                    <Link href="/listing-grid">
+                      <a className="arrow-btn">
+                        <i className="ti-arrow-right"></i>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Slider>
         </div>
       </section>
-      {/*====== End Blog Section ======*/}
-    </Layout>
+      {/* <!--====== End Place Section ======--> */}
+        </Layout>
   );
 };
 export default Index2;

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { About, Blog, Contact, Home, Listing, Pages } from "./Menu";
+import { Blog, Contact, Home, Listing, Pages } from "./Menu";
 
 const MobileMenu = () => {
   const [toggle, setToggle] = useState(false);
@@ -52,7 +52,7 @@ const MobileMenu = () => {
               <div className="top-content text-center">
                 <p>
                   We Have Special Offers Every{" "}
-                  <Link href="/">
+                  <Link href="/index-2">
                     <a>Find your offer</a>
                   </Link>
                 </p>
@@ -118,7 +118,7 @@ const MobileMenu = () => {
                   <nav className="main-menu">
                     <ul>
                       <li className="menu-item has-children">
-                        <Link href="/">
+                        <Link href="/index-2">
                           <a>Home</a>
                         </Link>
                         <ul className="sub-menu" style={activeLi("Home")}>
@@ -131,7 +131,6 @@ const MobileMenu = () => {
                           <i className="ti-arrow-down"></i>
                         </span>
                       </li>
-                      <About />
                       <li className="menu-item has-children">
                         <a href="#">Listings</a>
                         <ul className="sub-menu" style={activeLi("Listings")}>

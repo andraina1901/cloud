@@ -3,22 +3,13 @@ import React, { Fragment } from "react";
 
 export const Home = () => (
   <Fragment>
-    <li className="menu-item">
-      <Link href="/">Home One</Link>
-    </li>
-    <li className="menu-item">
-      <Link href="/index-2">Home Two</Link>
-    </li>
-    <li className="menu-item">
-      <Link href="/index-3">Home Three</Link>
+     <li className="menu-item">
+      <Link href="/index-2">Accueil</Link>
     </li>
   </Fragment>
 );
 export const About = () => (
   <Fragment>
-    <li className="menu-item">
-      <Link href="/about">About us</Link>
-    </li>
   </Fragment>
 );
 export const Listing = () => (
