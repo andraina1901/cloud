@@ -28,18 +28,7 @@ const Header2 = () => {
                   </div>
                   <nav className="main-menu">
                     <ul>
-                      <li className="menu-item has-children">
-                        <Link href="/">
-                          <a>Home</a>
-                        </Link>
-                        <ul className="sub-menu">
-                          <Home />
-                        </ul>
-                        <span className="dd-trigger">
-                          <i className="ti-arrow-down"></i>
-                        </span>
-                      </li>
-                      <About />
+                      <Home/>
                       <li className="menu-item has-children">
                         <a href="#">Listings</a>
                         <ul className="sub-menu">
@@ -81,10 +70,10 @@ const Header2 = () => {
                 <div className="header-right-nav">
                   <ul className="d-flex align-items-center">
                     <li>
-                      <Link href="/">
+                      <Link href="/listing-details-1">
                         <a>
                           <i className="ti-heart"></i>
-                          <span>Wishlist</span>
+                          <span>Favoris</span>
                         </a>
                       </Link>
                     </li>
@@ -103,11 +92,22 @@ const Header2 = () => {
                         </a>
                       </Link>
                     </li>
-                    <li className="hero-nav-btn">
-                      <Link href="/add-listing">
+                     <li className="hero-nav-btn">
+                      {/* <Link href="/add-listing">
                         <a className="main-btn icon-btn">Add Listing</a>
-                      </Link>
-                    </li>
+                      </Link> */}
+                        <div className="input-with-icon">
+                          <input
+                            type="text"
+                            className="form_control"
+                            placeholder="Entrez votre mot clé"
+                            name="location"
+                            style={{border: '1px solid gray', borderRadius: '50px', paddingLeft: '40px'}}
+                          />
+                          <i className='ti-search search-icon'></i>
+                        </div>
+
+                    </li> 
                     <li className="nav-toggle-btn">
                       <div className="navbar-toggler">
                         <span></span>

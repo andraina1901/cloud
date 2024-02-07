@@ -3,11 +3,12 @@ import React from "react";
 import PageBanner from "../src/components/PageBanner";
 import RangeSlider from "../src/components/RangeSlider";
 import Layout from "../src/layouts/Layout";
+import { Suggestion } from "../src/components/mine/card/Suggestion";
 
 const ListingGrid = () => {
   return (
     <Layout>
-      <PageBanner title={"Listing Grid"} pageName={"Listing"} />
+      {/* <PageBanner title={"Listing Grid"} pageName={"Listing"} /> */}
       <section className="listing-grid-area pt-120 pb-90">
         <div className="container">
           <div className="row">
@@ -108,19 +109,6 @@ const ListingGrid = () => {
                     </div>
                   </form>
                 </div>
-                <div className="widget newsletter-widget mb-30 wow fadeInUp">
-                  <div
-                    className="newsletter-widget-wrap bg_cover"
-                    style={{
-                      backgroundImage:
-                        "url(assets/images/newsletter-widget-1.jpg)",
-                    }}
-                  >
-                    <i className="flaticon-email-1" />
-                    <h3>Subscribe Our Newsletter</h3>
-                    <button className="main-btn icon-btn">Subscribe</button>
-                  </div>
-                </div>
               </div>
             </div>
             <div className="col-lg-8">
@@ -155,13 +143,6 @@ const ListingGrid = () => {
                             </a>
                           </Link>
                         </li>
-                        <li>
-                          <Link href="/listing-list">
-                            <a>
-                              <i className="ti-view-list-alt" />
-                            </a>
-                          </Link>
-                        </li>
                       </ul>
                     </div>
                   </div>
@@ -169,522 +150,38 @@ const ListingGrid = () => {
               </div>
               <div className="listing-grid-wrapper">
                 <div className="row">
-                  <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-16.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <span className="featured-btn">Featured</span>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Pizza Recipe</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-open">Open</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+              
+                  <div className="col-md-6 col-sm-12" style={{marginBottom: '3%'}}>
+                 
+                    <Suggestion 
+                      user={'Liantsoa'}
+                      duree={'2mois'}
+                      model={'Peugeot 208'}
+                      prix={'20.000.000'}
+                      contact={'034 12 040 35'}
+                  />
                   </div>
                   <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-17.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Party Corner</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-close">Close</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                 
+                    <Suggestion 
+                      user={'Liantsoa'}
+                      duree={'2mois'}
+                      model={'Peugeot 208'}
+                      prix={'20.000.000'}
+                      contact={'034 12 040 35'}
+                  />
                   </div>
                   <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-18.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>City Palace</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-open">Open</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                 
+                    <Suggestion 
+                      user={'Liantsoa'}
+                      duree={'2mois'}
+                      model={'Peugeot 208'}
+                      prix={'20.000.000'}
+                      contact={'034 12 040 35'}
+                  />
                   </div>
-                  <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-19.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <span className="featured-btn">Featured</span>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Easter Plaza</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-open">Open</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-20.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <span className="featured-btn">Featured</span>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Gym Ground</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-open">Open</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-21.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Miyami Sea</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-close">Close</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-22.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Gym Ground</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-close">Close</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6 col-sm-12">
-                    <div className="listing-item listing-grid-item-two mb-30 wow fadeInUp">
-                      <div className="listing-thumbnail">
-                        <img
-                          src="assets/images/listing/listing-grid-23.jpg"
-                          alt="Listing Image"
-                        />
-                        <a href="#" className="cat-btn">
-                          <i className="flaticon-chef" />
-                        </a>
-                        <span className="featured-btn">Featured</span>
-                        <ul className="ratings ratings-four">
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li className="star">
-                            <i className="flaticon-star-1" />
-                          </li>
-                          <li>
-                            <span>
-                              <a href="#">(02 Reviews)</a>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="listing-content">
-                        <h3 className="title">
-                          <Link href="/listing-details-1">
-                            <a>Coffee Time</a>
-                          </Link>
-                        </h3>
-                        <p>Popular restaurant in california</p>
-                        <span className="phone-meta">
-                          <i className="ti-tablet" />
-                          <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
-                          <span className="status st-open">Open</span>
-                        </span>
-                        <div className="listing-meta">
-                          <ul>
-                            <li>
-                              <span>
-                                <i className="ti-location-pin" />
-                                California, USA
-                              </span>
-                            </li>
-                            <li>
-                              <span>
-                                <i className="ti-heart" />
-                                <a href="#">Save</a>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
             </div>

@@ -18,7 +18,7 @@ const Layout = ({ children, header }) => {
     <Fragment>
       <ImageView />
       <MobileMenu />
-      <Header header={header} />
+      <Header header={2} />
       {children} <Footer />
       <ScrollTop />
     </Fragment>

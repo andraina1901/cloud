@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { Fragment, useEffect, useState } from "react";
 import PreLoader from "../src/components/PreLoader";
 import "../styles/globals.css";
+import "../public/assets/css/mydropdown.css"
 
 const MyApp = ({ Component, pageProps }) => {
   const [loader, setLoader] = useState(true);
@@ -14,7 +15,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <Fragment>
       <Head>
-        <title>Fioxen - Directory & Listings React NextJs Template</title>
+        <title>Okaz-itu</title>
         <link
           rel="shortcut icon"
           href="assets/images/favicon.ico"

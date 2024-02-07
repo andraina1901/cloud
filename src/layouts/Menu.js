@@ -4,11 +4,11 @@ import React, { Fragment } from "react";
 export const Home = () => (
   <Fragment>
      <li className="menu-item">
-      <Link href="/index-2">Accueil</Link>
+      <Link href="/">Accueil</Link>
     </li>
   </Fragment>
 );
-export const About = () => (
+export const Team = () => (
   <Fragment>
   </Fragment>
 );

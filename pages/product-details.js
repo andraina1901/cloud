@@ -10,7 +10,6 @@ import { reletedProductSlider } from "../src/sliderProps";
 const ProductDetails = () => {
   return (
     <Layout>
-      <PageBanner title={"Shop Single"} />
       <section className="product-details-section pt-120 pb-115">
         <div className="container">
           <div className="product-details-wrapper mb-30">

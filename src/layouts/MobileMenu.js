@@ -95,19 +95,8 @@ const MobileMenu = () => {
         <div className="container-fluid">
           <div className="primary-menu">
             <div className="row">
-              <div className="col-lg-2 col-5">
-                <div className="site-branding">
-                  <Link href="/">
-                    <a className="brand-logo">
-                      <img
-                        src="assets/images/logo/logo-1.png"
-                        alt="Brand Logo"
-                      />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="col-lg-6 col-2">
+            
+               <div className="col-lg-6 col-2">
                 <div className={`nav-menu ${toggle ? "menu-on" : ""}`}>
                   <div
                     className="navbar-close"
@@ -119,7 +108,7 @@ const MobileMenu = () => {
                     <ul>
                       <li className="menu-item has-children">
                         <Link href="/index-2">
-                          <a>Home</a>
+                          <a>Accueil</a>
                         </Link>
                         <ul className="sub-menu" style={activeLi("Home")}>
                           <Home />
@@ -166,7 +155,7 @@ const MobileMenu = () => {
                         >
                           <i className="ti-arrow-down"></i>
                         </span>
-                      </li>
+                      </li> 
                       <Contact />
                       <li className="nav-btn">
                         <Link href="/add-listing">

@@ -73,14 +73,14 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-                multiply given all hath given may meat god abundant appear lioud
-                fourth madman mane said god dominion great gathering called very
-                shall after cre ated from fruitful place over the mitual{" "}
+              J'ai trouvé le site web très facile à utiliser. 
+              J'ai pu trouver la voiture parfaite pour ma famille en quelques clics seulement. Le processus d'achat était simple et transparent, 
+              et j'ai été très satisfaite du service client..{" "}
               </p>
               <div className="author-info">
                 <div className="author-title">
-                  <h4>Melisa Powels</h4>
-                  <span className="position">Sr. Designer</span>
+                  <h4>Mertina</h4>
+                  <span className="position">Mere de famille</span>
                 </div>
               </div>
             </div>
@@ -88,14 +88,15 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-                multiply given all hath given may meat god abundant appear lioud
-                fourth madman mane said god dominion great gathering called very
-                shall after cre ated from fruitful place over the mitual{" "}
+              Je n'avais jamais acheté de voiture auparavant,
+              mais le site web m'a rendu la tâche très facile. 
+              J'ai pu comparer les prix et les caractéristiques de différents modèles en toute simplicité. 
+              J'ai également trouvé des conseils très utiles sur le site.{" "}
               </p>
               <div className="author-info">
                 <div className="author-title">
-                  <h4>Martyn Decode</h4>
-                  <span className="position">Sr. Designer</span>
+                  <h4>Tiary Heninkaja</h4>
+                  <span className="position">Jeune conducteur</span>
                 </div>
               </div>
             </div>
@@ -103,14 +104,15 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-                multiply given all hath given may meat god abundant appear lioud
-                fourth madman mane said god dominion great gathering called very
-                shall after cre ated from fruitful place over the mitual{" "}
+              J'ai été très impressionné par la qualité des photos et 
+              des descriptions des véhicules sur le site web. J'ai également 
+              apprécié la possibilité de contacter directement 
+              le vendeur pour poser des questions.{" "}
               </p>
               <div className="author-info">
                 <div className="author-title">
-                  <h4>Alesha Mature</h4>
-                  <span className="position">Sr. Designer</span>
+                  <h4>Ernest Rob</h4>
+                  <span className="position">Acheteur experimenter</span>
                 </div>
               </div>
             </div>
@@ -118,14 +120,16 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-                multiply given all hath given may meat god abundant appear lioud
-                fourth madman mane said god dominion great gathering called very
-                shall after cre ated from fruitful place over the mitual{" "}
+              Depuis que j'ai acheté la nouvelle Toyota Corolla pour 
+              ABC Entreprise sur le site web, nos commerciaux gagnent 
+              en efficacité sur le terrain. Le processus d'achat a été 
+              d'une rapidité incroyable et le prix imbattable. 
+              Je recommande vivement ce site à tous les professionnels !{" "}
               </p>
               <div className="author-info">
                 <div className="author-title">
-                  <h4>Martyn Decode</h4>
-                  <span className="position">Sr. Designer</span>
+                  <h4>Rouge Benjamin</h4>
+                  <span className="position">Professionnel</span>
                 </div>
               </div>
             </div>

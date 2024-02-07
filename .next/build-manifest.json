@@ -30,10 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/index-2": [
+    "/listing-grid": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/index-2.js"
+      "static/chunks/pages/listing-grid.js"
+    ],
+    "/product-details": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/product-details.js"
     ]
   },
   "ampFirstPages": []
