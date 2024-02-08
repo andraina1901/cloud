@@ -1,12 +1,56 @@
+CREATE SEQUENCE seq_roles;
+CREATE TABLE roles (
+    id int DEFAULT nextval('seq_roles') PRIMARY KEY,
+    name VARCHAR(20) NOT NULL
+);
+
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+
+CREATE SEQUENCE seq_user;
 CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
+    id int DEFAULT nextval('seq_user') PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
     dtn DATE,
     sexe int,
     password VARCHAR(100) NOT NULL,
-    dateheure TIMESTAMP
+    dateheure TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO users (username, email, dtn, sexe, password, dateheure)
+VALUES
+  ('admin', 'admin@gmail.com', '1990-01-01', 1, 'admin', '2024-01-25T12:34:56');
+INSERT INTO users (username, email, dtn, sexe, password, dateheure)
+VALUES
+  ('rakoto', 'rakoto@gmail.com', '1980-01-05', 1, 'rakoto', '2024-01-25T12:34:56');
+INSERT INTO users (username, email, dtn, sexe, password, dateheure)
+VALUES
+  ('jean', 'jean@gmail.com', '1995-05-08', 1, 'jean', '2024-12-31T12:34:56');
+
+CREATE TABLE user_roles (
+    user_id int,
+    role_id int,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+
+insert into user_roles(user_id, role_id) VALUES(1,2);
+insert into user_roles(user_id, role_id) VALUES(2,1);
+insert into user_roles(user_id, role_id) VALUES(3,1);
+
+CREATE SEQUENCE seq_contact_user;
+CREATE TABLE Contact_user (
+    idContact_user VARCHAR(17) DEFAULT 'CCT_USER'||nextval('seq_contact_user') PRIMARY KEY,
+    idUser int,
+    contact VARCHAR(20),
+    type VARCHAR(10),
+    dateheure TIMESTAMP,
+    FOREIGN KEY (idUser) REFERENCES users(id)
+);
+
+insert into contact_user(idUser, contact, type, dateheure) VALUES(2, '034 56 123 89', 'numero', '2024-12-31T12:34:56');
+insert into contact_user(idUser, contact, type, dateheure) VALUES(3, '034 58 178 56', 'numero', '2024-12-31T12:34:56');
 
 CREATE SEQUENCE seq_annonce;
 CREATE TABLE annonce(
@@ -16,19 +60,26 @@ CREATE TABLE annonce(
     idUser int,
     idVoiture VARCHAR(17),
     prix FLOAT,
+    photo VARCHAR(300),
     dateheure TIMESTAMP,
     etat INT,
     FOREIGN KEY (idUser) REFERENCES users(id),
     FOREIGN KEY (idVoiture) REFERENCES voiture (idVoiture)
 );
 
-    INSERT INTO annonce (titre,descriptions,idUser,idVoiture,prix,dateheure,etat) VALUES 
-    ('Annonce 1',  'Bien',1,'VTR6', 5000,'2024-01-25T12:34:56',0),
-    ('Annonce 2',  'Bien',2,'VTR7', 5600,'2024-01-25T08:34:56',0),
-    ('Annonce 3',  'Bien',3,'VTR8', 9000,'2024-01-25T12:34:56',0),
-    ('Annonce 4',  'Bien',3,'VTR9', 4000,'2024-01-25T12:34:56',0),
-    ('Annonce 5',  'Bien',2,'VTR10',3200,'2024-01-25T12:34:56',0);
+CREATE SEQUENCE seq_photo_annonce;
+CREATE TABLE photo_annonce (
+    id int DEFAULT nextval('seq_photo_annonce') PRIMARY KEY,
+    idAnnonce VARCHAR(17),
+    image VARCHAR(250),
+    FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
+);
 
+
+INSERT INTO annonce (titre,descriptions,idUser,idVoiture,prix,dateheure,etat) VALUES 
+('Annonce 1',  'Bien',1,'VTR1', 5000,'2024-01-29T12:34:56',3),
+('Annonce 2',  'Bien',2,'VTR2', 5600,'2024-01-20T08:34:56',3),
+('Annonce 3',  'Bien',3,'VTR3', 9000,'2024-01-22T12:34:56',3);
 
 CREATE SEQUENCE seq_favori;
 CREATE TABLE favori(
@@ -40,23 +91,6 @@ CREATE TABLE favori(
     FOREIGN KEY (idUser) REFERENCES users(id),
     FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
 );
-
-INSERT INTO FAVORI (idUser,idAnnonce,dateheure,etat) VALUES 
-(1,'ANONC1', '2024-01-25T01:34:56',1),
-(1,'ANONC2', '2024-01-25T02:34:56',1),
-(1,'ANONC1', '2024-01-25T03:34:56',-1),
-(1,'ANONC1', '2024-01-25T04:34:56',1),
-(1,'ANONC2', '2024-01-25T05:34:56',-1),
-(2,'ANONC4', '2024-01-25T06:34:56',1),
-(2,'ANONC3', '2024-01-25T07:34:56',1),
-(2,'ANONC5', '2024-01-25T08:34:56',1),
-(2,'ANONC5', '2024-01-25T09:34:56',-1),
-(3,'ANONC1', '2024-01-25T10:34:56',1),
-(3,'ANONC2', '2024-01-25T11:34:56',1),
-(3,'ANONC3', '2024-01-25T12:34:56',1),
-(3,'ANONC4', '2024-01-25T13:34:56',1),
-(3,'ANONC4', '2024-01-25T14:34:56',-1);
-
 
 
 CREATE SEQUENCE seq_notif;
@@ -70,7 +104,6 @@ CREATE TABLE notif (
     FOREIGN KEY (idUser) REFERENCES users(id)
 );
 
-
 CREATE SEQUENCE seq_vente;
 CREATE TABLE vente (
     idVente VARCHAR(17) DEFAULT 'VENTE'||nextval('seq_vente') PRIMARY KEY,
@@ -82,14 +115,18 @@ CREATE TABLE vente (
     FOREIGN KEY (idAnnonce) REFERENCES annonce (idAnnonce)
 );
 
-
-
 CREATE SEQUENCE seq_commission;
 CREATE TABLE COMMISSION (
     idCommission VARCHAR(17) DEFAULT 'COMI'||nextval('seq_commission') PRIMARY KEY,
     commission double precision,
     dateheure TIMESTAMP
 );
+
+INSERT INTO commission (dateheure,commission) VALUES 
+('2024-01-25T01:34:56',20),
+('2024-01-28T01:34:56',25.5),
+('2024-01-29T03:34:56',43);
+
 
 CREATE SEQUENCE seq_negociation;
 CREATE TABLE negociation (
