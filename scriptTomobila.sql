@@ -75,7 +75,7 @@ CREATE SEQUENCE seq_vente;
 CREATE TABLE vente (
     idVente VARCHAR(17) DEFAULT 'VENTE'||nextval('seq_vente') PRIMARY KEY,
     idAnnonce VARCHAR(17) UNIQUE,
-    idUser VARCHAR(17),
+    idUser int,
     prix double precision,
     dateheure TIMESTAMP,
     FOREIGN KEY (idUser) REFERENCES users(id),
@@ -103,15 +103,11 @@ CREATE TABLE negociation (
 );
 
 INSERT INTO commission (dateheure,commission) VALUES 
-('2024-01-25T01:34:56',20),
-('2024-01-28T01:34:56',25.5),
-('2024-01-29T03:34:56',43);
+('2024-01-25T01:34:56',20);
 
 
-INSERT INTO VENTE (idAnnonce,dateheure) VALUES 
-('ANONC1', '2024-01-26T01:34:56'),
-('ANONC4', '2024-01-29T02:34:56'),
-('ANONC5', '2024-01-30T03:34:56');
+INSERT INTO VENTE (idAnnonce,idUser,prix,dateheure) VALUES 
+('ANONC6',2,2000, '2024-01-29T01:34:56');
 
 
 INSERT INTO users (id, username, email, dtn, sexe, password, dateheure)
@@ -135,6 +131,14 @@ CREATE TABLE Mois (
 );
 
 -- Utilisateur cette semaine et lastweek
+CREATE VIEW nbUsersLastWeek AS (
+SELECT
+  COUNT(*) AS nombre_inscrits
+FROM users
+WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
+);
+
+
 CREATE OR REPLACE VIEW nbUsersWeek AS (
 SELECT
   COUNT(*) AS nombre_inscrits,
@@ -143,32 +147,34 @@ FROM users
 WHERE TO_CHAR(dateheure, 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
 );
 
-CREATE VIEW nbUsersLastWeek AS (
-SELECT
-  COUNT(*) AS nombre_inscrits
-FROM users
-WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
-);
+
 
 -- Vente cette semaine et lastweek
+CREATE OR REPLACE VIEW VenteLastWeek AS (
+SELECT
+  case when sum(a.prix) is null then 0 else sum(v.prix) end as totalVente
+FROM vente v
+JOIN annonce a on a.idAnnonce = v.idAnnonce
+WHERE TO_CHAR(v.dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
+);
+
 CREATE OR REPLACE VIEW VenteWeek AS (
 SELECT
-  sum(a.prix) as totalVente,
+   case when sum(a.prix) is null then 0 else sum(v.prix) end as totalVente,
   (select totalVente from vENTELastWeek) as last
 FROM vente v
 JOIN annonce a on a.idAnnonce = v.idAnnonce
 WHERE TO_CHAR(v.dateheure, 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
 );
 
-CREATE VIEW VenteLastWeek AS (
+--Annonce Ajoute cette semaine et lastweek
+CREATE VIEW nbAnnonceLastWeek AS (
 SELECT
-  sum(a.prix) as totalVente
-FROM vente v
-JOIN annonce a on a.idAnnonce = v.idAnnonce
-WHERE TO_CHAR(v.dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
+  COUNT(*) AS nombre
+FROM annonce
+WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
 );
 
---Annonce Ajoute cette semaine et lastweek
 
 CREATE OR REPLACE VIEW nbAnnonceWeek AS (
 SELECT
@@ -178,12 +184,6 @@ FROM annonce
 WHERE TO_CHAR(dateheure, 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
 );
 
-CREATE VIEW nbAnnonceLastWeek AS (
-SELECT
-  COUNT(*) AS nombre
-FROM annonce
-WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
-);
 
 -- Commision et  VENTE
 CREATE OR REPLACE VIEW V_vente_Commission as ( 
@@ -201,19 +201,19 @@ ON vu.idvente = v.idvente and vu.dateheure = c.dateheure
 );
 
 -- COMMISION CETte semaine et la semaine dereniere
+CREATE OR REPLACE VIEW CommissionLastWeek AS (
+SELECT
+  case when sum(benefice) is null then 0 else sum(benefice) end as benefice
+FROM V_vente_Commission
+WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
+);
+
 CREATE OR REPLACE VIEW CommissionWeek AS (
 SELECT
-  sum(benefice) as benefice,
+  case when sum(benefice) is null then 0 else sum(benefice) end as benefice,
   (select benefice from CommissionLastWeek) as last
 FROM V_vente_Commission
 WHERE TO_CHAR(dateheure, 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
-);
-
-CREATE VIEW CommissionLastWeek AS (
-SELECT
-  sum(benefice) as benefice
-FROM V_vente_Commission
-WHERE TO_CHAR(dateheure + INTERVAL '1 week', 'IYYY-IW') = TO_CHAR(CURRENT_DATE, 'IYYY-IW')
 );
 
 -- lisTE DES MEILLEURS VENTE
@@ -228,24 +228,24 @@ JOIN modele m on vo.idmodele = m.idmodele
 LIMIT 5
 );
 
-INSERT INTO Mois (libelle) VALUES
-    ('Janvier'),
-    ('Fevrier'),
-    ('Mars'),
-    ('Avril'),
-    ('Mai'),
-    ('Juin'),
-    ('Juillet'),
-    ('Aout'),
-    ('Septembre'),
-    ('Octobre'),
-    ('Novembre'),
-    ('Decembre');
+INSERT INTO Mois (libelle,numero) VALUES
+    ('Janvier',1),
+    ('Fevrier',2),
+    ('Mars',3),
+    ('Avril',4),
+    ('Mai',5),
+    ('Juin',6),
+    ('Juillet',7),
+    ('Aout',8),
+    ('Septembre',9),
+    ('Octobre',10),
+    ('Novembre',11),
+    ('Decembre',12);
 
 -- View moi
 create view v_mois as (
 select mois.libelle,mois.numero as mois,EXTRACT(YEAR FROM CURRENT_DATE) as annee from mois 
-)
+);
 
 -- Prix de vente et commission par mois
 create view stat_PrixCommission as ( 
@@ -280,8 +280,8 @@ on EXTRACT(YEAR FROM u.dateheure) = v.annee and EXTRACT(MONTH FROM u.dateheure) 
 group by vu.libelle,vu.mois
 );
 
-create view stat_AnnonceUser as ( 
-select su.libelle,su.mois,su.nombre as user,sa.nombre as annonce from stat_user su
+create or replace view stat_AnnonceUser as ( 
+select su.libelle,su.mois,su.nombre as user,sa.nombre as annonce, rank() OVER (ORDER BY su.mois asc) AS rank_num from stat_user su
 join stat_annonce sa on sa.mois = su.mois
 );
 
