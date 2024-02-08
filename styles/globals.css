@@ -115,3 +115,69 @@ img.mfp-img {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.avatar-box {
+  position: absolute;
+  top: calc(100% + 10px); /* Position it below the avatar */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 999; 
+  cursor: pointer;
+}
+
+#mine-too{
+  margin-bottom: 5%;
+}
+
+.mine{
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 2px;
+  align-items: center;
+}
+.minebout{
+  transform: translateX(65px);
+  background-color: #df1932;
+  padding: 2% 7%;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.user-info {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.user-details {
+  width: 100%;
+  max-width: 400px; /* Largeur maximale pour mieux centrer sur de grands écrans */
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail strong {
+  margin-right: 10px;
+  width: 100px;
+  font-weight: bold;
+}
+
+.detail span {
+  font-size: 16px;
+}

@@ -1,16 +1,25 @@
 import Link from "next/link";
+import { useState } from "react";
+
 
 export function Suggestion({user,duree,model,prix,contact}){
+   
+    const [headerColor, setHeaderColor] = useState('gray');
+
+    const handleClick = () => {
+        const newColor = headerColor === 'gray' ? 'red' : 'gray';
+        setHeaderColor(newColor);
+    }
+
     return(
-          <Link href={`product-details`}>
+        
         <div className="listing-item listing-grid-item-two" style={{cursor:'pointer'}}>
+        <Link href={`product-details`}>
         <div className="listing-thumbnail">
           <img
-            
             src="assets/images/listing/mavoiture.jpg"
             alt="Listing Image"
           />
-         
           <span className="featured-btn">il y a 2{duree}</span>
           <ul className="ratings ratings-two">
             <li className="star">
@@ -26,6 +35,7 @@ export function Suggestion({user,duree,model,prix,contact}){
             </li>
           </ul>
         </div>
+        </Link>
         <div className="listing-content">
           <h3 className="title">
             {/* <Link href="/listing-details-1"> */}
@@ -46,14 +56,14 @@ export function Suggestion({user,duree,model,prix,contact}){
               </li>
               <li>
                 <span>
-                  <i className="ti-heart"></i>
-                  <a href="#">Favoris</a>
+                  <i className="ti-heart" onClick={handleClick} style={{color: headerColor}}></i>
+                  <a href="#" style={{color: headerColor}}>Favoris</a>
                 </span>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      </Link>
+     
     );
 }

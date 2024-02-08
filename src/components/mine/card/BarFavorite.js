@@ -13,11 +13,10 @@ export function BarFavorite() {
                       />
                     </div>
                     <div className="content">
-                      <span className="cat-btn">Restaurant</span>
-                      <h3>Food Corner</h3>
+                      <span className="cat-btn">citadine</span>
+                      <h3>Peugeot 308</h3>
                       <p className="tag">
-                        <a href="#">Popular restaurant</a>,
-                        <a href="#">California</a>
+                        <a href="#">Prix: 200.000.000ar</a>
                       </p>
                     </div>
                   </div>
@@ -31,14 +30,14 @@ export function BarFavorite() {
                       <ul>
                         <li>
                           <span>
-                            <i className="ti-location-pin" />
-                            California, USA
+                            <i className="ti-user" />
+                            Par: Jeremia RAFANO
                           </span>
                         </li>
                         <li>
                           <span>
                             <i className="ti-tablet" />
-                            <a href="tel:+982653652-05">+98 (265) 3652 - 05</a>
+                            <a href="tel:+982653652-05">034 12 040 35</a>
                           </span>
                         </li>
                       </ul>

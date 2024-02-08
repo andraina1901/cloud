@@ -15,10 +15,7 @@ const ListingGrid = () => {
             <div className="col-lg-4">
               <div className="sidebar-widget-area">
                 <div className="widget search-listing-widget mb-30 wow fadeInUp">
-                  <h4 className="widget-title">Filter Search</h4>
-                  <form onSubmit={(e) => e.preventDefault()}>
-                    <div className="search-form">
-                      <div className="form_group">
+                <div className="form_group">
                         <input
                           type="search"
                           className="form_control"
@@ -28,6 +25,11 @@ const ListingGrid = () => {
                         />
                         <i className="ti-search" />
                       </div>
+                      
+                  <h4 className="widget-title">Marques/Models</h4>
+                  <form onSubmit={(e) => e.preventDefault()}>
+                    <div className="search-form">
+                     
                       <div className="form_group">
                         <select className="wide">
                           <option disabled selected="Category">
@@ -58,40 +60,10 @@ const ListingGrid = () => {
                           <option value={8}>Bangkok</option>
                         </select>
                       </div>
-                      <div className="form_group">
-                        <select className="wide">
-                          <option disabled selected="By Country">
-                            By Country
-                          </option>
-                          <option value={1}>Bangladesh</option>
-                          <option value={2}>India</option>
-                          <option value={3}>Pakistan</option>
-                          <option value={4}>Italy</option>
-                          <option value={5}>America</option>
-                          <option value={6}>London</option>
-                          <option value={7}>Swizerland</option>
-                          <option value={8}>Thailand</option>
-                        </select>
-                      </div>
-                      <div className="form_group">
-                        <select className="wide">
-                          <option disabled selected="By place">
-                            By place
-                          </option>
-                          <option value={1}>Dhaka</option>
-                          <option value={2}>Delhi</option>
-                          <option value={3}>lahore</option>
-                          <option value={4}>Rome</option>
-                          <option value={5}>New york</option>
-                          <option value={6}>Pris</option>
-                          <option value={7}>Bern</option>
-                          <option value={8}>Bangkok</option>
-                        </select>
-                      </div>
                     </div>
                     <div className="price-range-widget">
-                      <h4 className="widget-title">Around Distance: 50 km</h4>
-                      <RangeSlider />
+                    <h4 className="widget-title">Caractéristiques</h4>
+                    <RangeSlider />
 
                       <select className="wide">
                         <option disabled selected="Default price">

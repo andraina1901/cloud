@@ -1,8 +1,44 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { About, Blog, Contact, Home, Listing, Pages } from "../Menu";
+import { useRouter } from "next/router";
+import { request, setAuthHeader } from "../../helpers/axios_helper";
 
 const Header2 = () => {
+
+
+  const router = useRouter(); // Initialisez le routeur
+
+  const [isAvatarBoxOpen, setIsAvatarBoxOpen] = useState(false);
+
+  const toggleAvatarBox = () => {
+    setIsAvatarBoxOpen(!isAvatarBoxOpen);
+  };
+  const [username, setUsername] = useState(""); // État pour le nom d'utilisateur
+  const [password, setPassword] = useState(""); // État pour le mot de passe
+  
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      request("POST", "/auth/signin", {
+        username: "utilisateur1",
+        password: "motdepasse1",
+      })
+        .then((response) => {
+          setAuthHeader(response.data.accessToken);
+         
+          router.push("/profile");
+        })
+        .catch((error) => {
+          console.log("Erreur de connexion");
+          // setErrorBorderColor("red"); 
+          setAuthHeader(null);
+        }).finally(() => {
+          // setLoading(false);
+        });
+      
+  };
+
+
   return (
     <header className="header-area header-area-two d-none d-xl-block">
       <div className="header-navigation">
@@ -28,7 +64,7 @@ const Header2 = () => {
                   </div>
                   <nav className="main-menu">
                     <ul>
-                      <Home/>
+                      <Home />
                       <li className="menu-item has-children">
                         <a href="#">Listings</a>
                         <ul className="sub-menu">
@@ -86,28 +122,56 @@ const Header2 = () => {
                       </Link>
                     </li>
                     <li className="user-btn">
-                      <Link href="/">
-                        <a className="icon">
-                          <i className="flaticon-avatar"></i>
-                        </a>
-                      </Link>
-                    </li>
-                     <li className="hero-nav-btn">
-                      {/* <Link href="/add-listing">
-                        <a className="main-btn icon-btn">Add Listing</a>
-                      </Link> */}
-                        <div className="input-with-icon">
-                          <input
-                            type="text"
-                            className="form_control"
-                            placeholder="Entrez votre mot clé"
-                            name="location"
-                            style={{border: '1px solid gray', borderRadius: '50px', paddingLeft: '40px'}}
-                          />
-                          <i className='ti-search search-icon'></i>
+                      <a className="icon" onClick={toggleAvatarBox} style={{cursor: 'pointer'}}>
+                        <i className="flaticon-avatar"></i>
+                      </a>
+                      {isAvatarBoxOpen && (
+                        <div className="avatar-box" >
+                          <form style={{padding: '20px'}} onSubmit={handleSubmit}>
+                            <h4 id="mine-too">Login</h4>
+                            <div className="form-group">
+                              <input
+                                type="text"
+                                className="mine"
+                                id="username"
+                                placeholder="Enter your username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)} // Mise à jour de l'état du nom d'utilisateur lors de la saisie
+                                required
+                              />
+                            </div>
+                            <div className="form-group">
+                              <input
+                                type="password"
+                                className="mine"
+                                id="password"
+                                placeholder="Enter your password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)} // Mise à jour de l'état du mot de passe lors de la saisie
+                                required
+                              />
+                            </div>
+                            <button type="submit" className="minebout">Login</button>
+                          </form>
                         </div>
-
-                    </li> 
+                      )}
+                    </li>
+                    <li className="hero-nav-btn">
+                      <div className="input-with-icon">
+                        <input
+                          type="text"
+                          className="form_control"
+                          placeholder="Entrez votre mot clé"
+                          name="location"
+                          style={{
+                            border: "1px solid gray",
+                            borderRadius: "50px",
+                            paddingLeft: "40px",
+                          }}
+                        />
+                        <i className="ti-search search-icon"></i>
+                      </div>
+                    </li>
                     <li className="nav-toggle-btn">
                       <div className="navbar-toggler">
                         <span></span>
@@ -125,4 +189,5 @@ const Header2 = () => {
     </header>
   );
 };
+
 export default Header2;

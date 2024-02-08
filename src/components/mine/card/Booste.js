@@ -1,13 +1,21 @@
 import Link from "next/link";
+import { useState } from "react";
 
 export function Booste({user,duree,model,prix,contact}){
+    const [headerColor, setHeaderColor] = useState('gray');
+
+    const handleClick = () => {
+        const newColor = headerColor === 'gray' ? 'red' : 'gray';
+        setHeaderColor(newColor);
+    }
     return(
-        <Link href={`product-details`}>
         <div className="col-lg-4 col-md-6 col-sm-12"  style={{cursor:'pointer'}}>
         <div
           className="listing-item listing-grid-one mb-45 wow fadeInUp"
           dta-wow-delay="10ms"
         >
+            
+        <Link href={`product-details`}>
           <div className="listing-thumbnail">
             <img
               src="assets/images/listing/mavoiture.jpg"
@@ -27,6 +35,7 @@ export function Booste({user,duree,model,prix,contact}){
               <span className="status st-open">il y a {duree}</span>
             </div>
           </div>
+          </Link>
           <div className="listing-content">
             <h3 className="title">
                 <a>{model}</a>
@@ -45,8 +54,8 @@ export function Booste({user,duree,model,prix,contact}){
                 </li>
                 <li>
                   <span>
-                    <i className="ti-heart"></i>
-                    <a href="#">Favori</a>
+                    <i className="ti-heart" onClick={handleClick} style={{color: headerColor}}></i>
+                    <a href="#" style={{color: headerColor}}>Favori</a>
                   </span>
                 </li>
               </ul>
@@ -54,6 +63,6 @@ export function Booste({user,duree,model,prix,contact}){
           </div>
         </div>
       </div>
-        </Link>
+      
     );
 }
