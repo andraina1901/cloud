@@ -64,9 +64,9 @@ function Header({ onTabChange }) {
                 onChange={handleSetTabValue}
                 sx={{ background: "transparent" }}
               >
-                <Tab label="Toutes"  />
+                {/* <Tab label="Toutes"  /> */}
                 <Tab label="En attente" />
-                <Tab label="Refusees"  />
+                {/* <Tab label="Refusees"  /> */}
               </Tabs>
             </AppBar>
           </Grid>

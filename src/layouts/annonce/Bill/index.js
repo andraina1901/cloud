@@ -7,14 +7,22 @@ import SoftAvatar from "components/SoftAvatar";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
+import { validerAnnonce } from "../data/annonce";
+import { useState } from "react";
 
-function Bill({ principal,user,voiture,date,prix}) {
+function Bill({myId,principal,user,voiture,date,prix}) {
   const navigate = useNavigate();
-  const id = 0;
-
+  const [validationDone, setValidationDone] = useState(false);
   const handleClick = () => {
-    navigate(`/detail/${id}`);
+    navigate(`/detail/${myId}`);
   };
+
+  const handleValider  = () => {
+    validerAnnonce(myId).then((response)=>{
+      setValidationDone(true); 
+    }).catch((error)=>{
+    })
+  }
 
   return (
     <SoftBox
@@ -67,8 +75,14 @@ function Bill({ principal,user,voiture,date,prix}) {
                 </SoftTypography>
               </SoftBox>
             </SoftBox>
+            <SoftBox mt={4}>
+          <SoftButton variant={validationDone ? "success" : "gradient"} color={validationDone ? "green" : "dark"} onClick={handleValider} disabled={validationDone}>
+            &nbsp;{validationDone ? 'Validé' : 'Valider'}
+          </SoftButton>
+        </SoftBox>
 
               <SoftBox mt={4}>
+                
                 <SoftButton variant="gradient" color="dark" onClick={handleClick}>
                   &nbsp;Voir details
                 </SoftButton>
@@ -82,6 +96,8 @@ function Bill({ principal,user,voiture,date,prix}) {
 
 // Typechecking props for the Bill
 Bill.propTypes = {
+  key: PropTypes.string.isRequired,
+  myId: PropTypes.string.isRequired,
   principal: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   voiture: PropTypes.string.isRequired,

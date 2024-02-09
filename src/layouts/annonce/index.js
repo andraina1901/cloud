@@ -16,7 +16,15 @@ import Header from "./components/Header";
 
 
 function Annonce() {
-  
+  const [cards, setCards] = useState([]);
+  useEffect (() => {
+    getAnnonce().then((response)=>{
+      setCards(response.rows.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
 
   return (
     <DashboardLayout>
@@ -27,7 +35,7 @@ function Annonce() {
           <SoftBox my={1}>
               <Grid ml={6} mr={-12} container spacing={3} style={{width: 'calc(100% + 1000px)'}}>
                 <Grid item xs={12} md={7}>
-                  <BillingInformation rows={getAnnonce().rows}/>
+                  <BillingInformation rows={cards}/>
                 </Grid>
               </Grid>
           </SoftBox>

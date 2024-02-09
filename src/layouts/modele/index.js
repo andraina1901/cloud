@@ -59,8 +59,9 @@ function Modele() {
 
   const handleAddModel = async (formData) => {
     const rep = await addModel(formData);
-    const newModeleItem = { id: uuidv4(), ...formData };
-    setNewModele([...newModel, newModeleItem]);
+
+    // const newModeleItem = { id: uuidv4(), ...rep };
+    setNewModel([...newModel, rep]);
     setIsModalOpen(false);
   };
 
@@ -121,7 +122,7 @@ function Modele() {
               {displayedCards.map((item) => (
                 <Grid key={item.idModele} item xs={12} md={6} xl={3}>
                   <DefaultProjectCard
-                    image={team1}
+                    image={item.photo}
                     modele={item.nomModele}
                     marque={item.marque.nomMarque}
                     categorie={item.categorie.nomCategorie}

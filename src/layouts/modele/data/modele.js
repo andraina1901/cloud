@@ -46,7 +46,7 @@ export async function updateModel(id,nom) {
 export async function addModel(nom) {
 
   try {
-    const vaovao = await upload(`/modeles/add`, nom);
+    const vaovao = await request('POST',`/modeles/add`, nom,'multipart/form-data');
     return vaovao.data;
   } catch (error) {
     throw error; 

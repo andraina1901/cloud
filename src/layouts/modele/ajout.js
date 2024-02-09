@@ -37,16 +37,7 @@ function Ajout_modele({addModel}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Récupérez les valeurs du formulaire
-    // const formData = {
-    //   modele: e.target.elements.model.value,
-    //   categorie: e.target.elements.categorie.value,
-    //   marque: e.target.elements.marque.value,
-    //   annee: e.target.elements.annee.value,
-    //   porte: e.target.elements.porte.value,
-    //   place: e.target.elements.place.value,
-    // };
+
     const formData = new FormData();
     formData.append('nommodele', e.target.elements.model.value);
     formData.append('idcategorie', e.target.elements.categorie.value);

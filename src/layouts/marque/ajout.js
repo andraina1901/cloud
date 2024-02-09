@@ -6,19 +6,29 @@ import SoftTypography from "components/SoftTypography";
 import { Button, Select, MenuItem, FormControl, Input, TextField} from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import InputAdornment from '@mui/material/InputAdornment';
-import { getPays } from "./data/marque";
+import { addMarque, getPays } from "./data/marque";
 
 
-function Ajout_marque({addMarque}) {
+function Ajout_marque({addeMarque}) {
+  const [file,setFile] = useState(null);
+  const handleFileChange = (e) =>{
+    console.log(e.target.files[0]);
+    setFile(e.target.files[0]);
+  }; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
       nomMarque: e.target.elements.marque.value,
-      idPays: e.target.elements.pays.value,
-      photo: e.target.elements.photo.value,
+      paysMarque: e.target.elements.pays.value,
+      file: file,
     };
-    addMarque(formData);
+    addMarque(formData).then((response)=>{
+      addeMarque(response);
+    }).catch((error)=>{
+      console.log(error);
+    });
+    
   };
 
   const [cards, setCards] = useState([]);
@@ -73,6 +83,7 @@ function Ajout_marque({addMarque}) {
               name="photo"
               style={{ display: 'none' }}
               inputProps={{ capture: 'camera' }}
+              onChange={handleFileChange}
             />
           </SoftBox>
 
@@ -88,6 +99,6 @@ function Ajout_marque({addMarque}) {
   );
 }
 Ajout_marque.propTypes = {
-  addMarque: PropTypes.object.isRequired,
+  addeMarque: PropTypes.object.isRequired,
 }
 export default Ajout_marque;
