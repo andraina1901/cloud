@@ -1,0 +1,48 @@
+/* MonComposant.css */
+
+/* Styles du spinner */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db; /* Couleur du spinner */
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite; /* Animation de rotation */
+    
+    /* Ajout des propriétés pour centrer le spinner */
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Animation de rotation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Styles du bouton */
+  button {
+    /* Ajoutez vos styles de bouton ici */
+  }
+  
+  /* Styles du bouton pendant le chargement */
+  button.loading {
+    position: relative;
+    top: 0;
+    cursor: not-allowed;
+    background-color: #516D70;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    width: 100%;
+    height: 50px;
+  }
+  
+  /* Positionne le spinner au centre du bouton */
+  button.loading .spinner {
+    transform: translate(-50%, -50%);
+  }
+  

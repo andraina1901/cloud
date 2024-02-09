@@ -1,0 +1,17 @@
+.swiper-container {
+    border-radius: 12px;
+}
+
+.swiper-container.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+}
+
+.swiper-container.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #698aff;
+}
+
+.image-preview .swiper-slide img {
+    width: 100%;
+    border-radius: 12px;
+}

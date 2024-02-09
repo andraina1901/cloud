@@ -31,6 +31,8 @@ import com.codex.tomobilina.repository.RoleRepository;
 import com.codex.tomobilina.repository.UserRepository;
 import com.codex.tomobilina.security.jwt.JwtUtils;
 import com.codex.tomobilina.security.services.UserDetailsImpl;
+import java.sql.Timestamp;
+import java.util.Date;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,7 +57,7 @@ public class AuthController {
   JwtUtils jwtUtils;
 
   @PostMapping("/signin")
-  public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+  public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
 
     Authentication authentication = authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -76,7 +78,11 @@ public class AuthController {
   }
 
   @PostMapping("/signup")
-  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+  public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
+    Date currentDate = new Date();
+    // Convertir la date en timestamp
+    Timestamp dateheure = new Timestamp(currentDate.getTime());
+    signUpRequest.setDateheure(dateheure);
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
           .badRequest()

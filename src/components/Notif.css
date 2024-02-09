@@ -1,0 +1,55 @@
+.notifi-wrap {
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.notifi-wrap .image {
+    padding-top: 15px;
+    position: relative;
+    float: left;
+    margin-right: 15px;
+}
+
+.notifi-wrap .image img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.notifi-wrap .image .unread-symbol {
+    position: absolute;
+    top: 5;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: #01cfb0;
+    border-radius: 50%;
+    border: 3px solid #f5f5f9;
+}
+
+.notifi-wrap .text-right h6 {
+    margin-bottom: 5px;
+}
+
+.notifi-wrap .text-right h6 span {
+    font-weight: 300;
+    color: #888;
+}
+
+.notifi-wrap .text-right h6 a {
+    font-weight: 400;
+    color: #698aff;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.text-extra-small {
+    font-size: 10px;
+}
+
+.separator-large {
+    height: 30px;
+}

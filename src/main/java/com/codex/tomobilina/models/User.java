@@ -39,7 +39,7 @@ public class User {
 
   private Timestamp dateheure;
 
-  @ManyToMany(fetch = FetchType.LAZY)
+  @ManyToMany(fetch = FetchType.EAGER)
   @JoinTable(  name = "user_roles", 
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -49,8 +49,8 @@ public class User {
         this.id = id;
     }
 
-  public User() {
-  }
+    public User() {
+    }
 
   public User(String username, String email, Date dtn, int sexe, String password, Timestamp dateheure) {
     this.username = username;

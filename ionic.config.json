@@ -1,0 +1,7 @@
+{
+  "name": "TomobilinaMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

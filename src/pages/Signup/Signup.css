@@ -1,0 +1,30 @@
+.contenuSignup {
+    background-color: #eeeef2;
+}
+
+.signupPage ion-toolbar {
+    --border-style: none;
+    --border-color: transparent;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+}
+
+.headingText h5 {
+    margin-top: 0.2rem;
+    color: #188cd4;
+}
+
+.signupbutton {
+    background-color: #516D70;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.item-media ion-icon {
+    font-size: 20px;
+}

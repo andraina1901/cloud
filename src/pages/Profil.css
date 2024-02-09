@@ -1,0 +1,145 @@
+.tab-profile {
+    background-color: #eeeef2;
+    will-change: scroll-position;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 50px;
+    overflow-x: hidden;
+}
+
+.separator-extra-large {
+    height: 80px;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.header-profile {
+    background: #fff;
+    border-radius: 18px;
+    padding: 15px;
+    text-align: center;
+}
+
+.header-profile img {
+    width: 100px;
+    border-radius: 18px;
+    margin: auto;
+    margin-bottom: 15px;
+    position: relative;
+    top: -60px;
+    margin-bottom: -45px;
+}
+
+.header-profile .title-name h4 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.profile-statistic {
+    position: relative;
+}
+
+.profile-statistic .line-divider {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    font-size: 35px;
+    width: 1px;
+    height: 30px;
+    background: #ddd;
+}
+
+.profile-media {
+    margin: 0px;
+}
+
+.profile-media li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.profile-media li a {
+    width: 45px;
+    height: 45px;
+    line-height: 55px;
+    display: inline-block;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.profile-media li a ion-icon {
+    color: #fff;
+    font-size: 20px;
+}
+
+.separator-medium {
+    height: 20px;
+}
+
+.bg-blue {
+    background: #4da6d2 !important;
+}
+
+.bg-red {
+    background: #ff6c4a !important;
+}
+
+.bg-gray {
+    background: #888;
+}
+
+.contact-button button {
+    background: #01cfb0;
+    border-radius: 8px;
+    padding: 0 15px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: none;    
+    width: 100%;
+}
+
+.item-content {
+    padding-left: 15px;
+}
+
+.item-content {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    min-height: var(--f7-list-item-min-height);
+    padding-left: calc(var(--f7-list-item-padding-horizontal) + var(--f7-safe-area-left));
+}
+
+.item-inner::after {
+    display: none;
+}
+
+.item-link .item-inner::after {
+    display: none;
+}
+
+.item-media ion-icon {
+    font-size: 20px;
+}
+
+.item-title {
+    font-size: 25px;
+    font-weight: 500;
+    color: #383e50;
+}
+
+.color-blue {
+    color: #4da6d2 !important;
+}
