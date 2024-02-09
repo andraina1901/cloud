@@ -19,11 +19,11 @@ export function MarqueSlide() {
               {...ClientSliderOne}
               className="client-slider-one wow fadeInDown"
             >
-            <MarqueItem src={"assets/images/client/01.png"}/>
-            <MarqueItem src={"assets/images/client/01.png"}/>
-            <MarqueItem src={"assets/images/client/01.png"}/>
-            <MarqueItem src={"assets/images/client/01.png"}/>
-            <MarqueItem src={"assets/images/client/01.png"}/>
+            <MarqueItem src={"assets/images/logo/toyota.png"}/>
+            <MarqueItem src={"assets/images/logo/mercedes.png"}/>
+            <MarqueItem src={"assets/images/logo/bmw.png"}/>
+            <MarqueItem src={"assets/images/logo/audi.png"}/>
+            <MarqueItem src={"assets/images/logo/hyundai.png"}/>
             </Slider>
           </div>
         </div>

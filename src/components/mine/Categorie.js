@@ -9,11 +9,11 @@ export function Categorie() {
             <div className="row no-gutters">
 
                 <OneCategorie nom="citadine"/>
-                <OneCategorie nom="citadine"/>
-                <OneCategorie nom="citadine"/>
-                <OneCategorie nom="citadine"/>
-                <OneCategorie nom="citadine"/>
-                <OneCategorie nom="citadine"/>
+                <OneCategorie nom="crossover"/>
+                <OneCategorie nom="berline"/>
+                <OneCategorie nom="break"/>
+                <OneCategorie nom="mini-bus"/>
+                <OneCategorie nom="coupe"/>
 
               
             </div>

@@ -6,7 +6,7 @@ export function OneCategorie({nom}) {
         <div className="category-item category-item-one">
                 <div className="info text-center">
                 <div className="icon">
-                    <i className="flaticon-government"></i>
+                    <i className="ti-car"></i>
                 </div>
                 <h6>{nom}</h6>
                 </div>

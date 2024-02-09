@@ -13,8 +13,9 @@ export const setAuthHeader = (token) => {
     }
 };
 // https://testupload-production-2380.up.railway.app
+// https://cloud-production-2831.up.railway.app/tomobilina
 // http://172.10.0.33:8080
-axios.defaults.baseURL = 'https://cloud-production-2831.up.railway.app/tomobilina';
+axios.defaults.baseURL = 'http://192.168.88.69:8080/tomobilina';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export  function request (method, url, data){

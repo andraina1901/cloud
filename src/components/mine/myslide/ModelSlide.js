@@ -20,11 +20,11 @@ export function ModelSlide(){
             className="place-slider-one wow fadeInDown"
           >
 
-           <ModelItem src={"assets/images/place/place-2.jpg"} libelle={"Peugeot 208"}/>
-           <ModelItem src={"assets/images/place/place-2.jpg"} libelle={"Hyundai starex"}/>
-           <ModelItem src={"assets/images/place/place-2.jpg"} libelle={"Toyota corolla"}/>
-           <ModelItem src={"assets/images/place/place-2.jpg"} libelle={"Renault zoe"}/>
-           <ModelItem src={"assets/images/place/place-2.jpg"} libelle={"Renault megane"}/>
+           <ModelItem src={"assets/images/logo/308.webp"} libelle={"Peugeot 308"}/>
+           <ModelItem src={"assets/images/logo/Audi.webp"} libelle={"Audi A3"}/>
+           <ModelItem src={"assets/images/logo/corolla.jpg"} libelle={"Toyota corolla"}/>
+           <ModelItem src={"assets/images/logo/classa.png"} libelle={"Mercedes Class A"}/>
+           <ModelItem src={"assets/images/logo/zoe.png"} libelle={"Renault zoe"}/>
           
 
           </Slider>

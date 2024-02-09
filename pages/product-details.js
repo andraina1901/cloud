@@ -32,14 +32,42 @@ const ProductDetails = () => {
                     Marque
                   </p> */}
                   <div className="product-meta">
-                    <div className="listing-meta">
-                      <ul>
-                        <li>
+
+                    <span className="category">
+                      <span className="title">Categorie: </span>
+                      <a href="#">Berline</a>
+                    </span>
+                    <span className="tags">
+                      <span className="title">Marque:</span>
+                      <a href="#">Peugeot</a>
+                    </span>
+                    <span className="tags">
+                      <span className="title">Kilometrage:</span>
+                      <a href="#">10.000km</a>
+                    </span>
+                    <span className="tags">
+                      <span className="title">Energie:</span>
+                      <a href="#">Essence</a>
+                    </span>
+                     <span className="tags">
+                      <span className="title">Boite de vitesse:</span>
+                      <a href="#">Automatique</a>
+                    </span>
+                    <span className="tags">
+                      <span className="title">Consommation:</span>
+                      <a href="#">13L/100km</a>
+                    </span>
+
+                  </div>
+                  
+                  <div className="listing-meta">
+                      <ul className="row">
+                        <li className="col-lg-4">
                           <span>
                               <i className="ti-shopping-cart"></i>Ajouter
                             </span>
                         </li>
-                        <li>
+                        <li className="col-lg-4">
                           <span>
                             <i className="ti-heart" onClick={handleClick} style={{color: headerColor}}></i>
                             <a href="#" style={{color: headerColor}}>Favoris</a>
@@ -47,25 +75,17 @@ const ProductDetails = () => {
                         </li>
                       </ul>
                     </div>
-                    <span className="variation">
-                      <span className="title">Color:</span>
-                      <span className="color color-1" />
-                      <span className="color color-2" />
-                      <span className="color color-3" />
-                      <span className="color color-4" />
-                    </span>
-                    <span className="category">
-                      <span className="title">Category:</span>
-                      <a href="#">Light</a>,<a href="#">Titan</a>,
-                      <a href="#">Plastic</a>
-                    </span>
-                    <span className="tags">
-                      <span className="title">Tags:</span>
-                      <a href="#">elcctric</a>,<a href="#">modern</a>,
-                      <a href="#">lase</a>
-                    </span>
                   </div>
-                </div>
+
+                  <div style={{marginTop: '5%'}}>
+                      <ul className="row">
+                        <li className="col-lg-4">
+                        <a className="main-btn icon-btn">Contacter</a>
+                    
+                        </li>
+                      </ul>
+                  </div>
+
               </div>
             </div>
           </div>

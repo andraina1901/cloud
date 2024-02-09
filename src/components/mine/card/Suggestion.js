@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-export function Suggestion({user,duree,model,prix,contact}){
+export function Suggestion({src,user,duree,model,prix,contact}){
    
     const [headerColor, setHeaderColor] = useState('gray');
 
@@ -17,10 +17,11 @@ export function Suggestion({user,duree,model,prix,contact}){
         <Link href={`product-details`}>
         <div className="listing-thumbnail">
           <img
-            src="assets/images/listing/mavoiture.jpg"
+            src={src}
             alt="Listing Image"
+            // style={{width: '500px',height:'00px'}}
           />
-          <span className="featured-btn">il y a 2{duree}</span>
+          <span className="featured-btn">il y a {duree}</span>
           <ul className="ratings ratings-two">
             <li className="star">
               <i className="ti-user"></i>

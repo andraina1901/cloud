@@ -63,7 +63,7 @@ export const Blog = () => (
 export const Contact = () => (
   <Fragment>
     <li className="menu-item">
-      <Link href="/contact">Contact</Link>
+      <Link href="/contact">Message</Link>
     </li>
   </Fragment>
 );

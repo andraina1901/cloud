@@ -15,6 +15,7 @@ export function Listing() {
           <div className="row">
            
             <Booste
+                src={"assets/images/listing/mavoiture.jpg"}
                 user={'Liantsoa'}
                 duree={'2mois'}
                 model={'Peugeot 208'}
@@ -22,6 +23,7 @@ export function Listing() {
                 contact={'034 12 040 35'}
             />
              <Booste
+                src={"assets/images/listing/mavoiture2.jpg"}
                 user={'Liantsoa'}
                 duree={'2mois'}
                 model={'Peugeot 208'}

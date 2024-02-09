@@ -20,11 +20,11 @@ const Header2 = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       request("POST", "/auth/signin", {
-        username: "utilisateur1",
-        password: "motdepasse1",
+        login: "andraina@gmail.com",
+        password: "Liantsoa",
       })
         .then((response) => {
-          setAuthHeader(response.data.accessToken);
+          setAuthHeader(response.token);
          
           router.push("/profile");
         })

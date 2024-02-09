@@ -16,6 +16,7 @@ const ListingDetails1 = () => {
       <section className="page-breadcrumbs page-breadcrumbs-one pt-120 pb-70">
         <div className="container">
           <div className="breadcrumbs-wrapper-one">
+            <h3 style={{marginBottom: '5%'}}>Liste des favoris</h3>
             <BarFavorite/>
             <BarFavorite/>
             <BarFavorite/>

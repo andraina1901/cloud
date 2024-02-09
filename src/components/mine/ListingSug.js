@@ -18,29 +18,25 @@ export function ListingSug() {
             className="listing-slider-one wow fadeInDown"
           >
             <Suggestion 
-                user={'Liantsoa'}
+              src={"assets/images/listing/mavoiture.jpg"}
+                user={'Tommy Leo'}
                 duree={'2mois'}
                 model={'Peugeot 208'}
                 prix={'20.000.000'}
                 contact={'034 12 040 35'}
             />
             <Suggestion
-                user={'Liantsoa'}
-                duree={'2mois'}
-                model={'Peugeot 208'}
+            src={"assets/images/listing/mavoiture2.jpg"}
+                user={'Jeremia'}
+                duree={'7jours'}
+                model={'Cabriolet'}
                 prix={'20.000.000'}
                 contact={'034 12 040 35'}
             />
             <Suggestion
+            src={"assets/images/listing/mavoiture3.jpg"}
                 user={'Liantsoa'}
-                duree={'2mois'}
-                model={'Peugeot 208'}
-                prix={'20.000.000'}
-                contact={'034 12 040 35'}
-            />
-            <Suggestion
-                user={'Liantsoa'}
-                duree={'2mois'}
+                duree={'3jours'}
                 model={'Peugeot 208'}
                 prix={'20.000.000'}
                 contact={'034 12 040 35'}

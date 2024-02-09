@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export function Booste({user,duree,model,prix,contact}){
+export function Booste({src,user,duree,model,prix,contact}){
     const [headerColor, setHeaderColor] = useState('gray');
 
     const handleClick = () => {
@@ -18,7 +18,7 @@ export function Booste({user,duree,model,prix,contact}){
         <Link href={`product-details`}>
           <div className="listing-thumbnail">
             <img
-              src="assets/images/listing/mavoiture.jpg"
+              src={src}
               alt="Listing Image"
             />
             <span className="featured-btn">Booste</span>
