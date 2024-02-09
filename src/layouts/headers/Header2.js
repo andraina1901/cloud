@@ -52,6 +52,7 @@ const Header2 = () => {
                       <img
                         src="assets/images/logo/logo-2.png"
                         alt="Brand Logo"
+                        style={{width: '100px'}}
                       />
                     </a>
                   </Link>
@@ -74,7 +75,7 @@ const Header2 = () => {
                           <i className="ti-arrow-down"></i>
                         </span>
                       </li>
-                      <li className="menu-item has-children">
+                      {/* <li className="menu-item has-children">
                         <a href="#">Pages</a>
                         <ul className="sub-menu">
                           <Pages />
@@ -82,8 +83,8 @@ const Header2 = () => {
                         <span className="dd-trigger">
                           <i className="ti-arrow-down"></i>
                         </span>
-                      </li>
-                      <li className="menu-item has-children">
+                      </li> */}
+                      {/* <li className="menu-item has-children">
                         <a href="#">Article</a>
                         <ul className="sub-menu">
                           <Blog />
@@ -91,7 +92,7 @@ const Header2 = () => {
                         <span className="dd-trigger">
                           <i className="ti-arrow-down"></i>
                         </span>
-                      </li>
+                      </li> */}
                       <Contact />
                       <li className="nav-btn">
                         <Link href="/add-listing">

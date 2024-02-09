@@ -21,7 +21,7 @@ export function AnnonceHisto() {
                 prix={'20.000.000'}
                 contact={'034 12 040 35'}
             />
-             <Annonce
+            <Annonce
                 user={'Liantsoa'}
                 duree={'2mois'}
                 model={'Peugeot 208'}

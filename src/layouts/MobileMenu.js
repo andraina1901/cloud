@@ -132,30 +132,6 @@ const MobileMenu = () => {
                           <i className="ti-arrow-down"></i>
                         </span>
                       </li>
-                      <li className="menu-item has-children">
-                        <a href="#">Pages</a>
-                        <ul className="sub-menu" style={activeLi("Pages")}>
-                          <Pages />
-                        </ul>
-                        <span
-                          className="dd-trigger"
-                          onClick={() => activeMenuSet("Pages")}
-                        >
-                          <i className="ti-arrow-down"></i>
-                        </span>
-                      </li>
-                      <li className="menu-item has-children">
-                        <a href="#">Article</a>
-                        <ul className="sub-menu" style={activeLi("Article")}>
-                          <Blog />
-                        </ul>
-                        <span
-                          className="dd-trigger"
-                          onClick={() => activeMenuSet("Article")}
-                        >
-                          <i className="ti-arrow-down"></i>
-                        </span>
-                      </li> 
                       <Contact />
                       <li className="nav-btn">
                         <Link href="/add-listing">
