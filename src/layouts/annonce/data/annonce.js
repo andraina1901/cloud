@@ -1,4 +1,4 @@
-// Images
+
 import team2 from "assets/images/team-2.jpg";
 import { request } from "helpers/axios_helper";
 
