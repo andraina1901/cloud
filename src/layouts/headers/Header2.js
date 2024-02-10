@@ -4,8 +4,18 @@ import { About, Blog, Contact, Home, Listing, Pages } from "../Menu";
 import { useRouter } from "next/router";
 import { request, setAuthHeader } from "../../helpers/axios_helper";
 
-const Header2 = () => {
+function test(file) {
+  let formData = new FormData();
+  formData.append('descriptions',"fffee");
+  formData.append('titre',"BMW best");
+  formData.append('idUser',4);
+  formData.append('idVoiture',"VTR1");
+  formData.append('prix',40250000);
+  formData.append('photo',file);
+  request("POST","/annonce/add",formData,'multipart/form-data');
+}
 
+const Header2 = () => {
 
   const router = useRouter(); // Initialisez le routeur
 
@@ -24,7 +34,7 @@ const Header2 = () => {
         password: "Liantsoa",
       })
         .then((response) => {
-          setAuthHeader(response.token);
+          setAuthHeader(response.data.token);
          
           router.push("/profile");
         })
@@ -35,8 +45,17 @@ const Header2 = () => {
         }).finally(() => {
           // setLoading(false);
         });
-      
   };
+
+  const handleTest = () =>{
+    test(file);
+  }
+  const [file,setFile] = useState(null);
+  // const [file,setFile] = useState(null);
+  const handleFileChange = (e) =>{
+    setFile(e.target.files[0]);
+  }
+
 
 
   return (
@@ -157,6 +176,17 @@ const Header2 = () => {
                         </div>
                       )}
                     </li>
+                    {/* <input
+                      type="file"
+                      name="file"
+                      className="mine"
+                      id="password"
+                      placeholder="Enter your password"
+                      onChange={handleFileChange} // Mise à jour de l'état du mot de passe lors de la saisie
+                      required
+                    />
+                    <button type="submit" onClick={handleTest} className="testbout">FormData</button>
+                           */}
                     <li className="hero-nav-btn">
                       <div className="input-with-icon">
                         <input

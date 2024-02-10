@@ -2,7 +2,23 @@ import Slider from "react-slick";
 import { ListingSliderOne } from "../../sliderProps";
 import Link from "next/link";
 import { Suggestion } from "./card/Suggestion";
+import { useEffect } from "react";
+import { getAnnonce } from "../../data/annonce";
+import { useState } from "react";
+import { getDuree } from "../../helpers/fonction";
+
+
 export function ListingSug() {
+
+  const [valiny,setValiny] = useState([]);
+  useEffect (() => {
+    getAnnonce().then((response)=>{
+      setValiny(response.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
+
     return(
         <section className="listing-grid-area pt-75 pb-110">
         <div className="container">
@@ -17,30 +33,18 @@ export function ListingSug() {
             {...ListingSliderOne}
             className="listing-slider-one wow fadeInDown"
           >
-            <Suggestion 
-              src={"assets/images/listing/mavoiture.jpg"}
-                user={'Tommy Leo'}
-                duree={'2mois'}
-                model={'Peugeot 208'}
-                prix={'20.000.000'}
-                contact={'034 12 040 35'}
-            />
-            <Suggestion
-            src={"assets/images/listing/mavoiture2.jpg"}
-                user={'Jeremia'}
-                duree={'7jours'}
-                model={'Cabriolet'}
-                prix={'20.000.000'}
-                contact={'034 12 040 35'}
-            />
-            <Suggestion
-            src={"assets/images/listing/mavoiture3.jpg"}
-                user={'Liantsoa'}
-                duree={'3jours'}
-                model={'Peugeot 208'}
-                prix={'20.000.000'}
-                contact={'034 12 040 35'}
-            />
+            {valiny.map((item) => (
+                <Suggestion 
+                  key={item.idAnnonce}
+                  src={item.photo}
+                  user={item.user.user}
+                  duree={getDuree(item.dateheure)}
+                  model={item.titre}
+                  prix={item.prix}
+                  contact={item.user.email}
+              />
+            )) } 
+            
           </Slider>
         </div>
       </section>
