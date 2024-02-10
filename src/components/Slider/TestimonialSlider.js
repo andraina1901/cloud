@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Slider from "react-slick";
 
-export default class TestimoinalSlider extends Component {
+export default class TestimonialSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,14 +73,14 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-              J'ai trouvé le site web très facile à utiliser. 
-              J'ai pu trouver la voiture parfaite pour ma famille en quelques clics seulement. Le processus d'achat était simple et transparent, 
-              et j'ai été très satisfaite du service client..{" "}
+                J&apos;ai trouvé le site web très facile à utiliser. 
+                J&apos;ai pu trouver la voiture parfaite pour ma famille en quelques clics seulement. Le processus d&apos;achat était simple et transparent, 
+                et j&apos;ai été très satisfaite du service client.
               </p>
               <div className="author-info">
                 <div className="author-title">
                   <h4>Mertina</h4>
-                  <span className="position">Mere de famille</span>
+                  <span className="position">Mère de famille</span>
                 </div>
               </div>
             </div>
@@ -88,10 +88,10 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-              Je n'avais jamais acheté de voiture auparavant,
-              mais le site web m'a rendu la tâche très facile. 
-              J'ai pu comparer les prix et les caractéristiques de différents modèles en toute simplicité. 
-              J'ai également trouvé des conseils très utiles sur le site.{" "}
+                Je n&apos;avais jamais acheté de voiture auparavant,
+                mais le site web m&apos;a rendu la tâche très facile. 
+                J&apos;ai pu comparer les prix et les caractéristiques de différents modèles en toute simplicité. 
+                J&apos;ai également trouvé des conseils très utiles sur le site.
               </p>
               <div className="author-info">
                 <div className="author-title">
@@ -104,15 +104,15 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-              J'ai été très impressionné par la qualité des photos et 
-              des descriptions des véhicules sur le site web. J'ai également 
-              apprécié la possibilité de contacter directement 
-              le vendeur pour poser des questions.{" "}
+                J&apos;ai été très impressionné par la qualité des photos et 
+                des descriptions des véhicules sur le site web. J&apos;ai également 
+                apprécié la possibilité de contacter directement 
+                le vendeur pour poser des questions.
               </p>
               <div className="author-info">
                 <div className="author-title">
                   <h4>Ernest Rob</h4>
-                  <span className="position">Acheteur experimenter</span>
+                  <span className="position">Acheteur expérimenté</span>
                 </div>
               </div>
             </div>
@@ -120,11 +120,11 @@ export default class TestimoinalSlider extends Component {
           <div className="testimonial-item">
             <div className="testimonial-content">
               <p>
-              Depuis que j'ai acheté la nouvelle Toyota Corolla pour 
-              ABC Entreprise sur le site web, nos commerciaux gagnent 
-              en efficacité sur le terrain. Le processus d'achat a été 
-              d'une rapidité incroyable et le prix imbattable. 
-              Je recommande vivement ce site à tous les professionnels !{" "}
+                Depuis que j&apos;ai acheté la nouvelle Toyota Corolla pour 
+                ABC Entreprise sur le site web, nos commerciaux gagnent 
+                en efficacité sur le terrain. Le processus d&apos;achat a été 
+                d&apos;une rapidité incroyable et le prix imbattable. 
+                Je recommande vivement ce site à tous les professionnels !
               </p>
               <div className="author-info">
                 <div className="author-title">
