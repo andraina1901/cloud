@@ -33,11 +33,11 @@ function SignIn() {
     setLoading(true);
 
     request("POST", "/auth/signin", {
-      username: "admin",
-      password: "password",
+      login: "andraina@gmail.com",
+      password: "Liantsoa",
     })
       .then((response) => {
-        setAuthHeader(response.data.accessToken);
+        setAuthHeader(response.data.token);
         navigate('/dashboard');
       })
       .catch((error) => {
@@ -67,7 +67,7 @@ function SignIn() {
             <SoftInput
               type="email"
               placeholder="Email"
-              value="admin"
+              value="andraina@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
               style={{ borderColor: getBorderColor() }} 
             />
@@ -81,7 +81,7 @@ function SignIn() {
             <SoftInput
               type="password"
               placeholder="Password"
-              value="password"
+              value="Liantsoa"
               onChange={(e) => setPassword(e.target.value)}
               style={{ borderColor: getBorderColor() }} 
             />
