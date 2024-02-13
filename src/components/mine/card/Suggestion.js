@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 
-export function Suggestion({src,user,duree,model,prix,contact}){
+export function Suggestion({id,src,user,duree,model,prix,contact}){
    
     const [headerColor, setHeaderColor] = useState('gray');
 
@@ -12,9 +12,8 @@ export function Suggestion({src,user,duree,model,prix,contact}){
     }
 
     return(
-        
         <div className="listing-item listing-grid-item-two" style={{cursor:'pointer'}}>
-        <Link href={`product-details`}>
+        <Link href={`product-details?id=${id}`}>
         <div className="listing-thumbnail">
           <img
             src={src}

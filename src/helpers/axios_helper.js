@@ -13,7 +13,7 @@ export const setAuthHeader = (token) => {
     }
 };
 const a = "https://cloud-production-2831.up.railway.app/tomobilina"
-// const a = "http://192.168.88.69:8080/tomobilina"
+// const a = "http://172.10.2.6:8080/tomobilina"
 axios.defaults.baseURL = a;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 

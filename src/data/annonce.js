@@ -11,3 +11,15 @@ export async function getAnnonce() {
       throw error; 
     }
 };
+
+export async function getAnnonceById(id) {
+    try {
+      const result = await request("GET", `/annonce/${id}`, {});
+      const valiny = result.data
+      console.log("Formatted Data:", valiny);
+      return valiny;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error; 
+    }
+};

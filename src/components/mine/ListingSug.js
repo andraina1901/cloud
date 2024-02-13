@@ -36,6 +36,7 @@ export function ListingSug() {
             {valiny.map((item) => (
                 <Suggestion 
                   key={item.idAnnonce}
+                  id={item.idAnnonce}
                   src={item.photo}
                   user={item.user.user}
                   duree={getDuree(item.dateheure)}
@@ -44,7 +45,6 @@ export function ListingSug() {
                   contact={item.user.email}
               />
             )) } 
-            
           </Slider>
         </div>
       </section>

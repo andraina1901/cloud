@@ -7,14 +7,29 @@ import ProductSlider from "../src/components/Slider/ProductSlider";
 import Layout from "../src/layouts/Layout";
 import { reletedProductSlider } from "../src/sliderProps";
 import { Equipement } from "../src/components/mine/Equipement";
+import { getAnnonceById } from "../src/data/annonce";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const ProductDetails = () => {
-  const [headerColor, setHeaderColor] = useState('gray');
 
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [headerColor, setHeaderColor] = useState('gray');
   const handleClick = () => {
       const newColor = headerColor === 'gray' ? 'red' : 'gray';
       setHeaderColor(newColor);
   }
+
+  const [valiny,setValiny] = useState([]);
+  useEffect (() => {
+    getAnnonceById(id).then((response)=>{
+      setValiny(response.data);
+    }).catch(error =>{
+      console.log(error);
+    })
+  },[]);
 
   return (
     <Layout>
@@ -26,8 +41,8 @@ const ProductDetails = () => {
               <div className="col-lg-4 col-md-12">
                 <div className="product-info mt-30">
                 
-                  <span className="price">Peugeot 308</span>
-                  <h3 className="title">Prix: 20.000ar</h3>
+                  <span className="price">{valiny.titre}</span>
+                  <h3 className="title">Prix: {valiny.prix}ar</h3>
                   {/* <p>
                     Marque
                   </p> */}
@@ -35,27 +50,27 @@ const ProductDetails = () => {
 
                     <span className="category">
                       <span className="title">Categorie: </span>
-                      <a href="#">Berline</a>
+                      <a href="#">{valiny.voiture.modele.categorie.nomCategorie}</a>
                     </span>
                     <span className="tags">
                       <span className="title">Marque:</span>
-                      <a href="#">Peugeot</a>
+                      <a href="#">{valiny.voiture.modele.marque.nomMarque}</a>
                     </span>
                     <span className="tags">
                       <span className="title">Kilometrage:</span>
-                      <a href="#">10.000km</a>
+                      <a href="#">{valiny.voiture.kilometrage}km</a>
                     </span>
                     <span className="tags">
                       <span className="title">Energie:</span>
-                      <a href="#">Essence</a>
+                      <a href="#">{valiny.voiture.energie.nomEnergie}</a>
                     </span>
                      <span className="tags">
                       <span className="title">Boite de vitesse:</span>
-                      <a href="#">Automatique</a>
+                      <a href="#">{valiny.voiture.boiteVitesse.nomBoiteVitesse}</a>
                     </span>
                     <span className="tags">
                       <span className="title">Consommation:</span>
-                      <a href="#">13L/100km</a>
+                      <a href="#">{valiny.voiture.consommation}L/100km.</a>
                     </span>
 
                   </div>
