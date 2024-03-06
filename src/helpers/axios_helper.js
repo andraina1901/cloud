@@ -12,7 +12,7 @@ export const setAuthHeader = (token) => {
       window.localStorage.removeItem("auth_token");
     }
 };
-const a = "https://cloud-production-2831.up.railway.app/tomobilina"
+const a = "https://cloud-production-7562.up.railway.app/tomobilina"
 // const a = "http://172.10.2.6:8080/tomobilina"
 axios.defaults.baseURL = a;
 axios.defaults.headers.post['Content-Type'] = 'application/json';

@@ -70,7 +70,7 @@ const ProductDetails = () => {
                     </span>
                     <span className="tags">
                       <span className="title">Consommation:</span>
-                      <a href="#">{valiny.voiture.consommation}L/100km.</a>
+                      <a href="#">{valiny.voiture.consommation}L/100km</a>
                     </span>
 
                   </div>

@@ -155,7 +155,7 @@ const Header2 = () => {
                                 className="mine"
                                 id="username"
                                 placeholder="Enter your username"
-                                value={username}
+                                value={'andraina@gmail.com'}
                                 onChange={(e) => setUsername(e.target.value)} // Mise à jour de l'état du nom d'utilisateur lors de la saisie
                                 required
                               />
@@ -166,7 +166,7 @@ const Header2 = () => {
                                 className="mine"
                                 id="password"
                                 placeholder="Enter your password"
-                                value={password}
+                                value={'Liantsoa'}
                                 onChange={(e) => setPassword(e.target.value)} // Mise à jour de l'état du mot de passe lors de la saisie
                                 required
                               />
