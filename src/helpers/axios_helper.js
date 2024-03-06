@@ -18,7 +18,7 @@ export const destroyAuthHeader = (token) => {
 };
 // https://testupload-production-2380.up.railway.app
 // http://172.10.0.33:8080
-axios.defaults.baseURL = 'https://cloud-production-5432.up.railway.app/tomobilina';
+axios.defaults.baseURL = 'https://cloud-production-7562.up.railway.app/tomobilina';
 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
